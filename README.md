@@ -1,6 +1,6 @@
 # Casa de Casal · Lestedo · «Bajo el tejado de la C»
 
-Web nueva para Casa de Casal (C/ Pedro Ballesteros 17 · 15881 Lestedo, Boqueixón), casa rural de Patricia. Está **en local**, con `noindex` en todas las páginas y **sin publicar**.
+Web nueva para Casa de Casal (C/ Pedro Ballesteros 17 · 15881 Lestedo, Boqueixón), casa rural de Patricia. **Publicada** el 2026-10-16 en https://alvarotaiagu.github.io/casa-de-casal-lestedo-web/ (repo público `alvarotaiagu/casa-de-casal-lestedo-web`, Pages sobre la rama `master`), con `noindex` en todas las páginas.
 
 - **Datos y fuentes:** `../casa-de-casal-lestedo-bocetos/DATOS-CASA-DE-CASAL.md` (su WordPress leído por la API, Booking, la ficha de Google, OSM). Tablero de direcciones: https://claude.ai/artifact/1cymMsPZZhyTAFfMXdmNTT
 - **Decisión (2026-10-16, «elijo tu recomendación»):** dirección A «Bajo el tejado de la C», con «El Pico, hoy» de B, el anillo del año de C junto al calendario, y «Los papeles de la casa» de D como opcional. Solo castellano. Fotos de su web y de Booking, **ninguna generada con IA**. Motor de reservas de demostración.

@@ -310,16 +310,12 @@ console.log('\n4. El Pico');
   await esperarCortina(page);
   await bajarA(page, '#pico', 0);
   await page.waitForTimeout(1200);
-  const d = await page.evaluate(() => ({ h: document.getElementById('pico-hora').textContent, t: document.getElementById('pico-tramos').textContent, f: document.getElementById('pico-fuente').textContent, r: document.getElementById('pico-refran').textContent, v: document.getElementById('pico-rango').value, nub: +getComputedStyle(document.getElementById('pico-nubes')).opacity }));
+  const d = await page.evaluate(() => ({ h: document.getElementById('pico-hora').textContent, t: document.getElementById('pico-tramos').textContent, f: document.getElementById('pico-fuente').textContent, r: document.getElementById('pico-refran').textContent, nub: +getComputedStyle(document.getElementById('pico-nubes')).opacity }));
   const mins = (s) => +s.slice(0, 2) * 60 + +s.slice(3, 5);
   comprobar(/^\d\d:\d\d$/.test(d.h) && mins(d.h) > 6 * 60 + 40 && mins(d.h) < 9 * 60 + 20, 'dato en vivo: la hora de salida del sol hoy en Lestedo es creíble', d.h);
   comprobar(/abril/.test(d.t) && /mayo/.test(d.t) && /agosto/.test(d.t), 'el sol por detrás del Pico: finales de abril–mayo y agosto', d.t);
-  comprobar(/El Pico ahora · 12:00 h/.test(d.f) && d.v === '72' && /toquilla/.test(d.r) && d.nub > 0.6, 'el tiempo de la cumbre llega solo al acercarse y pone toquilla con nubes bajas', d);
-  await page.fill('#pico-rango', '5'); await page.dispatchEvent('#pico-rango', 'input'); await page.waitForTimeout(800);
-  comprobar(await page.evaluate(() => /despejado/.test(document.getElementById('pico-refran').textContent) && +getComputedStyle(document.getElementById('pico-nubes')).opacity < 0.1), 'sin nubes: «despejado» y las nubes se van');
-  await page.fill('#pico-rango', '80'); await page.dispatchEvent('#pico-rango', 'input');
-  await page.click('#pico-lluvia-btn');
-  comprobar(await page.evaluate(() => /pañuelo/.test(document.getElementById('pico-refran').textContent)), 'con lluvia y nubes: el refrán del pañuelo');
+  comprobar(/El Pico ahora · 12:00 h/.test(d.f) && /toquilla/.test(d.r) && d.nub > 0.6, 'el tiempo de la cumbre llega solo al acercarse y pone toquilla con nubes bajas', d);
+  comprobar(await page.evaluate(() => !document.querySelector('#pico input, #pico-lluvia-btn') && /72 %/.test(document.getElementById('pico-dato').textContent)), 'sin deslizador ni botones: solo el dato real de nubes');
   const sol = await page.evaluate(() => { const s = document.getElementById('pico-sol'); return { cx: +s.getAttribute('cx'), cy: +s.getAttribute('cy') }; });
   comprobar(sol.cx > 20 && sol.cx < 780 && sol.cy > 40 && sol.cy < 300, 'el sol de hoy se dibuja sobre la cresta, en su rumbo', sol);
   // leyendas: teclado
@@ -338,7 +334,7 @@ console.log('\n4. El Pico');
   await esperarCortina(page);
   await bajarA(page, '#pico', 0);
   await page.waitForTimeout(1500);
-  comprobar(await page.evaluate(() => /no llega/.test(document.getElementById('pico-fuente').textContent) && document.getElementById('pico-refran').textContent.length > 20), 'si Open-Meteo falla, lo dice y el refrán sigue');
+  comprobar(await page.evaluate(() => /no llega/.test(document.getElementById('pico-dato').textContent) && /se mira al Pico/.test(document.getElementById('pico-refran').textContent)), 'si Open-Meteo falla, lo dice y no inventa refrán');
   await ctx.close();
 }
 

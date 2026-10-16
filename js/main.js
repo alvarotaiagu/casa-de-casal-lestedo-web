@@ -218,12 +218,11 @@
     const tr = S.tramos(hoy.getFullYear()).map(([a, b]) => 'del ' + fecha.format(a) + ' al ' + fecha.format(b));
     $('#pico-tramos').textContent = 'Por detrás del Pico, ' + tr.join(' y ') + '.';
 
-    const rango = $('#pico-rango'), val = $('#pico-val'), btnL = $('#pico-lluvia-btn'), fuente = $('#pico-fuente');
-    const nubes = $('#pico-nubes'), lluvia = $('#pico-lluvia');
+    // el tiempo de ahora en la cumbre (Open-Meteo), al llegar a la sección. Solo dato real: si no llega, una frase neutra
+    const fuente = $('#pico-fuente'), dato = $('#pico-dato'), nubes = $('#pico-nubes'), lluvia = $('#pico-lluvia');
     for (let i = 0; i < 46; i++) { const lx = 30 + i * 17 + (i % 3) * 5, ly = 120 + (i * 37) % 120; svgEl(lluvia, 'line', { x1: lx, y1: ly, x2: lx - 6, y2: ly + 16 }); }
-    const pintar = () => {
-      const n = +rango.value, ll = btnL.getAttribute('aria-pressed') === 'true';
-      val.textContent = n + ' %';
+    nubes.style.opacity = 0.35;
+    const pintar = (n, ll) => {
       nubes.style.opacity = f(n / 100);
       lluvia.style.opacity = ll ? 0.85 : 0;
       let r;
@@ -232,30 +231,22 @@
       else if (n >= 20) r = 'El Pico asoma entre nubes: buen rato para subir, con chaqueta.';
       else r = 'Hoy el Pico está despejado: desde la cima se ven unos 30 km a la redonda.';
       $('#pico-refran').textContent = r;
+      dato.textContent = `Nubes bajas en la cumbre: ${n} %${ll ? ' · está lloviendo' : ''}.`;
     };
-    rango.addEventListener('input', () => { fuente.textContent = 'Juega con las nubes'; pintar(); });
-    btnL.addEventListener('click', () => { btnL.setAttribute('aria-pressed', btnL.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); fuente.textContent = 'Juega con las nubes'; pintar(); });
-    // el tiempo de ahora en la cumbre (Open-Meteo), al llegar a la sección o al pedirlo
-    let pedido = false;
     const ahora = async () => {
-      pedido = true;
-      fuente.textContent = 'Consultando el tiempo en la cumbre…';
       try {
         const c = new AbortController(); const t = setTimeout(() => c.abort(), 5000);
         const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.8072&longitude=-8.4469&current=cloud_cover_low,precipitation&timezone=Europe%2FMadrid', { signal: c.signal });
         clearTimeout(t);
         const j = await r.json();
-        rango.value = Math.round(j.current.cloud_cover_low);
-        btnL.setAttribute('aria-pressed', j.current.precipitation > 0 ? 'true' : 'false');
         fuente.textContent = 'El Pico ahora · ' + j.current.time.slice(11) + ' h';
+        pintar(Math.round(j.current.cloud_cover_low), j.current.precipitation > 0);
       } catch (e) {
-        fuente.textContent = 'Ahora no llega el tiempo de la cumbre: mueve las nubes';
+        fuente.textContent = 'El Pico Sacro';
+        dato.textContent = 'Ahora no llega el tiempo de la cumbre.';
       }
-      pintar();
     };
-    $('#pico-ahora').addEventListener('click', ahora);
-    new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); if (!pedido) ahora(); } }, { rootMargin: '300px 0px' }).observe(svg);
-    pintar();
+    new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); ahora(); } }, { rootMargin: '300px 0px' }).observe(svg);
 
     // leyendas: resumidas de sus páginas del Pico Sacro y de «Nuestro camino»
     const L = [

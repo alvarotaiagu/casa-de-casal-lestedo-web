@@ -358,9 +358,7 @@ html.densidad-sobria .seccion__panel img { clip-path: none; }
 .pico__dibujo { width: 100%; height: auto; display: block; }
 .pico__lado { display: grid; gap: 16px; align-content: start; min-width: 0; }
 .pico__refran { font: italic 400 clamp(1.7rem, 2.8vw, 2.4rem)/1.15 var(--letra-tit); text-wrap: balance; }
-.pico__ctrl { display: grid; gap: 8px; font-size: .95rem; }
-.pico__ctrl input { width: 100%; accent-color: var(--pino); }
-.pico__fila { display: flex; gap: 8px; flex-wrap: wrap; }
+.pico__dato { font-size: .95rem; color: #4e5b54; }
 .pico__sol { border-top: 1px solid rgba(28, 51, 39, .18); padding-top: 14px; display: grid; gap: 4px; font-size: .98rem; }
 .pico__sol b { font: 400 2.2rem/1 var(--letra-tit); }
 #pico-nubes, #pico-lluvia { transition: opacity .6s var(--ease); }

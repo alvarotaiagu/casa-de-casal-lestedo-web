@@ -1,0 +1,10 @@
+{
+  "name": "Casa de Casal",
+  "short_name": "Casa de Casal",
+  "lang": "es",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#121a24",
+  "theme_color": "#121a24",
+  "icons": [{ "src": "marca/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }, { "src": "marca/icono-512.png", "sizes": "512x512", "type": "image/png" }]
+}

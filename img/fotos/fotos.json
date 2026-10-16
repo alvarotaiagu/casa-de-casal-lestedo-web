@@ -1,0 +1,502 @@
+[
+ {
+  "nombre": "portada-casa",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1650,
+  "origen": "web/Vistas-de-Casa-de-Casal-desde-parking-gratuito.jpg",
+  "ancho_origen": 2500,
+  "alto_origen": 1875
+ },
+ {
+  "nombre": "portada-pico",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1280
+  ],
+  "ancho": 1280,
+  "alto": 853,
+  "origen": "booking/389972159.jpg",
+  "ancho_origen": 1280,
+  "alto_origen": 853
+ },
+ {
+  "nombre": "portada-galeria",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1467,
+  "origen": "web/Salon-con-galeria-vistas-valle-Ulla-scaled.jpg",
+  "ancho_origen": 2560,
+  "alto_origen": 1707
+ },
+ {
+  "nombre": "portada-estanque",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1400
+  ],
+  "ancho": 1400,
+  "alto": 788,
+  "origen": "web/20180614_1744582.jpg",
+  "ancho_origen": 1400,
+  "alto_origen": 788
+ },
+ {
+  "nombre": "fachada",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 576,
+  "origen": "web/Casa-de-Casal-Fachada-principa.jpg",
+  "ancho_origen": 1024,
+  "alto_origen": 576
+ },
+ {
+  "nombre": "casa-escalera",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1440
+  ],
+  "ancho": 1440,
+  "alto": 1080,
+  "origen": "web/20180529_211851.jpg",
+  "ancho_origen": 1440,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "horreo",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1056,
+  "origen": "web/Casa-de-Casal-Turismo-rural-con-encanto.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1056
+ },
+ {
+  "nombre": "roca",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/040-Large.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "chimenea",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/034.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "salon-abajo",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1654,
+  "origen": "web/Salon-inferior-con-televisor.jpg",
+  "ancho_origen": 2502,
+  "alto_origen": 1881
+ },
+ {
+  "nombre": "lectura",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/Luminoso-salon-de-lectura-en-Casa-de-Casal.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "comedor",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/Riquisimo-desayuno-buffet-de-Casa-de-Casal.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "desayuno",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1466,
+  "origen": "web/Desayuno-casero-Casa-de-Casal-scaled.jpg",
+  "ancho_origen": 2560,
+  "alto_origen": 1706
+ },
+ {
+  "nombre": "desayuno-fuera",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1280
+  ],
+  "ancho": 1280,
+  "alto": 853,
+  "origen": "booking/468261549.jpg",
+  "ancho_origen": 1280,
+  "alto_origen": 853
+ },
+ {
+  "nombre": "cena",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/Cena-casera-Casa-de-Casal-cerca-chimenea.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "piscina",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/20211112_151158.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "pergola",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1467,
+  "origen": "web/CasadeCasal_julio2022_XH1S9707cXaimeCortizo-scaled.jpg",
+  "ancho_origen": 2560,
+  "alto_origen": 1707
+ },
+ {
+  "nombre": "glicinia",
+  "anchos": [
+   480,
+   800,
+   1200
+  ],
+  "ancho": 1200,
+  "alto": 900,
+  "origen": "booking/4929890.jpg",
+  "ancho_origen": 1200,
+  "alto_origen": 900
+ },
+ {
+  "nombre": "estanque",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1280
+  ],
+  "ancho": 1280,
+  "alto": 853,
+  "origen": "booking/7287258.jpg",
+  "ancho_origen": 1280,
+  "alto_origen": 853
+ },
+ {
+  "nombre": "fresas",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1280
+  ],
+  "ancho": 1280,
+  "alto": 853,
+  "origen": "web/Fresas-recien-recogidas-del-huerto.jpg",
+  "ancho_origen": 1280,
+  "alto_origen": 853
+ },
+ {
+  "nombre": "pequena-fuera",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 2200,
+  "origen": "web/Exterior-Casa-Pequena-do-Casal-1-scaled.jpg",
+  "ancho_origen": 2560,
+  "alto_origen": 2560
+ },
+ {
+  "nombre": "pequena-cama",
+  "anchos": [
+   480,
+   800,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "web/20211114_155017-1.jpg",
+  "ancho_origen": 1080,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "pequena-cocina",
+  "anchos": [
+   480,
+   800,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "web/20211114_155123.jpg",
+  "ancho_origen": 1080,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "pico-capilla",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1444
+  ],
+  "ancho": 1444,
+  "alto": 1080,
+  "origen": "web/Pico-Sacro-2.jpg",
+  "ancho_origen": 1444,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "pico-paso",
+  "anchos": [
+   480,
+   800,
+   1080
+  ],
+  "ancho": 1080,
+  "alto": 1080,
+  "origen": "web/Paso-de-la-Reina-Pico-Sacro.jpg",
+  "ancho_origen": 1080,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "hab-torre",
+  "anchos": [
+   480,
+   675
+  ],
+  "ancho": 675,
+  "alto": 900,
+  "origen": "booking/139169988.jpg",
+  "ancho_origen": 675,
+  "alto_origen": 900
+ },
+ {
+  "nombre": "hab-terraza",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 900,
+  "origen": "booking/259645083.jpg",
+  "ancho_origen": 900,
+  "alto_origen": 900
+ },
+ {
+  "nombre": "hab-familiar",
+  "anchos": [
+   480,
+   800,
+   900
+  ],
+  "ancho": 900,
+  "alto": 900,
+  "origen": "booking/469077787.jpg",
+  "ancho_origen": 900,
+  "alto_origen": 900
+ },
+ {
+  "nombre": "hab-confort",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/089-Large.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "hab-clasica",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1280
+  ],
+  "ancho": 1280,
+  "alto": 720,
+  "origen": "booking/139169289.jpg",
+  "ancho_origen": 1280,
+  "alto_origen": 720
+ },
+ {
+  "nombre": "hab-mouros",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1467,
+  "origen": "web/Habitacion-casa-rural-Os-mouros-scaled.jpg",
+  "ancho_origen": 2560,
+  "alto_origen": 1707
+ },
+ {
+  "nombre": "hab-coruxa",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1467,
+  "origen": "web/Detalle-ventana-Habitacion-A-Coruxa-scaled.jpg",
+  "ancho_origen": 2560,
+  "alto_origen": 1707
+ },
+ {
+  "nombre": "hab-regulo",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/Habitacion-doble-el-Regulo.-Servicio-de-habitaciones-Casa-de-Casal.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "hab-encanto",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   1920
+  ],
+  "ancho": 1920,
+  "alto": 1080,
+  "origen": "web/Detalle-toallas-bordadas-habitacion-El-Encanto.jpg",
+  "ancho_origen": 1920,
+  "alto_origen": 1080
+ },
+ {
+  "nombre": "hab-peregrino",
+  "anchos": [
+   480,
+   800,
+   1200,
+   1600,
+   2200
+  ],
+  "ancho": 2200,
+  "alto": 1467,
+  "origen": "web/Habitacion-Peregrino-Via-de-la-Plata-scaled.jpg",
+  "ancho_origen": 2560,
+  "alto_origen": 1707
+ }
+]

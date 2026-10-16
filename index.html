@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Casa de Casal · Casa rural en Lestedo, a 15 minutos de Santiago</title>
+<meta name="description" content="Casa de labranza gallega en una finca de cuatro hectáreas, al pie del Pico Sacro y a 15 minutos de Santiago de Compostela. Nueve habitaciones con desayuno casero, la Casa Pequena para dos y piscina de agua salada. 9,6 en Booking.">
+<meta name="theme-color" content="#121a24">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Casa de Casal · Lestedo">
+<meta property="og:description" content="Nueve habitaciones bajo un mismo tejado, al pie del Pico Sacro y a 15 minutos de Santiago.">
+<meta property="og:image" content="img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- script bloqueante: clases antes del primer pintado -->
+<script>
+(function (d) {
+  var h = d.documentElement;
+  h.classList.add('js');
+  // MANDO DE MAQUETA (no viaja al cliente): solo con ?revision
+  try {
+    var q = new URLSearchParams(location.search);
+    if (q.has('revision')) {
+      h.classList.add('revision');
+      if (q.get('densidad') === 'sobria') h.classList.add('densidad-sobria');
+    }
+  } catch (e) {}
+  // red de seguridad por si main.js no llega: la cortina se va sola
+  window.__redCortina = setTimeout(function () { h.classList.add('cortina-fuera'); }, 6500);
+})(document);
+</script>
+
+<link rel="preload" as="image" type="image/avif" fetchpriority="high"
+      imagesrcset="img/fotos/portada-casa-480.avif 480w, img/fotos/portada-casa-800.avif 800w, img/fotos/portada-casa-1200.avif 1200w, img/fotos/portada-casa-1600.avif 1600w"
+      imagesizes="(max-width: 899px) 66vw, 56vw">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="css/estilos.css?v=098a6b03">
+<link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="marca/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<noscript><style>.cortina{display:none!important}</style></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Casa de Casal",
+  "description": "Casa rural en una finca de cuatro hectáreas al pie del Pico Sacro, a 15 minutos de Santiago de Compostela.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C/ Pedro Ballesteros, 17",
+    "addressLocality": "Lestedo, Boqueixón",
+    "postalCode": "15881",
+    "addressRegion": "A Coruña",
+    "addressCountry": "ES"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 42.80472, "longitude": -8.46366 },
+  "telephone": "+34 698 148 323",
+  "email": "info@casadecasal.com",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Desayuno casero", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Piscina de agua salada", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Aparcamiento gratuito", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wifi gratuito", "value": true }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<!-- ============ cortina: el tejado de la C se traza y la casa se abre ============ -->
+<div class="cortina" id="cortina" aria-hidden="true">
+  <div class="cortina__logo" id="cortina-logo">
+    <img class="cortina__entero" src="marca/logo-oro-sin-tejado-840.png" alt="" width="840" height="454">
+    <img class="cortina__tejado" src="marca/tejado-oro-290.png" alt="" width="290" height="282">
+  </div>
+</div>
+
+<!-- ============ cabecera: el tejado se dora al leer ============ -->
+<header class="cab" id="cab">
+  <div class="cab__in">
+    <a class="cab__marca" href="#principal" aria-label="Casa de Casal, a la portada">
+      <img class="cab__logo cab__logo--blanco" src="marca/logo-blanco-300.png" alt="" width="300" height="162">
+      <img class="cab__logo cab__logo--oro" src="marca/logo-oro-300.png" alt="" width="300" height="162">
+    </a>
+    <span class="cab__lectura" aria-hidden="true"><img src="marca/tejado-oro-120.png" alt="" width="120" height="117"><img class="lleno" src="marca/tejado-oro-120.png" alt="" width="120" height="117"></span>
+    <nav class="cab__nav" aria-label="Secciones">
+      <a href="#casa">La casa</a>
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#finca">La finca</a>
+      <a href="#pico">El Pico</a>
+      <a href="#llegar">Cómo llegar</a>
+    </nav>
+    <a class="btn btn--oro cab__cta" href="#reserva">Reservar</a>
+    <button class="cab__menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="vh">Menú</span><i></i><i></i></button>
+  </div>
+</header>
+<div class="menu-movil" id="menu-movil" aria-hidden="true">
+  <nav aria-label="Secciones">
+    <a href="#casa">La casa</a>
+    <a href="#habitaciones">Habitaciones</a>
+    <a href="#finca">La finca y la mesa</a>
+    <a href="#pico">El Pico, hoy</a>
+    <a href="#reserva">Reservar</a>
+    <a href="#alrededores">Alrededores</a>
+    <a href="#llegar">Cómo llegar</a>
+  </nav>
+  <p><a href="tel:+34698148323">698 148 323</a> · teléfono y WhatsApp</p>
+</div>
+
+<main id="principal">
+
+<!-- ============ 1. portada: lo que hay bajo el tejado ============ -->
+<section class="hero" id="hero" aria-labelledby="hero-tit">
+  <div class="hero__txt">
+    <p class="eti">Lestedo · Boqueixón · A 15 minutos de Santiago</p>
+    <h1 class="hero__tit" id="hero-tit" data-partir>Nueve habitaciones bajo <em>un mismo tejado</em></h1>
+    <p class="hero__sub">Casa de labranza gallega en una finca de cuatro hectáreas, al pie del Pico Sacro. Desayuno casero, piscina de agua salada en verano y Patricia, que nació aquí.</p>
+    <div class="hero__acc">
+      <a class="btn btn--oro" href="#reserva">Ver disponibilidad</a>
+      <a class="btn btn--hueco" href="#casa">Conocer la casa</a>
+    </div>
+    <ul class="notas" aria-label="Valoraciones">
+      <li><b>9,6</b><span>Booking<br>302 comentarios</span></li>
+      <li><b>4,9</b><span>Google<br>315 reseñas</span></li>
+      <li><b>4,7</b><span>Tripadvisor<br>79 opiniones</span></li>
+    </ul>
+  </div>
+  <div class="hero__vista">
+    <div class="gablete" id="gablete" tabindex="0" role="group" aria-roledescription="carrusel" aria-label="Lo que hay bajo el tejado. Desliza o usa las flechas.">
+      <div class="gablete__pista" id="gablete-pista">
+        <figure class="gablete__foto" data-i="0"><picture data-foto="portada-casa"><source type="image/avif" srcset="img/fotos/portada-casa-480.avif 480w, img/fotos/portada-casa-800.avif 800w, img/fotos/portada-casa-1200.avif 1200w, img/fotos/portada-casa-1600.avif 1600w, img/fotos/portada-casa-2200.avif 2200w" sizes="(max-width: 899px) 66vw, 56vw"><source type="image/webp" srcset="img/fotos/portada-casa-480.webp 480w, img/fotos/portada-casa-800.webp 800w, img/fotos/portada-casa-1200.webp 1200w, img/fotos/portada-casa-1600.webp 1600w, img/fotos/portada-casa-2200.webp 2200w" sizes="(max-width: 899px) 66vw, 56vw"><img src="img/fotos/portada-casa-800.jpg" srcset="img/fotos/portada-casa-480.jpg 480w, img/fotos/portada-casa-800.jpg 800w, img/fotos/portada-casa-1200.jpg 1200w, img/fotos/portada-casa-1600.jpg 1600w, img/fotos/portada-casa-2200.jpg 2200w" sizes="(max-width: 899px) 66vw, 56vw" width="2200" height="1650" alt="La casa de piedra al fondo del prado, entre árboles" fetchpriority="high" loading="eager" decoding="async"></picture><figcaption>La casa, desde el prado</figcaption></figure>
+        <figure class="gablete__foto" data-i="1"><picture data-foto="portada-pico"><source type="image/avif" srcset="img/fotos/portada-pico-480.avif 480w, img/fotos/portada-pico-800.avif 800w, img/fotos/portada-pico-1200.avif 1200w, img/fotos/portada-pico-1280.avif 1280w" sizes="(max-width: 899px) 100vw, 56vw"><source type="image/webp" srcset="img/fotos/portada-pico-480.webp 480w, img/fotos/portada-pico-800.webp 800w, img/fotos/portada-pico-1200.webp 1200w, img/fotos/portada-pico-1280.webp 1280w" sizes="(max-width: 899px) 100vw, 56vw"><img src="img/fotos/portada-pico-800.jpg" srcset="img/fotos/portada-pico-480.jpg 480w, img/fotos/portada-pico-800.jpg 800w, img/fotos/portada-pico-1200.jpg 1200w, img/fotos/portada-pico-1280.jpg 1280w" sizes="(max-width: 899px) 100vw, 56vw" width="1280" height="853" alt="La casa entre árboles con el Pico Sacro detrás" loading="lazy" decoding="async"></picture><figcaption>El Pico Sacro, a 1,4 km</figcaption></figure>
+        <figure class="gablete__foto" data-i="2"><picture data-foto="portada-galeria"><source type="image/avif" srcset="img/fotos/portada-galeria-480.avif 480w, img/fotos/portada-galeria-800.avif 800w, img/fotos/portada-galeria-1200.avif 1200w, img/fotos/portada-galeria-1600.avif 1600w, img/fotos/portada-galeria-2200.avif 2200w" sizes="(max-width: 899px) 100vw, 56vw"><source type="image/webp" srcset="img/fotos/portada-galeria-480.webp 480w, img/fotos/portada-galeria-800.webp 800w, img/fotos/portada-galeria-1200.webp 1200w, img/fotos/portada-galeria-1600.webp 1600w, img/fotos/portada-galeria-2200.webp 2200w" sizes="(max-width: 899px) 100vw, 56vw"><img src="img/fotos/portada-galeria-800.jpg" srcset="img/fotos/portada-galeria-480.jpg 480w, img/fotos/portada-galeria-800.jpg 800w, img/fotos/portada-galeria-1200.jpg 1200w, img/fotos/portada-galeria-1600.jpg 1600w, img/fotos/portada-galeria-2200.jpg 2200w" sizes="(max-width: 899px) 100vw, 56vw" width="2200" height="1467" alt="Desayuno en bandeja en el salón con galería, con el valle detrás" loading="lazy" decoding="async"></picture><figcaption>El salón con galería, al valle del Ulla</figcaption></figure>
+        <figure class="gablete__foto" data-i="3"><picture data-foto="portada-estanque"><source type="image/avif" srcset="img/fotos/portada-estanque-480.avif 480w, img/fotos/portada-estanque-800.avif 800w, img/fotos/portada-estanque-1200.avif 1200w, img/fotos/portada-estanque-1400.avif 1400w" sizes="(max-width: 899px) 100vw, 56vw"><source type="image/webp" srcset="img/fotos/portada-estanque-480.webp 480w, img/fotos/portada-estanque-800.webp 800w, img/fotos/portada-estanque-1200.webp 1200w, img/fotos/portada-estanque-1400.webp 1400w" sizes="(max-width: 899px) 100vw, 56vw"><img src="img/fotos/portada-estanque-800.jpg" srcset="img/fotos/portada-estanque-480.jpg 480w, img/fotos/portada-estanque-800.jpg 800w, img/fotos/portada-estanque-1200.jpg 1200w, img/fotos/portada-estanque-1400.jpg 1400w" sizes="(max-width: 899px) 100vw, 56vw" width="1400" height="788" alt="El estanque de la finca con la casa al fondo" loading="lazy" decoding="async"></picture><figcaption>El estanque de manantial</figcaption></figure>
+      </div>
+      <svg class="gablete__tejado" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1 29 L50 2 L99 29" pathLength="1"/></svg>
+    </div>
+    <div class="gablete__mando">
+      <button type="button" class="gablete__btn" data-dir="-1" aria-label="Foto anterior">‹</button>
+      <ol class="gablete__puntos" id="gablete-puntos" aria-label="Fotos">
+        <li><button type="button" data-ir="0" aria-label="La casa, desde el prado" aria-current="true"></button></li>
+        <li><button type="button" data-ir="1" aria-label="El Pico Sacro"></button></li>
+        <li><button type="button" data-ir="2" aria-label="El salón con galería"></button></li>
+        <li><button type="button" data-ir="3" aria-label="El estanque"></button></li>
+      </ol>
+      <button type="button" class="gablete__btn" data-dir="1" aria-label="Foto siguiente">›</button>
+      <p class="gablete__pie" id="gablete-pie" aria-live="polite">La casa, desde el prado</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. la casa ============ -->
+<section class="casa clara" id="casa" aria-labelledby="casa-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eti">La casa</p>
+      <h2 class="tit" id="casa-tit" data-partir>La casa de la abuela de <em>Patricia</em></h2>
+    </header>
+    <div class="casa__rejilla">
+      <div class="casa__texto" data-revela>
+        <p class="entrada">Una casa de labranza gallega de granito, con galería, hórreo y lagar, levantada hace más de dos siglos. Patricia nació aquí, en la que era la casa de su abuela, y en el verano de 2001 volvió para ayudar a sus padres a convertirla en casa rural. Se quedó.</p>
+        <blockquote class="cita"><p>«Cuando pasas toda tu infancia en un lugar, viviendo hermosos recuerdos, lo consideras el rincón más bonito del universo.»</p><footer>Patricia</footer></blockquote>
+        <p>Dentro hay un salón con galería que mira al valle del Ulla, un salón de abajo para juegos y sobremesas, el recibidor con la chimenea, un comedor para treinta y una biblioteca. Y una estancia que no tiene ninguna otra casa: su suelo es la propia peña sobre la que se levantó.</p>
+        <ol class="casa__linea">
+          <li><b>S. XVII–XVIII</b><span>Casa de labranza de la familia, con su hórreo, su molino y su lagar.</span></li>
+          <li><b>2001</b><span>Sus padres la abren como casa rural; Patricia vuelve de Francia para el verano.</span></li>
+          <li><b>2020</b><span>En plena pandemia, la Casa Pequena do Casal y la piscina nueva de agua salada.</span></li>
+          <li><b>2021</b><span>Sello «Calidad turística en destino».</span></li>
+        </ol>
+      </div>
+      <figure class="foto foto--alta gable" data-revela><picture data-foto="casa-escalera"><source type="image/avif" srcset="img/fotos/casa-escalera-480.avif 480w, img/fotos/casa-escalera-800.avif 800w, img/fotos/casa-escalera-1200.avif 1200w, img/fotos/casa-escalera-1440.avif 1440w" sizes="(max-width: 899px) 100vw, 40vw"><source type="image/webp" srcset="img/fotos/casa-escalera-480.webp 480w, img/fotos/casa-escalera-800.webp 800w, img/fotos/casa-escalera-1200.webp 1200w, img/fotos/casa-escalera-1440.webp 1440w" sizes="(max-width: 899px) 100vw, 40vw"><img src="img/fotos/casa-escalera-800.jpg" srcset="img/fotos/casa-escalera-480.jpg 480w, img/fotos/casa-escalera-800.jpg 800w, img/fotos/casa-escalera-1200.jpg 1200w, img/fotos/casa-escalera-1440.jpg 1440w" sizes="(max-width: 899px) 100vw, 40vw" width="1440" height="1080" alt="La fachada de granito con la galería acristalada y la escalera de piedra" loading="lazy" decoding="async"></picture><figcaption>La fachada y la galería</figcaption></figure>
+      <figure class="foto gable" data-revela><picture data-foto="roca"><source type="image/avif" srcset="img/fotos/roca-480.avif 480w, img/fotos/roca-800.avif 800w, img/fotos/roca-1200.avif 1200w, img/fotos/roca-1600.avif 1600w, img/fotos/roca-1920.avif 1920w" sizes="(max-width: 899px) 50vw, 25vw"><source type="image/webp" srcset="img/fotos/roca-480.webp 480w, img/fotos/roca-800.webp 800w, img/fotos/roca-1200.webp 1200w, img/fotos/roca-1600.webp 1600w, img/fotos/roca-1920.webp 1920w" sizes="(max-width: 899px) 50vw, 25vw"><img src="img/fotos/roca-800.jpg" srcset="img/fotos/roca-480.jpg 480w, img/fotos/roca-800.jpg 800w, img/fotos/roca-1200.jpg 1200w, img/fotos/roca-1600.jpg 1600w, img/fotos/roca-1920.jpg 1920w" sizes="(max-width: 899px) 50vw, 25vw" width="1920" height="1080" alt="Estancia cuyo suelo es la roca viva, con un carro antiguo" loading="lazy" decoding="async"></picture><figcaption>La peña, dentro de casa</figcaption></figure>
+      <figure class="foto gable" data-revela><picture data-foto="chimenea"><source type="image/avif" srcset="img/fotos/chimenea-480.avif 480w, img/fotos/chimenea-800.avif 800w, img/fotos/chimenea-1200.avif 1200w, img/fotos/chimenea-1600.avif 1600w, img/fotos/chimenea-1920.avif 1920w" sizes="(max-width: 899px) 50vw, 25vw"><source type="image/webp" srcset="img/fotos/chimenea-480.webp 480w, img/fotos/chimenea-800.webp 800w, img/fotos/chimenea-1200.webp 1200w, img/fotos/chimenea-1600.webp 1600w, img/fotos/chimenea-1920.webp 1920w" sizes="(max-width: 899px) 50vw, 25vw"><img src="img/fotos/chimenea-800.jpg" srcset="img/fotos/chimenea-480.jpg 480w, img/fotos/chimenea-800.jpg 800w, img/fotos/chimenea-1200.jpg 1200w, img/fotos/chimenea-1600.jpg 1600w, img/fotos/chimenea-1920.jpg 1920w" sizes="(max-width: 899px) 50vw, 25vw" width="1920" height="1080" alt="Recibidor con escalera de madera y chimenea encendida" loading="lazy" decoding="async"></picture><figcaption>El recibidor y la chimenea</figcaption></figure>
+      <figure class="foto gable" data-revela><picture data-foto="lectura"><source type="image/avif" srcset="img/fotos/lectura-480.avif 480w, img/fotos/lectura-800.avif 800w, img/fotos/lectura-1200.avif 1200w, img/fotos/lectura-1600.avif 1600w, img/fotos/lectura-1920.avif 1920w" sizes="(max-width: 899px) 50vw, 25vw"><source type="image/webp" srcset="img/fotos/lectura-480.webp 480w, img/fotos/lectura-800.webp 800w, img/fotos/lectura-1200.webp 1200w, img/fotos/lectura-1600.webp 1600w, img/fotos/lectura-1920.webp 1920w" sizes="(max-width: 899px) 50vw, 25vw"><img src="img/fotos/lectura-800.jpg" srcset="img/fotos/lectura-480.jpg 480w, img/fotos/lectura-800.jpg 800w, img/fotos/lectura-1200.jpg 1200w, img/fotos/lectura-1600.jpg 1600w, img/fotos/lectura-1920.jpg 1920w" sizes="(max-width: 899px) 50vw, 25vw" width="1920" height="1080" alt="Libro abierto en una mesa tallada del salón de lectura" loading="lazy" decoding="async"></picture><figcaption>La biblioteca</figcaption></figure>
+      <figure class="foto gable" data-revela><picture data-foto="salon-abajo"><source type="image/avif" srcset="img/fotos/salon-abajo-480.avif 480w, img/fotos/salon-abajo-800.avif 800w, img/fotos/salon-abajo-1200.avif 1200w, img/fotos/salon-abajo-1600.avif 1600w, img/fotos/salon-abajo-2200.avif 2200w" sizes="(max-width: 899px) 50vw, 25vw"><source type="image/webp" srcset="img/fotos/salon-abajo-480.webp 480w, img/fotos/salon-abajo-800.webp 800w, img/fotos/salon-abajo-1200.webp 1200w, img/fotos/salon-abajo-1600.webp 1600w, img/fotos/salon-abajo-2200.webp 2200w" sizes="(max-width: 899px) 50vw, 25vw"><img src="img/fotos/salon-abajo-800.jpg" srcset="img/fotos/salon-abajo-480.jpg 480w, img/fotos/salon-abajo-800.jpg 800w, img/fotos/salon-abajo-1200.jpg 1200w, img/fotos/salon-abajo-1600.jpg 1600w, img/fotos/salon-abajo-2200.jpg 2200w" sizes="(max-width: 899px) 50vw, 25vw" width="2200" height="1654" alt="Aparador tallado con candelabros y un gramófono en el salón de abajo" loading="lazy" decoding="async"></picture><figcaption>El salón de abajo</figcaption></figure>
+    </div>
+
+    <!-- OPCIONAL «Los papeles de la casa»: se borra este bloque entero y no hay que tocar nada más -->
+    <aside class="papeles" id="papeles" aria-labelledby="papeles-tit" data-revela>
+      <p class="eti">Los papeles de la casa</p>
+      <h3 id="papeles-tit">Un misterio en los documentos de la familia</h3>
+      <p>«Buscando información sobre la casa en los documentos antiguos de la familia descubrimos datos sorprendentes: aquí vivían monjes procedentes de San Martín Pinario. Es un misterio qué los llevó a trasladarse a Casa de Casal desde Santiago de Compostela. La tranquilidad que se respira pudo ser uno de los motivos.»</p>
+    </aside>
+    <!-- fin OPCIONAL «Los papeles de la casa» -->
+  </div>
+</section>
+
+<!-- ============ 3. bajo el tejado: las habitaciones ============ -->
+<section class="habs oscura" id="habitaciones" aria-labelledby="habs-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eti">Habitaciones</p>
+      <h2 class="tit" id="habs-tit" data-partir>Qué hay <em>bajo el tejado</em></h2>
+      <p class="suave">Nueve habitaciones dobles, todas exteriores, con baño propio, bañera o ducha de lluvia, toallas mullidas y wifi. Y, aparte, una casita para dos. Toca una ventana.</p>
+    </header>
+    <div class="seccion">
+      <svg class="seccion__dibujo" id="seccion" viewBox="0 0 900 430" role="group" aria-label="La casa dibujada de frente: cada ventana es una habitación o una estancia">
+        <defs><linearGradient id="g-granito" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#344050"/><stop offset="1" stop-color="#232c38"/></linearGradient></defs>
+        <rect x="0" y="392" width="900" height="38" fill="#182230"/>
+        <path d="M30 392 V300 L100 250 L170 300 V392 Z" fill="url(#g-granito)" stroke="#4e5a68"/>
+        <path class="seccion__tejado" d="M22 306 L100 244 L178 306" pathLength="1"/>
+        <path d="M210 392 V190 H612 V392 Z" fill="url(#g-granito)" stroke="#4e5a68"/>
+        <path d="M612 392 V150 H722 V392 Z" fill="url(#g-granito)" stroke="#4e5a68"/>
+        <path class="seccion__tejado" d="M192 196 L 411 104 L 616 140" pathLength="1"/>
+        <path class="seccion__tejado" d="M598 156 L667 104 L736 156" pathLength="1"/>
+        <g fill="#182230"><rect x="776" y="330" width="10" height="62"/><rect x="842" y="330" width="10" height="62"/></g>
+        <rect x="760" y="300" width="108" height="30" rx="2" fill="#344050" stroke="#4e5a68"/>
+        <rect x="764" y="250" width="100" height="52" fill="#2b3542" stroke="#4e5a68"/>
+        <path d="M756 252 L814 222 L872 252" fill="none" stroke="#4e5a68" stroke-width="3"/>
+        <path d="M814 222 V196 M806 204 H822" stroke="#c9a25e" stroke-width="3" stroke-linecap="round"/>
+        <text class="seccion__rot" x="100" y="414" text-anchor="middle">Casa Pequena</text>
+        <text class="seccion__rot" x="466" y="414" text-anchor="middle">Casa grande</text>
+        <text class="seccion__rot" x="814" y="414" text-anchor="middle">Hórreo</text>
+        <g class="zona" data-k="pequena" tabindex="0" role="button" aria-label="Casa Pequena do Casal"><rect class="hueco" x="70" y="318" width="60" height="50" rx="2"/><rect class="luz" x="72" y="320" width="56" height="46"/></g>
+        <g class="zona" data-k="galeria" tabindex="0" role="button" aria-label="Salón con galería"><rect class="hueco" x="232" y="206" width="132" height="66" rx="2"/><rect class="luz" x="234" y="208" width="128" height="62"/><path d="M265 206 V272 M298 206 V272 M331 206 V272" stroke="#4e5a68"/></g>
+        <g class="zona" data-k="confort" tabindex="0" role="button" aria-label="Habitaciones confort"><rect class="hueco" x="384" y="212" width="44" height="58" rx="2"/><rect class="luz" x="386" y="214" width="40" height="54"/><rect class="hueco" x="446" y="212" width="44" height="58" rx="2"/><rect class="luz" x="448" y="214" width="40" height="54"/></g>
+        <g class="zona" data-k="terraza" tabindex="0" role="button" aria-label="Habitación con terraza"><rect class="hueco" x="514" y="212" width="66" height="58" rx="2"/><rect class="luz" x="516" y="214" width="62" height="54"/><path d="M506 276 H590 M512 276 V292 M530 276 V292 M548 276 V292 M566 276 V292 M584 276 V292 M506 292 H590" stroke="#8a8478" stroke-width="2"/></g>
+        <g class="zona" data-k="torre" tabindex="0" role="button" aria-label="La Torre, con balcón"><rect class="hueco" x="644" y="176" width="46" height="62" rx="2"/><rect class="luz" x="646" y="178" width="42" height="58"/><path d="M636 244 H698 M642 244 V258 M656 244 V258 M670 244 V258 M684 244 V258 M636 258 H698" stroke="#8a8478" stroke-width="2"/></g>
+        <g class="zona" data-k="familiar" tabindex="0" role="button" aria-label="Familiar Pico Sacro"><rect class="hueco" x="644" y="286" width="46" height="56" rx="2"/><rect class="luz" x="646" y="288" width="42" height="52"/></g>
+        <g class="zona" data-k="comedor" tabindex="0" role="button" aria-label="El comedor"><rect class="hueco" x="232" y="310" width="50" height="56" rx="2"/><rect class="luz" x="234" y="312" width="46" height="52"/><rect class="hueco" x="298" y="310" width="50" height="56" rx="2"/><rect class="luz" x="300" y="312" width="46" height="52"/></g>
+        <g class="zona" data-k="chimenea" tabindex="0" role="button" aria-label="Recibidor con chimenea"><path class="hueco" d="M386 392 V330 A26 26 0 0 1 438 330 V392 Z"/><path class="luz" d="M389 392 V331 A23 23 0 0 1 435 331 V392 Z"/></g>
+        <g class="zona" data-k="clasicas" tabindex="0" role="button" aria-label="Habitaciones clásicas, en planta baja"><rect class="hueco" x="470" y="310" width="44" height="56" rx="2"/><rect class="luz" x="472" y="312" width="40" height="52"/><rect class="hueco" x="532" y="310" width="44" height="56" rx="2"/><rect class="luz" x="534" y="312" width="40" height="52"/></g>
+      </svg>
+      <div class="seccion__panel" id="seccion-panel" aria-live="polite">
+        <img id="sp-foto" src="img/fotos/hab-torre-480.jpg" alt="" width="480" height="640" loading="lazy">
+        <p class="eti" id="sp-planta">Primera planta · balcón</p>
+        <h3 id="sp-nombre">La Torre</h3>
+        <p id="sp-texto">Asómate al balcón: una de las mejores vistas de la casa. Las dos camas de 1,05 se juntan en una de 2,10 × 1,90, y cabe una supletoria.</p>
+        <p class="seccion__precio" id="sp-precio"><b>70 €</b> desde, por noche</p>
+        <button type="button" class="btn btn--oro" id="sp-reservar" data-tipo="torre">Ver fechas de La Torre</button>
+      </div>
+      <p class="seccion__nota">Esquema de la casa, no plano: las ventanas no están en su sitio real.</p>
+    </div>
+
+    <ul class="tipos" id="tipos">
+      <li class="tipo" data-tipo="clasica" data-revela>
+        <figure class="gable"><picture data-foto="hab-clasica"><source type="image/avif" srcset="img/fotos/hab-clasica-480.avif 480w, img/fotos/hab-clasica-800.avif 800w, img/fotos/hab-clasica-1200.avif 1200w, img/fotos/hab-clasica-1280.avif 1280w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><source type="image/webp" srcset="img/fotos/hab-clasica-480.webp 480w, img/fotos/hab-clasica-800.webp 800w, img/fotos/hab-clasica-1200.webp 1200w, img/fotos/hab-clasica-1280.webp 1280w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><img src="img/fotos/hab-clasica-800.jpg" srcset="img/fotos/hab-clasica-480.jpg 480w, img/fotos/hab-clasica-800.jpg 800w, img/fotos/hab-clasica-1200.jpg 1200w, img/fotos/hab-clasica-1280.jpg 1280w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw" width="1280" height="720" alt="Habitación clásica con dos camas y colchas claras" loading="lazy" decoding="async"></picture></figure>
+        <div class="tipo__txt"><p class="eti">Planta baja · sin escaleras</p><h3>Clásicas</h3><p>Para quien prefiere no subir escaleras. Aquí está la habitación con baño adaptado. La opción más económica, con los mismos servicios.</p><p class="tipo__desde"><b>58 €</b> desde, por noche</p><button type="button" class="enlace" data-reservar="clasica">Ver fechas</button></div>
+      </li>
+      <li class="tipo" data-tipo="confort" data-revela>
+        <figure class="gable"><picture data-foto="hab-confort"><source type="image/avif" srcset="img/fotos/hab-confort-480.avif 480w, img/fotos/hab-confort-800.avif 800w, img/fotos/hab-confort-1200.avif 1200w, img/fotos/hab-confort-1600.avif 1600w, img/fotos/hab-confort-1920.avif 1920w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><source type="image/webp" srcset="img/fotos/hab-confort-480.webp 480w, img/fotos/hab-confort-800.webp 800w, img/fotos/hab-confort-1200.webp 1200w, img/fotos/hab-confort-1600.webp 1600w, img/fotos/hab-confort-1920.webp 1920w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><img src="img/fotos/hab-confort-800.jpg" srcset="img/fotos/hab-confort-480.jpg 480w, img/fotos/hab-confort-800.jpg 800w, img/fotos/hab-confort-1200.jpg 1200w, img/fotos/hab-confort-1600.jpg 1600w, img/fotos/hab-confort-1920.jpg 1920w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw" width="1920" height="1080" alt="Habitación con armario tallado a mano y cama de matrimonio" loading="lazy" decoding="async"></picture></figure>
+        <div class="tipo__txt"><p class="eti">Primera planta · vistas al valle</p><h3>Confort</h3><p>Cama de 1,50, paredes de piedra y muebles tallados a mano. Desde la ventana, el valle del Ulla.</p><p class="tipo__desde"><b>68 €</b> desde, por noche</p><button type="button" class="enlace" data-reservar="confort">Ver fechas</button></div>
+      </li>
+      <li class="tipo" data-tipo="torre" data-revela>
+        <figure class="gable"><picture data-foto="hab-torre"><source type="image/avif" srcset="img/fotos/hab-torre-480.avif 480w, img/fotos/hab-torre-675.avif 675w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><source type="image/webp" srcset="img/fotos/hab-torre-480.webp 480w, img/fotos/hab-torre-675.webp 675w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><img src="img/fotos/hab-torre-675.jpg" srcset="img/fotos/hab-torre-480.jpg 480w, img/fotos/hab-torre-675.jpg 675w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw" width="675" height="900" alt="Balcón abierto con una mesita, una botella de vino y dos copas" loading="lazy" decoding="async"></picture></figure>
+        <div class="tipo__txt"><p class="eti">Primera planta · balcón</p><h3>La Torre</h3><p>Una de las mejores vistas de la casa. Dos camas de 1,05 que se juntan en una de 2,10 y sitio para una supletoria.</p><p class="tipo__desde"><b>70 €</b> desde, por noche</p><button type="button" class="enlace" data-reservar="torre">Ver fechas</button></div>
+      </li>
+      <li class="tipo" data-tipo="terraza" data-revela>
+        <figure class="gable"><picture data-foto="hab-terraza"><source type="image/avif" srcset="img/fotos/hab-terraza-480.avif 480w, img/fotos/hab-terraza-800.avif 800w, img/fotos/hab-terraza-900.avif 900w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><source type="image/webp" srcset="img/fotos/hab-terraza-480.webp 480w, img/fotos/hab-terraza-800.webp 800w, img/fotos/hab-terraza-900.webp 900w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><img src="img/fotos/hab-terraza-800.jpg" srcset="img/fotos/hab-terraza-480.jpg 480w, img/fotos/hab-terraza-800.jpg 800w, img/fotos/hab-terraza-900.jpg 900w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw" width="900" height="900" alt="Terraza de madera con sillas de forja y un columpio de mimbre" loading="lazy" decoding="async"></picture></figure>
+        <div class="tipo__txt"><p class="eti">Primera planta · terraza de 12 m²</p><h3>Con terraza</h3><p>La más luminosa: muebles blancos, detalles en verde y una terraza privada para las tardes de verano.</p><p class="tipo__desde"><b>75 €</b> desde, por noche</p><button type="button" class="enlace" data-reservar="terraza">Ver fechas</button></div>
+      </li>
+      <li class="tipo" data-tipo="familiar" data-revela>
+        <figure class="gable"><picture data-foto="hab-familiar"><source type="image/avif" srcset="img/fotos/hab-familiar-480.avif 480w, img/fotos/hab-familiar-800.avif 800w, img/fotos/hab-familiar-900.avif 900w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><source type="image/webp" srcset="img/fotos/hab-familiar-480.webp 480w, img/fotos/hab-familiar-800.webp 800w, img/fotos/hab-familiar-900.webp 900w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"><img src="img/fotos/hab-familiar-800.jpg" srcset="img/fotos/hab-familiar-480.jpg 480w, img/fotos/hab-familiar-800.jpg 800w, img/fotos/hab-familiar-900.jpg 900w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw" width="900" height="900" alt="Habitación amplia con techo de madera y pared de piedra" loading="lazy" decoding="async"></picture></figure>
+        <div class="tipo__txt"><p class="eti">Para 2 adultos y 2 niños</p><h3>Pico Sacro</h3><p>Dos camas de matrimonio para quien viaja con niños. En la casa hay tronas, cunas de madera y un microondas en el comedor.</p><p class="tipo__desde"><b>85 €</b> desde, por noche</p><button type="button" class="enlace" data-reservar="familiar">Ver fechas</button></div>
+      </li>
+    </ul>
+
+    <div class="nombres" data-revela>
+      <h3>Cada habitación, una leyenda</h3>
+      <p class="suave">Las habitaciones llevan nombres de los personajes y las leyendas de alrededor.</p>
+      <ul class="nombres__lista">
+        <li><picture data-foto="hab-mouros"><source type="image/avif" srcset="img/fotos/hab-mouros-480.avif 480w, img/fotos/hab-mouros-800.avif 800w, img/fotos/hab-mouros-1200.avif 1200w, img/fotos/hab-mouros-1600.avif 1600w, img/fotos/hab-mouros-2200.avif 2200w" sizes="160px"><source type="image/webp" srcset="img/fotos/hab-mouros-480.webp 480w, img/fotos/hab-mouros-800.webp 800w, img/fotos/hab-mouros-1200.webp 1200w, img/fotos/hab-mouros-1600.webp 1600w, img/fotos/hab-mouros-2200.webp 2200w" sizes="160px"><img src="img/fotos/hab-mouros-800.jpg" srcset="img/fotos/hab-mouros-480.jpg 480w, img/fotos/hab-mouros-800.jpg 800w, img/fotos/hab-mouros-1200.jpg 1200w, img/fotos/hab-mouros-1600.jpg 1600w, img/fotos/hab-mouros-2200.jpg 2200w" sizes="160px" width="2200" height="1467" alt="Cabecero tallado reflejado en un espejo antiguo" loading="lazy" decoding="async"></picture><span>Os Mouros</span></li>
+        <li><picture data-foto="hab-coruxa"><source type="image/avif" srcset="img/fotos/hab-coruxa-480.avif 480w, img/fotos/hab-coruxa-800.avif 800w, img/fotos/hab-coruxa-1200.avif 1200w, img/fotos/hab-coruxa-1600.avif 1600w, img/fotos/hab-coruxa-2200.avif 2200w" sizes="160px"><source type="image/webp" srcset="img/fotos/hab-coruxa-480.webp 480w, img/fotos/hab-coruxa-800.webp 800w, img/fotos/hab-coruxa-1200.webp 1200w, img/fotos/hab-coruxa-1600.webp 1600w, img/fotos/hab-coruxa-2200.webp 2200w" sizes="160px"><img src="img/fotos/hab-coruxa-800.jpg" srcset="img/fotos/hab-coruxa-480.jpg 480w, img/fotos/hab-coruxa-800.jpg 800w, img/fotos/hab-coruxa-1200.jpg 1200w, img/fotos/hab-coruxa-1600.jpg 1600w, img/fotos/hab-coruxa-2200.jpg 2200w" sizes="160px" width="2200" height="1467" alt="Ventana con cortina y una silla tallada" loading="lazy" decoding="async"></picture><span>A Coruxa</span></li>
+        <li><picture data-foto="hab-regulo"><source type="image/avif" srcset="img/fotos/hab-regulo-480.avif 480w, img/fotos/hab-regulo-800.avif 800w, img/fotos/hab-regulo-1200.avif 1200w, img/fotos/hab-regulo-1600.avif 1600w, img/fotos/hab-regulo-1920.avif 1920w" sizes="160px"><source type="image/webp" srcset="img/fotos/hab-regulo-480.webp 480w, img/fotos/hab-regulo-800.webp 800w, img/fotos/hab-regulo-1200.webp 1200w, img/fotos/hab-regulo-1600.webp 1600w, img/fotos/hab-regulo-1920.webp 1920w" sizes="160px"><img src="img/fotos/hab-regulo-800.jpg" srcset="img/fotos/hab-regulo-480.jpg 480w, img/fotos/hab-regulo-800.jpg 800w, img/fotos/hab-regulo-1200.jpg 1200w, img/fotos/hab-regulo-1600.jpg 1600w, img/fotos/hab-regulo-1920.jpg 1920w" sizes="160px" width="1920" height="1080" alt="Bandeja de desayuno sobre la colcha" loading="lazy" decoding="async"></picture><span>O Régulo</span></li>
+        <li><picture data-foto="hab-encanto"><source type="image/avif" srcset="img/fotos/hab-encanto-480.avif 480w, img/fotos/hab-encanto-800.avif 800w, img/fotos/hab-encanto-1200.avif 1200w, img/fotos/hab-encanto-1600.avif 1600w, img/fotos/hab-encanto-1920.avif 1920w" sizes="160px"><source type="image/webp" srcset="img/fotos/hab-encanto-480.webp 480w, img/fotos/hab-encanto-800.webp 800w, img/fotos/hab-encanto-1200.webp 1200w, img/fotos/hab-encanto-1600.webp 1600w, img/fotos/hab-encanto-1920.webp 1920w" sizes="160px"><img src="img/fotos/hab-encanto-800.jpg" srcset="img/fotos/hab-encanto-480.jpg 480w, img/fotos/hab-encanto-800.jpg 800w, img/fotos/hab-encanto-1200.jpg 1200w, img/fotos/hab-encanto-1600.jpg 1600w, img/fotos/hab-encanto-1920.jpg 1920w" sizes="160px" width="1920" height="1080" alt="Toallas bordadas con el nombre de la casa" loading="lazy" decoding="async"></picture><span>El Encanto</span></li>
+        <li><picture data-foto="hab-peregrino"><source type="image/avif" srcset="img/fotos/hab-peregrino-480.avif 480w, img/fotos/hab-peregrino-800.avif 800w, img/fotos/hab-peregrino-1200.avif 1200w, img/fotos/hab-peregrino-1600.avif 1600w, img/fotos/hab-peregrino-2200.avif 2200w" sizes="160px"><source type="image/webp" srcset="img/fotos/hab-peregrino-480.webp 480w, img/fotos/hab-peregrino-800.webp 800w, img/fotos/hab-peregrino-1200.webp 1200w, img/fotos/hab-peregrino-1600.webp 1600w, img/fotos/hab-peregrino-2200.webp 2200w" sizes="160px"><img src="img/fotos/hab-peregrino-800.jpg" srcset="img/fotos/hab-peregrino-480.jpg 480w, img/fotos/hab-peregrino-800.jpg 800w, img/fotos/hab-peregrino-1200.jpg 1200w, img/fotos/hab-peregrino-1600.jpg 1600w, img/fotos/hab-peregrino-2200.jpg 2200w" sizes="160px" width="2200" height="1467" alt="Mochila, bastón y sombrero de peregrino sobre la cama" loading="lazy" decoding="async"></picture><span>Peregrino</span></li>
+      </ul>
+    </div>
+
+    <article class="pequena" id="pequena" aria-labelledby="pequena-tit">
+      <div class="pequena__fotos">
+        <figure class="gable"><picture data-foto="pequena-cama"><source type="image/avif" srcset="img/fotos/pequena-cama-480.avif 480w, img/fotos/pequena-cama-800.avif 800w, img/fotos/pequena-cama-1080.avif 1080w" sizes="(max-width: 899px) 60vw, 30vw"><source type="image/webp" srcset="img/fotos/pequena-cama-480.webp 480w, img/fotos/pequena-cama-800.webp 800w, img/fotos/pequena-cama-1080.webp 1080w" sizes="(max-width: 899px) 60vw, 30vw"><img src="img/fotos/pequena-cama-800.jpg" srcset="img/fotos/pequena-cama-480.jpg 480w, img/fotos/pequena-cama-800.jpg 800w, img/fotos/pequena-cama-1080.jpg 1080w" sizes="(max-width: 899px) 60vw, 30vw" width="1080" height="1080" alt="Cama bajo la lareira de granito en la Casa Pequena" loading="lazy" decoding="async"></picture></figure>
+        <figure><picture data-foto="pequena-fuera"><source type="image/avif" srcset="img/fotos/pequena-fuera-480.avif 480w, img/fotos/pequena-fuera-800.avif 800w, img/fotos/pequena-fuera-1200.avif 1200w, img/fotos/pequena-fuera-1600.avif 1600w, img/fotos/pequena-fuera-2200.avif 2200w" sizes="(max-width: 899px) 40vw, 18vw"><source type="image/webp" srcset="img/fotos/pequena-fuera-480.webp 480w, img/fotos/pequena-fuera-800.webp 800w, img/fotos/pequena-fuera-1200.webp 1200w, img/fotos/pequena-fuera-1600.webp 1600w, img/fotos/pequena-fuera-2200.webp 2200w" sizes="(max-width: 899px) 40vw, 18vw"><img src="img/fotos/pequena-fuera-800.jpg" srcset="img/fotos/pequena-fuera-480.jpg 480w, img/fotos/pequena-fuera-800.jpg 800w, img/fotos/pequena-fuera-1200.jpg 1200w, img/fotos/pequena-fuera-1600.jpg 1600w, img/fotos/pequena-fuera-2200.jpg 2200w" sizes="(max-width: 899px) 40vw, 18vw" width="2200" height="2200" alt="La Casa Pequena de piedra junto al camino de la finca" loading="lazy" decoding="async"></picture></figure>
+        <figure><picture data-foto="pergola"><source type="image/avif" srcset="img/fotos/pergola-480.avif 480w, img/fotos/pergola-800.avif 800w, img/fotos/pergola-1200.avif 1200w, img/fotos/pergola-1600.avif 1600w, img/fotos/pergola-2200.avif 2200w" sizes="(max-width: 899px) 40vw, 18vw"><source type="image/webp" srcset="img/fotos/pergola-480.webp 480w, img/fotos/pergola-800.webp 800w, img/fotos/pergola-1200.webp 1200w, img/fotos/pergola-1600.webp 1600w, img/fotos/pergola-2200.webp 2200w" sizes="(max-width: 899px) 40vw, 18vw"><img src="img/fotos/pergola-800.jpg" srcset="img/fotos/pergola-480.jpg 480w, img/fotos/pergola-800.jpg 800w, img/fotos/pergola-1200.jpg 1200w, img/fotos/pergola-1600.jpg 1600w, img/fotos/pergola-2200.jpg 2200w" sizes="(max-width: 899px) 40vw, 18vw" width="2200" height="1467" alt="Pérgola con mesa y barbacoa en el jardín de la Casa Pequena" loading="lazy" decoding="async"></picture></figure>
+      </div>
+      <div class="pequena__txt" data-revela>
+        <p class="eti">Aparte, para dos</p>
+        <h3 id="pequena-tit">Casa Pequena do Casal</h3>
+        <p>El antiguo cobertizo de juegos, convertido en una casita de 50 m². La cama de 1,60 duerme bajo la lareira, donde antes estaba el fuego de la casa. Cocina con horno y lavavajillas, suelo radiante, aire acondicionado, albornoces y flores frescas. Fuera, su propio jardín con pérgola y barbacoa.</p>
+        <p class="suave">La cama, por su altura, no es para personas con problemas de movilidad. Hay un sofá cama si vienes con un peque.</p>
+        <a class="btn btn--hueco" href="https://wa.me/34698148323?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20la%20Casa%20Pequena%20do%20Casal" rel="noopener">Preguntar por la Casa Pequena</a>
+      </div>
+    </article>
+
+    <!-- solo en la versión sobria -->
+    <div class="tabla-envoltura solo-sobria">
+      <table class="tabla-habs">
+        <caption>Las habitaciones, de un vistazo</caption>
+        <thead><tr><th scope="col">Tipo</th><th scope="col">Planta</th><th scope="col">Camas</th><th scope="col">Lo suyo</th><th scope="col">Desde</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Clásicas</th><td>Baja</td><td>Doble</td><td>Sin escaleras; baño adaptado</td><td>58 €</td></tr>
+          <tr><th scope="row">Confort</th><td>Primera</td><td>1,50</td><td>Vistas al valle del Ulla</td><td>68 €</td></tr>
+          <tr><th scope="row">La Torre</th><td>Primera</td><td>2 × 1,05 (o 2,10)</td><td>Balcón; supletoria</td><td>70 €</td></tr>
+          <tr><th scope="row">Con terraza</th><td>Primera</td><td>Doble</td><td>Terraza privada de 12 m²</td><td>75 €</td></tr>
+          <tr><th scope="row">Pico Sacro</th><td>—</td><td>2 de matrimonio</td><td>Familiar, 2 + 2</td><td>85 €</td></tr>
+          <tr><th scope="row">Casa Pequena</th><td>Aparte</td><td>1,60 × 2,00</td><td>Cocina y jardín propios</td><td>Consultar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. la finca y la mesa ============ -->
+<section class="finca clara" id="finca" aria-labelledby="finca-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eti">La finca y la mesa</p>
+      <h2 class="tit" id="finca-tit" data-partir>Cuatro hectáreas <em>de silencio</em></h2>
+      <p class="suave">Gracias al microclima del valle, el jardín se viste de camelias, hortensias y glicinias, y da kiwis, higos, manzanas, naranjas y hasta maracuyá. Con esa fruta se hacen los bizcochos y las mermeladas del desayuno.</p>
+    </header>
+    <div class="finca__mosaico">
+      <figure class="foto foto--ancha gable" data-revela><picture data-foto="estanque"><source type="image/avif" srcset="img/fotos/estanque-480.avif 480w, img/fotos/estanque-800.avif 800w, img/fotos/estanque-1200.avif 1200w, img/fotos/estanque-1280.avif 1280w" sizes="(max-width: 899px) 100vw, 60vw"><source type="image/webp" srcset="img/fotos/estanque-480.webp 480w, img/fotos/estanque-800.webp 800w, img/fotos/estanque-1200.webp 1200w, img/fotos/estanque-1280.webp 1280w" sizes="(max-width: 899px) 100vw, 60vw"><img src="img/fotos/estanque-800.jpg" srcset="img/fotos/estanque-480.jpg 480w, img/fotos/estanque-800.jpg 800w, img/fotos/estanque-1200.jpg 1200w, img/fotos/estanque-1280.jpg 1280w" sizes="(max-width: 899px) 100vw, 60vw" width="1280" height="853" alt="El estanque de agua de manantial entre palmeras y helechos" loading="lazy" decoding="async"></picture><figcaption>El estanque de agua de manantial</figcaption></figure>
+      <figure class="foto gable" data-revela><picture data-foto="piscina"><source type="image/avif" srcset="img/fotos/piscina-480.avif 480w, img/fotos/piscina-800.avif 800w, img/fotos/piscina-1200.avif 1200w, img/fotos/piscina-1600.avif 1600w, img/fotos/piscina-1920.avif 1920w" sizes="(max-width: 899px) 50vw, 30vw"><source type="image/webp" srcset="img/fotos/piscina-480.webp 480w, img/fotos/piscina-800.webp 800w, img/fotos/piscina-1200.webp 1200w, img/fotos/piscina-1600.webp 1600w, img/fotos/piscina-1920.webp 1920w" sizes="(max-width: 899px) 50vw, 30vw"><img src="img/fotos/piscina-800.jpg" srcset="img/fotos/piscina-480.jpg 480w, img/fotos/piscina-800.jpg 800w, img/fotos/piscina-1200.jpg 1200w, img/fotos/piscina-1600.jpg 1600w, img/fotos/piscina-1920.jpg 1920w" sizes="(max-width: 899px) 50vw, 30vw" width="1920" height="1080" alt="La piscina de agua salada con césped y árboles alrededor" loading="lazy" decoding="async"></picture><figcaption>Piscina de agua salada, 1 jun – 15 sep</figcaption></figure>
+      <figure class="foto gable" data-revela><picture data-foto="glicinia"><source type="image/avif" srcset="img/fotos/glicinia-480.avif 480w, img/fotos/glicinia-800.avif 800w, img/fotos/glicinia-1200.avif 1200w" sizes="(max-width: 899px) 50vw, 30vw"><source type="image/webp" srcset="img/fotos/glicinia-480.webp 480w, img/fotos/glicinia-800.webp 800w, img/fotos/glicinia-1200.webp 1200w" sizes="(max-width: 899px) 50vw, 30vw"><img src="img/fotos/glicinia-800.jpg" srcset="img/fotos/glicinia-480.jpg 480w, img/fotos/glicinia-800.jpg 800w, img/fotos/glicinia-1200.jpg 1200w" sizes="(max-width: 899px) 50vw, 30vw" width="1200" height="900" alt="Glicinias en flor sobre el jardín y la casa" loading="lazy" decoding="async"></picture><figcaption>Las glicinias del aparcamiento</figcaption></figure>
+      <figure class="foto gable" data-revela><picture data-foto="horreo"><source type="image/avif" srcset="img/fotos/horreo-480.avif 480w, img/fotos/horreo-800.avif 800w, img/fotos/horreo-1200.avif 1200w, img/fotos/horreo-1600.avif 1600w, img/fotos/horreo-1920.avif 1920w" sizes="(max-width: 899px) 50vw, 30vw"><source type="image/webp" srcset="img/fotos/horreo-480.webp 480w, img/fotos/horreo-800.webp 800w, img/fotos/horreo-1200.webp 1200w, img/fotos/horreo-1600.webp 1600w, img/fotos/horreo-1920.webp 1920w" sizes="(max-width: 899px) 50vw, 30vw"><img src="img/fotos/horreo-800.jpg" srcset="img/fotos/horreo-480.jpg 480w, img/fotos/horreo-800.jpg 800w, img/fotos/horreo-1200.jpg 1200w, img/fotos/horreo-1600.jpg 1600w, img/fotos/horreo-1920.jpg 1920w" sizes="(max-width: 899px) 50vw, 30vw" width="1920" height="1056" alt="El hórreo de piedra con su cruz junto a la casa" loading="lazy" decoding="async"></picture><figcaption>El hórreo, que todavía se usa</figcaption></figure>
+    </div>
+    <ul class="finca__lista" data-revela>
+      <li><b>Estanque y cascadas</b>Un riachuelo cruza la finca y llena el estanque de manantial.</li>
+      <li><b>Molino de agua</b>Restaurado, junto a la piscina.</li>
+      <li><b>Hórreo y lagar</b>Las construcciones de la casa de labranza, en uso.</li>
+      <li><b>Huerta</b>Lo que se pone en la mesa sale de aquí. Si quieres, Patricia te enseña sus secretos.</li>
+      <li><b>Piscina de agua salada</b>60 m², con zona para adultos y para niños, del 1 de junio al 15 de septiembre.</li>
+      <li><b>Para los peques</b>Parque infantil homologado, tronas y cunas de madera.</li>
+    </ul>
+
+    <div class="mesa" id="mesa">
+      <figure class="mesa__foto gable" data-revela><picture data-foto="desayuno"><source type="image/avif" srcset="img/fotos/desayuno-480.avif 480w, img/fotos/desayuno-800.avif 800w, img/fotos/desayuno-1200.avif 1200w, img/fotos/desayuno-1600.avif 1600w, img/fotos/desayuno-2200.avif 2200w" sizes="(max-width: 899px) 100vw, 50vw"><source type="image/webp" srcset="img/fotos/desayuno-480.webp 480w, img/fotos/desayuno-800.webp 800w, img/fotos/desayuno-1200.webp 1200w, img/fotos/desayuno-1600.webp 1600w, img/fotos/desayuno-2200.webp 2200w" sizes="(max-width: 899px) 100vw, 50vw"><img src="img/fotos/desayuno-800.jpg" srcset="img/fotos/desayuno-480.jpg 480w, img/fotos/desayuno-800.jpg 800w, img/fotos/desayuno-1200.jpg 1200w, img/fotos/desayuno-1600.jpg 1600w, img/fotos/desayuno-2200.jpg 2200w" sizes="(max-width: 899px) 100vw, 50vw" width="2200" height="1466" alt="Mesa del desayuno con fresas, bizcocho, queso y embutidos" loading="lazy" decoding="async"></picture></figure>
+      <div class="mesa__txt" data-revela>
+        <p class="eti">El desayuno</p>
+        <h3>Dulce o salado, es el momento preferido de casi todos</h3>
+        <ul class="mesa__lista">
+          <li>Tostadas de pan de pueblo con aceite de oliva y tomate recién rallado</li>
+          <li>Bizcochos de zanahoria y de yogur, galletas caseras de chocolate o de avena y arándanos</li>
+          <li>Queso de Arzúa, miel gallega y tabla de embutidos</li>
+          <li>Zumo de naranja exprimido en el momento</li>
+          <li>Tortilla con huevos de su corral</li>
+        </ul>
+        <p class="suave">Si nos avisas al reservar, adaptamos el desayuno: vegetariano, sin lactosa o sin gluten. «Desayuno excepcional», dicen en Booking.</p>
+        <p class="suave">Las cenas caseras se piden con antelación. Alrededor hay buenos restaurantes, de menú del día a O Balado, con estrella verde Michelin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. el Pico, hoy ============ -->
+<section class="pico" id="pico" aria-labelledby="pico-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eti">El Pico Sacro</p>
+      <h2 class="tit" id="pico-tit" data-partir>El monte de <em>la Reina Lupa</em></h2>
+      <p class="suave">A 1,4 km de la casa y 278 metros por encima. En el valle del Ulla se le mira para saber si va a llover.</p>
+    </header>
+    <div class="pico__escena">
+      <svg class="pico__dibujo" id="pico-dibujo" viewBox="0 0 800 340" role="img" aria-labelledby="pico-refran">
+        <defs>
+          <linearGradient id="g-cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9cdd6"/><stop offset=".75" stop-color="#efe2c8"/><stop offset="1" stop-color="#f4d7a6"/></linearGradient>
+          <filter id="f-nube" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+        </defs>
+        <rect width="800" height="340" fill="url(#g-cielo)"/>
+        <g id="pico-marcas" font-family="Hanken Grotesk, sans-serif" font-size="12" fill="#4b5953"></g>
+        <circle id="pico-sol" cx="400" cy="90" r="16" fill="#e2a048"/>
+        <path id="pico-monte" fill="#58625a"/>
+        <path d="M0 300 C 90 286 160 296 240 284 C 330 270 420 292 520 282 C 610 274 700 290 800 280 V340 H0 Z" fill="#2c4636"/>
+        <path d="M0 322 C 120 312 220 324 330 314 C 450 304 560 322 680 312 C 740 307 780 312 800 310 V340 H0 Z" fill="#1c3327"/>
+        <g fill="#ece6d8"><rect x="376" y="70" width="16" height="10"/><path d="M374 71 L384 63 L394 71 Z"/></g>
+        <g id="pico-nubes" filter="url(#f-nube)" fill="#f7f8f7"><ellipse cx="400" cy="92" rx="120" ry="20"/><ellipse cx="320" cy="120" rx="110" ry="18"/><ellipse cx="490" cy="118" rx="120" ry="20"/><ellipse cx="160" cy="210" rx="150" ry="16"/><ellipse cx="660" cy="200" rx="160" ry="18"/></g>
+        <g id="pico-lluvia" stroke="#8fa2ab" stroke-width="1.5" opacity="0"></g>
+      </svg>
+      <div class="pico__lado">
+        <p class="eti" id="pico-fuente">El Pico ahora</p>
+        <blockquote class="pico__refran" id="pico-refran">Cuando el Pico pone toquilla, agua tenemos, mucha o poquilla.</blockquote>
+        <div class="pico__ctrl">
+          <label for="pico-rango">Nubes bajas en la cumbre: <b id="pico-val">—</b></label>
+          <input id="pico-rango" type="range" min="0" max="100" value="40">
+          <div class="pico__fila"><button type="button" class="chip" id="pico-lluvia-btn" aria-pressed="false">Llueve</button><button type="button" class="chip" id="pico-ahora">El tiempo de ahora</button></div>
+        </div>
+        <div class="pico__sol">
+          <span>Hoy, visto desde la finca, el sol sale a las</span>
+          <b id="pico-hora">--:--</b>
+          <span id="pico-rumbo"></span>
+          <span id="pico-tramos"></span>
+        </div>
+      </div>
+    </div>
+    <div class="leyendas" data-revela>
+      <div class="leyendas__fotos">
+        <figure class="gable"><picture data-foto="pico-capilla"><source type="image/avif" srcset="img/fotos/pico-capilla-480.avif 480w, img/fotos/pico-capilla-800.avif 800w, img/fotos/pico-capilla-1200.avif 1200w, img/fotos/pico-capilla-1444.avif 1444w" sizes="(max-width: 899px) 50vw, 22vw"><source type="image/webp" srcset="img/fotos/pico-capilla-480.webp 480w, img/fotos/pico-capilla-800.webp 800w, img/fotos/pico-capilla-1200.webp 1200w, img/fotos/pico-capilla-1444.webp 1444w" sizes="(max-width: 899px) 50vw, 22vw"><img src="img/fotos/pico-capilla-800.jpg" srcset="img/fotos/pico-capilla-480.jpg 480w, img/fotos/pico-capilla-800.jpg 800w, img/fotos/pico-capilla-1200.jpg 1200w, img/fotos/pico-capilla-1444.jpg 1444w" sizes="(max-width: 899px) 50vw, 22vw" width="1444" height="1080" alt="La capilla de San Sebastián en la cima rocosa del Pico Sacro" loading="lazy" decoding="async"></picture><figcaption>La capilla de San Sebastián</figcaption></figure>
+        <figure class="gable"><picture data-foto="pico-paso"><source type="image/avif" srcset="img/fotos/pico-paso-480.avif 480w, img/fotos/pico-paso-800.avif 800w, img/fotos/pico-paso-1080.avif 1080w" sizes="(max-width: 899px) 50vw, 22vw"><source type="image/webp" srcset="img/fotos/pico-paso-480.webp 480w, img/fotos/pico-paso-800.webp 800w, img/fotos/pico-paso-1080.webp 1080w" sizes="(max-width: 899px) 50vw, 22vw"><img src="img/fotos/pico-paso-800.jpg" srcset="img/fotos/pico-paso-480.jpg 480w, img/fotos/pico-paso-800.jpg 800w, img/fotos/pico-paso-1080.jpg 1080w" sizes="(max-width: 899px) 50vw, 22vw" width="1080" height="1080" alt="El paso de la Reina Lupa, un corte vertical en la roca" loading="lazy" decoding="async"></picture><figcaption>El paso de la Reina Lupa</figcaption></figure>
+      </div>
+      <div class="leyendas__lista" role="tablist" aria-label="Leyendas del Pico Sacro" id="leyendas-lista"></div>
+      <div class="leyendas__hoja" id="leyendas-hoja" role="tabpanel" tabindex="0" aria-live="polite">
+        <span class="leyendas__cap" id="leyendas-cap" aria-hidden="true">L</span>
+        <h3 id="leyendas-tit">La Reina Lupa</h3>
+        <p id="leyendas-txt"></p>
+      </div>
+      <p class="leyendas__subir"><b>Subir:</b> siete minutos en coche hasta el aparcamiento y unas escaleras hasta la cima. Desde arriba se ven unos 30 km a la redonda. Parte del camino es la Vía de la Plata.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. dos casas en una + reserva ============ -->
+<section class="reserva oscura" id="reserva" aria-labelledby="reserva-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eti">Reservar</p>
+      <h2 class="tit" id="reserva-tit" data-partir>Dos casas <em>en una</em></h2>
+      <p class="suave">De abril a octubre, habitaciones con desayuno. De noviembre a marzo, la casa grande entera para grupos de hasta 22. Elige un mes en el anillo y el calendario te lleva a él.</p>
+    </header>
+    <div class="anyo">
+      <svg class="anyo__rueda" id="anyo-rueda" viewBox="0 0 440 440" role="group" aria-label="Los doce meses en la casa y en la finca"></svg>
+      <div class="anyo__lado" aria-live="polite">
+        <p class="anyo__mes" id="anyo-mes">Octubre</p>
+        <p class="anyo__modo" id="anyo-modo">Habitaciones con desayuno</p>
+        <h3 class="eti">En la finca</h3>
+        <ul class="anyo__lista" id="anyo-finca"></ul>
+        <div class="anyo__meses" id="anyo-meses" aria-label="Meses"></div>
+        <p class="anyo__nota">Camelias, hortensias y glicinias, según su web; las épocas de los frutales son las habituales en Galicia.</p>
+      </div>
+    </div>
+    <p class="demo" role="note"><b>Demostración.</b> Así funcionará la reserva directa: las fechas ocupadas son de ejemplo, los precios son los «desde» de su web y no se cobra ni se envía nada.</p>
+    <div class="motor" id="motor"></div>
+    <noscript><p class="suave">Para reservar sin JavaScript, llama o escribe por WhatsApp al 698 148 323.</p></noscript>
+    <ul class="condiciones">
+      <li><b>Anticipo del 25 %</b>con tarjeta, transferencia o Bizum. El resto, en la casa.</li>
+      <li><b>Cancelación gratis</b>hasta 7 días antes de la llegada. Si no llegas a tiempo, el anticipo te lo guardan para otra ocasión.</li>
+      <li><b>¿Prefieres hablar?</b>Llama o escribe por WhatsApp al <a class="enlace" href="tel:+34698148323">698 148 323</a>. Se habla inglés y francés.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 7. alrededores ============ -->
+<section class="alrededores clara" id="alrededores" aria-labelledby="alr-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eti">Alrededores</p>
+      <h2 class="tit" id="alr-tit" data-partir>Toda Galicia, <em>sin perder el día</em> en la carretera</h2>
+    </header>
+    <div class="regla" id="regla" role="img" aria-label="Minutos en coche desde la casa"></div>
+    <ul class="regla__lista" id="regla-lista"></ul>
+    <p class="regla__fuente">Tiempos en coche aproximados. Santiago y el aeropuerto, según la casa; el resto, calculados con OpenStreetMap.</p>
+    <aside class="peregrinos" aria-labelledby="pere-tit" data-revela>
+      <h3 id="pere-tit">Si haces el Camino</h3>
+      <p>La casa está a 300 metros de la <b>Vía de la Plata</b> (Camino Sanabrés), a 13 km de la catedral: el sitio para descansar antes de la última etapa. <b>No está en el Camino Francés</b>. Hay otro Lestedo, en Palas de Rei, que sí lo está: mira bien el pueblo al reservar.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 8. opiniones ============ -->
+<section class="opiniones oscura" id="opiniones" aria-labelledby="op-tit">
+  <div class="env">
+    <header class="sec-cab">
+      <p class="eti">Lo que cuentan</p>
+      <h2 class="tit" id="op-tit" data-partir>9,6 en <em>Booking</em></h2>
+    </header>
+    <div class="op__notas">
+      <div><b>9,9</b><span>Personal</span></div>
+      <div><b>9,8</b><span>Limpieza</span></div>
+      <div><b>9,8</b><span>Confort</span></div>
+      <div><b>9,6</b><span>Calidad-precio</span></div>
+    </div>
+    <ul class="op__citas">
+      <li data-revela><blockquote>«El trato de Patricia, el desayuno, la piscina, la habitación, la tranquilidad… ¡Todo!»</blockquote></li>
+      <li data-revela><blockquote>«Una estancia maravillosa. Sitio tranquilo a pocos minutos de Santiago. Un jardín precioso lleno de frutales.»</blockquote></li>
+      <li data-revela><blockquote>«Es un paraje idílico. Y casi encima del camino sanabrés, por lo que fue un remanso de paz y un descanso para nuestros pies.»</blockquote></li>
+    </ul>
+    <p class="op__fuente">Comentarios de Booking.com, 302 en total. También 4,9 en Google (315 reseñas) y 4,7 en Tripadvisor (79).</p>
+  </div>
+</section>
+
+<!-- ============ 9. cómo llegar ============ -->
+<section class="llegar clara" id="llegar" aria-labelledby="llegar-tit">
+  <div class="env">
+    <div class="llegar__datos">
+      <p class="eti">Cómo llegar</p>
+      <h2 class="tit" id="llegar-tit" data-partir>Lestedo, <em>Boqueixón</em></h2>
+      <address class="entrada">C/ Pedro Ballesteros, 17 · 15881 Lestedo (A Coruña)</address>
+      <div class="llegar__pasos">
+        <div><b>Desde Santiago</b><span>N-525 dirección Ourense, desvío en la rotonda «Ourense Chapa» y unos 8 km hasta Lestedo. A la entrada del pueblo, la farmacia a la izquierda; sube hasta la capilla y sigue 1 km por la carretera de su izquierda.</span></div>
+        <div><b>Desde Ourense</b><span>AP-53, salida de Ponte Ulla y 5 km por la N-525 hacia Santiago. A la entrada de Lestedo, desvío al Pico Sacro y 1,5 km.</span></div>
+      </div>
+      <p class="suave">El día antes de llegar te mandan la ubicación por WhatsApp o Telegram. Aparcamiento gratuito junto a la casa.</p>
+      <a class="enlace" href="https://www.google.com/maps/dir/?api=1&amp;destination=42.80472,-8.46366" rel="noopener">Abrir la ruta en Google Maps</a>
+    </div>
+    <div class="mapa" id="mapa">
+      <div class="mapa__consent" id="mapa-consent">
+        <p>El mapa es de Google y, al abrirlo, Google puede instalar sus cookies.</p>
+        <button class="btn btn--hueco-osc" type="button" id="mapa-btn">Ver el mapa</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ pie: el tejado se posa sobre la C ============ -->
+<footer class="pie" id="pie">
+  <div class="env">
+    <div class="pie__marca">
+      <div class="pie__logo" role="img" aria-label="Casa de Casal">
+        <img class="pie__entero" src="marca/logo-oro-sin-tejado-840.png" alt="" width="840" height="454" loading="lazy">
+        <img class="pie__tejado" src="marca/tejado-oro-290.png" alt="" width="290" height="282" loading="lazy">
+      </div>
+      <p>Casa de labranza en una finca de cuatro hectáreas, al pie del Pico Sacro.</p>
+    </div>
+    <div class="pie__cols">
+      <div>
+        <h2>La casa</h2>
+        <address>C/ Pedro Ballesteros, 17<br>15881 Lestedo, Boqueixón (A Coruña)</address>
+        <p>Registro de turismo TR-CO-000081</p>
+      </div>
+      <div>
+        <h2>Contacto</h2>
+        <ul>
+          <li><a href="tel:+34698148323">698 148 323</a> · teléfono y WhatsApp</li>
+          <li><a href="mailto:info@casadecasal.com">info@casadecasal.com</a></li>
+          <li><a href="https://www.booking.com/hotel/es/casa-de-casal.es.html" rel="noopener">Booking</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>En la web</h2>
+        <ul>
+          <li><a href="#habitaciones">Habitaciones</a></li>
+          <li><a href="#pico">El Pico, hoy</a></li>
+          <li><a href="#reserva">Reservar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie__legal">
+      <span>© <span id="anno">2026</span> Casa de Casal</span>
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="accesibilidad.html">Accesibilidad</a>
+      <button type="button" id="abrir-cookies">Preferencias de cookies</button>
+    </div>
+  </div>
+</footer>
+
+<div class="barra" id="barra" aria-hidden="true">
+  <a class="btn btn--hueco" href="tel:+34698148323" tabindex="-1">Llamar</a>
+  <a class="btn btn--oro" href="#reserva" tabindex="-1">Reservar</a>
+</div>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Esta web no usa cookies de análisis ni de publicidad. Guarda en tu navegador que has visto este aviso; el mapa de Google y el tiempo del Pico solo se cargan si los pides o al llegar a su sección. <a href="cookies.html">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--oro" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--hueco" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<!-- MANDO DE MAQUETA (no viaja al cliente): solo con ?revision -->
+<div class="mando" id="mando" role="group" aria-label="Dos versiones de la misma web" hidden>
+  <span class="mando__eti">Versión</span>
+  <button type="button" data-densidad="cargada" aria-pressed="true">Bajo el tejado</button>
+  <button type="button" data-densidad="sobria" aria-pressed="false">Sobria</button>
+</div>
+<!-- fin del MANDO DE MAQUETA -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="js/sol.js?v=65d83e2b" defer></script>
+<script src="js/main.js?v=2086a87b" defer></script>
+<script src="js/reserva.js?v=3347e3d1" defer></script>
+</body>
+</html>

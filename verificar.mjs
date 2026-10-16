@@ -343,7 +343,7 @@ console.log('\n4. El Pico');
   const noche3 = await page.evaluate(() => { window.__cielo('2025-11-05T23:30:00Z'); return window.__pico3d.estado(); });
   comprobar(dia3.luzSol > 1 && dia3.estrellas === 0 && noche3.luzSol === 0 && noche3.luzLuna > 0.5 && noche3.estrellas > 0.9 && noche3.luna, '3D: de día luz de sol; de noche de luna llena, luz de luna y estrellas', { dia3, noche3 });
   const px = async () => page.evaluate(() => { const c = document.querySelector('#pico-vista canvas'); const g = document.createElement('canvas'); g.width = 40; g.height = 20; g.getContext('2d').drawImage(c, 0, 0, 40, 20); return Array.from(g.getContext('2d').getImageData(0, 0, 40, 20).data).join(','); });
-  await page.evaluate(() => window.__cielo());
+  await page.evaluate(() => window.__cielo('2026-10-16T10:00:00Z'));   // de día: de noche la miniatura sale casi negra
   const antes = await px();
   const bb = await (await page.$('#pico-vista')).boundingBox();
   await page.mouse.move(bb.x + bb.width * 0.6, bb.y + bb.height * 0.6); await page.mouse.down();

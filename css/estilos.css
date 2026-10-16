@@ -366,6 +366,8 @@ html.densidad-sobria .seccion__panel img { clip-path: none; }
 .pico__dato { font-size: .95rem; color: #4e5b54; }
 .pico__sol { border-top: 1px solid rgba(28, 51, 39, .18); padding-top: 14px; display: grid; gap: 4px; font-size: .98rem; }
 .pico__sol b { font: 400 2.2rem/1 var(--letra-tit); }
+.pico__ahora { font-weight: 600; color: var(--pino); margin-bottom: 6px; }
+#pico-estrellas { transition: opacity 1.2s; }
 #pico-nubes, #pico-lluvia { transition: opacity .6s var(--ease); }
 .leyendas { margin-top: clamp(60px, 8vw, 110px); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, .7fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 44px); align-items: start; }
 .leyendas__fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }

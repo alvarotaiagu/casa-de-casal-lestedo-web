@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="css/estilos.css?v=2e85bb4c">
+<link rel="stylesheet" href="css/estilos.css?v=030591fd">
 <link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="marca/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
@@ -355,22 +355,25 @@
     <header class="sec-cab">
       <p class="eti">El Pico Sacro</p>
       <h2 class="tit" id="pico-tit" data-partir>El monte de <em>la Reina Lupa</em></h2>
-      <p class="suave">A 1,4 km de la casa y 278 metros por encima. En el valle del Ulla se le mira para saber si va a llover.</p>
+      <p class="suave">A 1,4 km de la casa y 278 metros por encima. En el valle del Ulla se le mira para saber si va a llover. El dibujo es el cielo de ahora mismo, de este a oeste, visto desde la finca.</p>
     </header>
     <div class="pico__escena">
       <svg class="pico__dibujo" id="pico-dibujo" viewBox="0 0 800 340" role="img" aria-labelledby="pico-refran">
         <defs>
-          <linearGradient id="g-cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9cdd6"/><stop offset=".75" stop-color="#efe2c8"/><stop offset="1" stop-color="#f4d7a6"/></linearGradient>
+          <linearGradient id="g-cielo" x1="0" y1="0" x2="0" y2="1"><stop id="cielo-0" offset="0" stop-color="#b9cdd6"/><stop id="cielo-1" offset=".75" stop-color="#efe2c8"/><stop id="cielo-2" offset="1" stop-color="#f4d7a6"/></linearGradient>
+          <radialGradient id="g-halo"><stop offset="0" stop-color="#ffd58a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd58a" stop-opacity="0"/></radialGradient>
           <filter id="f-nube" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
         </defs>
         <rect width="800" height="340" fill="url(#g-cielo)"/>
+        <g id="pico-estrellas" fill="#f3eee4"></g>
         <g id="pico-marcas" font-family="Hanken Grotesk, sans-serif" font-size="12" fill="#4b5953"></g>
-        <circle id="pico-sol" cx="400" cy="90" r="16" fill="#e2a048"/>
+        <g id="pico-luna" hidden><circle id="luna-disco" r="11" fill="#2a3444"/><path id="luna-luz" fill="#f1ead6"/></g>
+        <g id="pico-sol" hidden><circle r="44" fill="url(#g-halo)"/><circle id="sol-disco" r="15" fill="#e8a64e"/></g>
         <path id="pico-monte" fill="#58625a"/>
-        <path d="M0 300 C 90 286 160 296 240 284 C 330 270 420 292 520 282 C 610 274 700 290 800 280 V340 H0 Z" fill="#2c4636"/>
-        <path d="M0 322 C 120 312 220 324 330 314 C 450 304 560 322 680 312 C 740 307 780 312 800 310 V340 H0 Z" fill="#1c3327"/>
-        <g fill="#ece6d8"><rect x="376" y="70" width="16" height="10"/><path d="M374 71 L384 63 L394 71 Z"/></g>
-        <g id="pico-nubes" filter="url(#f-nube)" fill="#f7f8f7"><ellipse cx="400" cy="92" rx="120" ry="20"/><ellipse cx="320" cy="120" rx="110" ry="18"/><ellipse cx="490" cy="118" rx="120" ry="20"/><ellipse cx="160" cy="210" rx="150" ry="16"/><ellipse cx="660" cy="200" rx="160" ry="18"/></g>
+        <path id="pico-fondo-1" d="M0 300 C 90 286 160 296 240 284 C 330 270 420 292 520 282 C 610 274 700 290 800 280 V340 H0 Z" fill="#2c4636"/>
+        <path id="pico-fondo-2" d="M0 322 C 120 312 220 324 330 314 C 450 304 560 322 680 312 C 740 307 780 312 800 310 V340 H0 Z" fill="#1c3327"/>
+        <g id="pico-capilla" fill="#ece6d8"><rect x="376" y="70" width="16" height="10"/><path d="M374 71 L384 63 L394 71 Z"/></g>
+        <g id="pico-nubes" filter="url(#f-nube)" fill="#f7f8f7"></g>
         <g id="pico-lluvia" stroke="#8fa2ab" stroke-width="1.5" opacity="0"></g>
       </svg>
       <div class="pico__lado">
@@ -378,6 +381,7 @@
         <blockquote class="pico__refran" id="pico-refran">En el valle del Ulla se mira al Pico para saber si va a llover.</blockquote>
         <p class="pico__dato" id="pico-dato" aria-live="polite">Consultando el tiempo en la cumbre…</p>
         <div class="pico__sol">
+          <p class="pico__ahora" id="pico-cielo-txt" aria-live="polite"></p>
           <span>Hoy, visto desde la finca, el sol sale a las</span>
           <b id="pico-hora">--:--</b>
           <span id="pico-rumbo"></span>
@@ -563,8 +567,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-<script src="js/sol.js?v=65d83e2b" defer></script>
-<script src="js/main.js?v=6d81b2d5" defer></script>
+<script src="js/sol.js?v=3934872f" defer></script>
+<script src="js/main.js?v=3b998d9a" defer></script>
 <script src="js/reserva.js?v=3347e3d1" defer></script>
 </body>
 </html>

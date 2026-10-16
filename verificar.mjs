@@ -314,10 +314,16 @@ console.log('\n4. El Pico');
   const mins = (s) => +s.slice(0, 2) * 60 + +s.slice(3, 5);
   comprobar(/^\d\d:\d\d$/.test(d.h) && mins(d.h) > 6 * 60 + 40 && mins(d.h) < 9 * 60 + 20, 'dato en vivo: la hora de salida del sol hoy en Lestedo es creíble', d.h);
   comprobar(/abril/.test(d.t) && /mayo/.test(d.t) && /agosto/.test(d.t), 'el sol por detrás del Pico: finales de abril–mayo y agosto', d.t);
-  comprobar(/El Pico ahora · 12:00 h/.test(d.f) && /toquilla/.test(d.r) && d.nub > 0.6, 'el tiempo de la cumbre llega solo al acercarse y pone toquilla con nubes bajas', d);
+  comprobar(/dato de las 12:00/.test(d.f) && /toquilla/.test(d.r) && d.nub > 0.6, 'el tiempo de la cumbre llega solo al acercarse y pone toquilla con nubes bajas', d);
   comprobar(await page.evaluate(() => !document.querySelector('#pico input, #pico-lluvia-btn') && /72 %/.test(document.getElementById('pico-dato').textContent)), 'sin deslizador ni botones: solo el dato real de nubes');
-  const sol = await page.evaluate(() => { const s = document.getElementById('pico-sol'); return { cx: +s.getAttribute('cx'), cy: +s.getAttribute('cy') }; });
-  comprobar(sol.cx > 20 && sol.cx < 780 && sol.cy > 40 && sol.cy < 300, 'el sol de hoy se dibuja sobre la cresta, en su rumbo', sol);
+  // el cielo de ahora: noche de luna llena, amanecer junto al Pico y mediodía
+  const noche = await page.evaluate(() => window.__cielo('2025-11-05T23:30:00Z'));
+  comprobar(noche.solAlt < -18 && noche.estrellas > 0.9 && noche.luz > 0.97 && noche.lunaVe && /^#0[0-9a-f]/.test(noche.cielo), 'noche de luna llena: cielo oscuro, estrellas y la luna llena en el dibujo', noche);
+  const alba = await page.evaluate(() => window.__cielo('2026-05-03T06:40:00Z'));
+  comprobar(alba.solAlt > 9 && alba.solAlt < 16 && alba.solVe && alba.estrellas < 0.1, 'el 3 de mayo, a media mañana, el sol asoma sobre el Pico', alba);
+  const mediodia = await page.evaluate(() => window.__cielo('2026-10-16T12:30:00Z'));
+  comprobar(mediodia.solVe && mediodia.solAlt > 30 && mediodia.estrellas === 0, 'a mediodía el sol está alto, hacia el sur, y es de día', mediodia);
+  comprobar(await page.evaluate(() => /^Ahora, a las \d\d:\d\d, en Lestedo es de día\. Luna/.test(document.getElementById('pico-cielo-txt').textContent)), 'el texto dice la hora, el momento del día y la luna', await page.evaluate(() => document.getElementById('pico-cielo-txt').textContent));
   // leyendas: teclado
   await bajarA(page, '.leyendas', 100);
   await page.focus('#leyenda-0');

@@ -42,5 +42,36 @@ window.SOL = (function () {
     }
     return r;
   };
-  return { decl, rumbo, salida, tramos, PICO, ELEV, ANCHO };
+  /* ---- posición real ahora (sol y luna), fórmulas de SunCalc (V. Agafonkin) ---- */
+  const e = rad * 23.4397, J1970 = 2440588, J2000 = 2451545;
+  const dias = (fecha) => fecha.valueOf() / 864e5 - 0.5 + J1970 - J2000;
+  const ar = (l, b) => Math.atan2(Math.sin(l) * Math.cos(e) - Math.tan(b) * Math.sin(e), Math.cos(l));
+  const de = (l, b) => Math.asin(Math.sin(b) * Math.cos(e) + Math.cos(b) * Math.sin(e) * Math.sin(l));
+  const sideral = (d) => rad * (280.16 + 360.9856235 * d) - rad * -lon;
+  const altAz = (H, dec) => {
+    const phi = rad * lat;
+    return {
+      alt: Math.asin(Math.sin(phi) * Math.sin(dec) + Math.cos(phi) * Math.cos(dec) * Math.cos(H)) / rad,
+      az: (Math.atan2(Math.sin(H), Math.cos(H) * Math.sin(phi) - Math.tan(dec) * Math.cos(phi)) / rad + 180 + 360) % 360,
+    };
+  };
+  const solCoords = (d) => {
+    const M = rad * (357.5291 + 0.98560028 * d);
+    const L = M + rad * (1.9148 * Math.sin(M) + 0.02 * Math.sin(2 * M) + 0.0003 * Math.sin(3 * M)) + rad * 102.9372 + Math.PI;
+    return { dec: de(L, 0), ra: ar(L, 0) };
+  };
+  const lunaCoords = (d) => {
+    const L = rad * (218.316 + 13.176396 * d), M = rad * (134.963 + 13.064993 * d), F = rad * (93.272 + 13.22935 * d);
+    const l = L + rad * 6.289 * Math.sin(M), b = rad * 5.128 * Math.sin(F);
+    return { ra: ar(l, b), dec: de(l, b), dist: 385001 - 20905 * Math.cos(M) };
+  };
+  const solAhora = (fecha) => { const d = dias(fecha), c = solCoords(d); return altAz(sideral(d) - c.ra, c.dec); };
+  const lunaAhora = (fecha) => {
+    const d = dias(fecha), m = lunaCoords(d), s = solCoords(d), p = altAz(sideral(d) - m.ra, m.dec);
+    const phi = Math.acos(Math.sin(s.dec) * Math.sin(m.dec) + Math.cos(s.dec) * Math.cos(m.dec) * Math.cos(s.ra - m.ra));
+    const inc = Math.atan2(149598000 * Math.sin(phi), m.dist - 149598000 * Math.cos(phi));
+    const ang = Math.atan2(Math.cos(s.dec) * Math.sin(s.ra - m.ra), Math.sin(s.dec) * Math.cos(m.dec) - Math.cos(s.dec) * Math.sin(m.dec) * Math.cos(s.ra - m.ra));
+    return { alt: p.alt, az: p.az, luz: (1 + Math.cos(inc)) / 2, fase: 0.5 + 0.5 * inc * (ang < 0 ? -1 : 1) / Math.PI };
+  };
+  return { decl, rumbo, salida, tramos, solAhora, lunaAhora, PICO, ELEV, ANCHO };
 })();

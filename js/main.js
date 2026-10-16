@@ -194,24 +194,96 @@
     const svg = $('#pico-dibujo');
     if (!svg || !window.SOL) return;
     const S = window.SOL;
-    const cresta = [[0, 300], [120, 292], [220, 262], [300, 190], [340, 140], [372, 90], [390, 82], [396, 100], [404, 100], [410, 78], [430, 74], [460, 108], [500, 170], [560, 225], [640, 262], [720, 282], [800, 290]];
-    $('#pico-monte').setAttribute('d', 'M' + cresta.map((p) => p.join(' ')).join(' L') + ' L800 340 L0 340 Z');
-    const yCresta = (x) => { for (let i = 1; i < cresta.length; i++) { const [x0, y0] = cresta[i - 1], [x1, y1] = cresta[i]; if (x <= x1) return y0 + (y1 - y0) * (x - x0) / (x1 - x0); } return 290; };
-    const xRumbo = (az) => 400 + (az - S.PICO) * 7;
-    // en el móvil, más cerca: el monte y el sol de hoy llenan el ancho
-    if (innerWidth < 640) svg.setAttribute('viewBox', '170 20 460 300');
+    /* Panorámica desde la finca, de este a oeste pasando por el sur: el Pico Sacro a la izquierda, en su rumbo real (78,6°).
+       x: 2,96 px por grado de rumbo (45° a 315°). y: altura sobre el horizonte, 12,5 px/grado hasta 12° y 1,75 px/grado
+       por encima, para que el Pico (10,5° de altura aparente) se vea y el sol de mediodía (hasta 70°) quepa. */
+    const xRumbo = (az) => (az - 45) * (800 / 270);
+    const yAlt = (alt) => (alt <= 12 ? 292 - alt * 12.5 : 142 - (alt - 12) * 1.75);
+    // perfil (rumbo, altura aparente): el Pico con su paso de la Reina Lupa; el resto, lomas del valle del Ulla (estilizadas)
+    const PERFIL = [[40, 1.2], [50, 1.8], [57, 2.8], [63, 4.3], [68, 6.2], [72, 8.1], [75, 9.6], [77.2, 10.4], [78, 9.3], [78.9, 9.3], [79.6, 10.6], [81.5, 10.2], [84, 8.8], [88, 6.6], [93, 4.6], [99, 3.1], [107, 2.2], [118, 1.6], [132, 1.9], [148, 2.5], [165, 1.7], [182, 1.3], [198, 2.1], [214, 2.8], [232, 2.0], [250, 2.6], [268, 1.7], [286, 2.3], [304, 1.6], [320, 1.4]];
+    const pts = PERFIL.map(([a, h]) => [f(xRumbo(a)), f(yAlt(h))]);
+    $('#pico-monte').setAttribute('d', 'M' + pts.map((p) => p.join(' ')).join(' L') + ' L820 340 L-20 340 Z');
+    const yCresta = (x) => { for (let i = 1; i < pts.length; i++) { const [x0, y0] = pts[i - 1], [x1, y1] = pts[i]; if (x <= x1) return y0 + (y1 - y0) * (x - x0) / (x1 - x0); } return 290; };
+    // la capilla de San Sebastián, en la cumbre
+    const xc = xRumbo(77.6), yc = yAlt(10.4);
+    $('#pico-capilla').setAttribute('transform', `translate(${f(xc - 384)} ${f(yc - 80)})`);
+    // nubes: una «toquilla» en la cumbre y dos bandas más altas
+    const nubesG = $('#pico-nubes'); nubesG.textContent = '';
+    [[xc, yc + 4, 70, 14], [xc + 40, yc + 30, 90, 13], [xc - 30, yc + 26, 60, 11], [330, 150, 170, 16], [600, 120, 190, 18]].forEach(([cx, cy, rx, ry]) => svgEl(nubesG, 'ellipse', { cx: f(cx), cy: f(cy), rx, ry }));
     const marcas = $('#pico-marcas');
     const hoy = new Date(), dHoy = new Date(Date.UTC(hoy.getFullYear(), hoy.getMonth(), hoy.getDate(), 12));
     const fecha = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', timeZone: 'UTC' });
-    [['21 jun', 5], ['21 dic', 11]].forEach(([t, m]) => {
-      const x = xRumbo(S.rumbo(-0.833, S.decl(new Date(Date.UTC(hoy.getFullYear(), m, 21, 12)))));
-      svgEl(marcas, 'line', { x1: x, y1: 36, x2: x, y2: yCresta(x) - 6, stroke: '#7f8b85', 'stroke-dasharray': '2 4' });
-      svgEl(marcas, 'text', { x, y: 28, 'text-anchor': 'middle' }, 'el sol el ' + t);
-    });
-    svgEl(marcas, 'text', { x: 452, y: 64, fill: '#2c4636', 'font-weight': 600 }, 'Pico Sacro · 533 m');
-    const az = S.rumbo(-0.833, S.decl(dHoy)), x = limitar(xRumbo(az), 20, 780);
-    const sol = $('#pico-sol'); sol.setAttribute('cx', f(x)); sol.setAttribute('cy', f(yCresta(x) - 14));
-    svgEl(marcas, 'text', { x: f(x + 22), y: f(yCresta(x) - 26), fill: '#8a5a1c', 'font-weight': 600 }, 'hoy');
+    svgEl(marcas, 'text', { x: f(xc + 14), y: f(yc - 14), 'font-weight': 600 }, 'Pico Sacro · 533 m');
+    // el camino del sol hoy, de la salida a la puesta (cada 10 min)
+    const arco = [];
+    for (let m = 0; m < 24 * 60; m += 10) {
+      const t = new Date(Date.UTC(hoy.getFullYear(), hoy.getMonth(), hoy.getDate(), 0, m));
+      const p = S.solAhora(t);
+      if (p.alt > -0.5) arco.push([f(xRumbo(p.az)), f(yAlt(p.alt)), p.az]);
+    }
+    if (arco.length > 1) {
+      svgEl(marcas, 'polyline', { points: arco.map((p) => p[0] + ',' + p[1]).join(' '), fill: 'none', stroke: '#c07a2a', 'stroke-width': 1.5, 'stroke-dasharray': '3 6', opacity: 0.75 });
+      const [xs] = arco[0], [xp] = arco[arco.length - 1];
+      svgEl(marcas, 'text', { x: f(xs + 8), y: f(yCresta(xs) - 10), 'font-weight': 600 }, 'sale');
+      svgEl(marcas, 'text', { x: f(xp - 8), y: f(yCresta(xp) - 10), 'font-weight': 600, 'text-anchor': 'end' }, 'se pone');
+    }
+    const az = S.rumbo(-0.833, S.decl(dHoy));
+    // puntos cardinales, sobre la tierra
+    const card = svgEl(svg, 'g', { 'font-family': 'Hanken Grotesk, sans-serif', 'font-size': 12, 'font-weight': 600, fill: '#c9d2d6', 'text-anchor': 'middle', 'letter-spacing': '.1em', 'aria-hidden': 'true' });
+    [['E', 90], ['SE', 135], ['S', 180], ['SO', 225], ['O', 270]].forEach(([t, a]) => svgEl(card, 'text', { x: f(xRumbo(a)), y: 330 }, t));
+
+    /* el cielo de ahora en Lestedo: luz según la altura real del sol, sol y luna en su sitio real, estrellas de noche */
+    const hex = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+    const mezcla = (a, b, t) => '#' + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t).toString(16).padStart(2, '0')).join('');
+    const tramo = (tabla, h) => {           // interpola una tabla [altura del sol, colores…]
+      if (h <= tabla[0][0]) return tabla[0].slice(1);
+      for (let i = 1; i < tabla.length; i++) if (h <= tabla[i][0]) { const t = (h - tabla[i - 1][0]) / (tabla[i][0] - tabla[i - 1][0]); return tabla[i].slice(1).map((c, k) => mezcla(tabla[i - 1][k + 1], c, t)); }
+      return tabla[tabla.length - 1].slice(1);
+    };
+    const CIELO = [[-18, '#070c16', '#0e1729', '#18233a'], [-8, '#142038', '#2b3550', '#5a4a64'], [-2, '#2f4a6e', '#8b7a8f', '#e39b6a'], [4, '#7fa0be', '#e7c9a5', '#f3b77a'], [12, '#a9c4d4', '#e9e2cf', '#f2d8a8'], [30, '#9fc0d6', '#dfe7e6', '#eef0e6']];
+    // monte, primer plano, segundo plano, capilla, letras del dibujo, nubes
+    const TIERRA = [[-10, '#1d2420', '#10201a', '#0a1712', '#8f99a3', '#c9d2d6', '#5d6774'], [4, '#58625a', '#2c4636', '#1c3327', '#ece6d8', '#4b5953', '#f7f8f7']];
+    const estrellas = $('#pico-estrellas');
+    for (let i = 0; i < 70; i++) { const sx = (i * 137.5) % 800, sy = (i * 61.3) % 240; svgEl(estrellas, 'circle', { cx: f(sx), cy: f(sy), r: i % 7 === 0 ? 1.6 : 0.9, opacity: f(0.35 + ((i * 29) % 10) / 15) }); }
+    const solG = $('#pico-sol'), lunaG = $('#pico-luna');
+    const enCuadro = (px, py) => px > -20 && px < 820 && py > 0;
+    const lunaPath = (r, luz, fase) => {
+      const crece = fase < 0.5, rx = f(r * Math.abs(2 * luz - 1));
+      const s1 = crece ? 1 : 0, s2 = crece ? (luz > 0.5 ? 1 : 0) : (luz > 0.5 ? 0 : 1);
+      return `M0 ${-r} A${r} ${r} 0 0 ${s1} 0 ${r} A${rx} ${r} 0 0 ${s2} 0 ${-r} Z`;
+    };
+    const nombreFase = (luz, fase) => (luz < 0.03 ? 'luna nueva' : luz > 0.97 ? 'luna llena' : fase < 0.5 ? (luz < 0.5 ? 'luna creciente' : 'luna creciente, casi llena') : (luz < 0.5 ? 'luna menguante' : 'luna menguante, recién pasada la llena'));
+    const hhmm = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
+    const rumboTxt = (a) => ['norte', 'noreste', 'este', 'sureste', 'sur', 'suroeste', 'oeste', 'noroeste'][Math.round(a / 45) % 8];
+    function pintarCielo(ahora) {
+      const sol = S.solAhora(ahora), luna = S.lunaAhora(ahora);
+      const [c0, c1, c2] = tramo(CIELO, sol.alt);
+      $('#cielo-0').setAttribute('stop-color', c0); $('#cielo-1').setAttribute('stop-color', c1); $('#cielo-2').setAttribute('stop-color', c2);
+      const [monte, f1, f2, capilla, texto, nube] = tramo(TIERRA, sol.alt);
+      $('#pico-monte').setAttribute('fill', monte); $('#pico-fondo-1').setAttribute('fill', f1); $('#pico-fondo-2').setAttribute('fill', f2);
+      $('#pico-capilla').setAttribute('fill', capilla); marcas.setAttribute('fill', texto); $('#pico-nubes').setAttribute('fill', nube);
+      const noche = limitar((-sol.alt - 2) / 10, 0, 1);
+      estrellas.style.opacity = f(noche * noche);
+      const sx = xRumbo(sol.az), sy = yAlt(sol.alt), solVe = sol.alt > -1.5 && enCuadro(sx, sy);
+      solG.toggleAttribute('hidden', !solVe);   // en SVG, .hidden no quita el atributo
+      if (solVe) { solG.setAttribute('transform', `translate(${f(sx)} ${f(sy)})`); $('#sol-disco').setAttribute('fill', mezcla('#e0703a', '#f0b858', limitar(sol.alt / 8, 0, 1))); }
+      const lx = xRumbo(luna.az), ly = yAlt(luna.alt), lunaVe = luna.alt > -1 && enCuadro(lx, ly) && luna.luz > 0.03;
+      lunaG.toggleAttribute('hidden', !lunaVe);
+      if (lunaVe) { lunaG.setAttribute('transform', `translate(${f(lx)} ${f(ly)})`); $('#luna-luz').setAttribute('d', lunaPath(11, luna.luz, luna.fase)); $('#luna-disco').setAttribute('opacity', f(0.25 + 0.6 * noche)); }
+      const manana = sol.az < 180;
+      const momento = sol.alt > 6 ? 'es de día' : sol.alt > 0 ? (manana ? 'acaba de amanecer' : 'atardece') : sol.alt > -6 ? (manana ? 'está amaneciendo' : 'anochece') : 'es de noche';
+      const lunaTxt = `${nombreFase(luna.luz, luna.fase)} (${Math.round(luna.luz * 100)} % iluminada), ${luna.alt > 0 ? 'sobre el horizonte, hacia el ' + rumboTxt(luna.az) : 'bajo el horizonte'}`;
+      $('#pico-cielo-txt').textContent = `Ahora, a las ${hhmm.format(ahora)}, en Lestedo ${momento}. ${lunaTxt[0].toUpperCase() + lunaTxt.slice(1)}.`;
+      return { solAlt: sol.alt, solVe, lunaVe, luz: luna.luz, fase: luna.fase, cielo: c0, estrellas: +estrellas.style.opacity };
+    }
+    window.__cielo = (fecha) => pintarCielo(fecha ? new Date(fecha) : new Date());
+    pintarCielo(new Date());
+    // cada minuto, solo mientras la sección se ve
+    let reloj = 0;
+    new IntersectionObserver((es) => {
+      if (es[0].isIntersecting && !reloj) { pintarCielo(new Date()); reloj = setInterval(() => pintarCielo(new Date()), 60000); }
+      else if (!es[0].isIntersecting && reloj) { clearInterval(reloj); reloj = 0; }
+    }).observe(svg);
     $('#pico-hora').textContent = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' }).format(S.salida(dHoy));
     const dif = az - S.PICO;
     $('#pico-rumbo').textContent = Math.abs(dif) < S.ANCHO ? 'justo por detrás del Pico.' : (dif > 0 ? 'a la derecha' : 'a la izquierda') + ' del Pico (rumbo ' + Math.round(az) + '°).';
@@ -229,6 +301,7 @@
       if (ll && n >= 50) r = 'Cuando el Pico cubre el cabello, chicas del Ulla, poned el pañuelo.';
       else if (n >= 50) r = 'Cuando el Pico pone toquilla, agua tenemos, mucha o poquilla.';
       else if (n >= 20) r = 'El Pico asoma entre nubes: buen rato para subir, con chaqueta.';
+      else if (S.solAhora(new Date()).alt < -6) r = 'Noche despejada sobre el Pico: su cima es un mirador de estrellas.';
       else r = 'Hoy el Pico está despejado: desde la cima se ven unos 30 km a la redonda.';
       $('#pico-refran').textContent = r;
       dato.textContent = `Nubes bajas en la cumbre: ${n} %${ll ? ' · está lloviendo' : ''}.`;
@@ -239,7 +312,7 @@
         const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.8072&longitude=-8.4469&current=cloud_cover_low,precipitation&timezone=Europe%2FMadrid', { signal: c.signal });
         clearTimeout(t);
         const j = await r.json();
-        fuente.textContent = 'El Pico ahora · ' + j.current.time.slice(11) + ' h';
+        fuente.textContent = 'El Pico · dato de las ' + j.current.time.slice(11);   // Open-Meteo da tramos de 15 min
         pintar(Math.round(j.current.cloud_cover_low), j.current.precipitation > 0);
       } catch (e) {
         fuente.textContent = 'El Pico Sacro';

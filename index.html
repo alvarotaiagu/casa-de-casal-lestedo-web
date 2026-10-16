@@ -35,10 +35,12 @@
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="img/fotos/portada-casa-480.avif 480w, img/fotos/portada-casa-800.avif 800w, img/fotos/portada-casa-1200.avif 1200w, img/fotos/portada-casa-1600.avif 1600w"
       imagesizes="(max-width: 899px) 66vw, 56vw">
+<!-- Three.js para el Pico en 3D: solo se descarga al acercarse a su sección -->
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="css/estilos.css?v=030591fd">
+<link rel="stylesheet" href="css/estilos.css?v=06a6404a">
 <link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="marca/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
@@ -358,13 +360,15 @@
       <p class="suave">A 1,4 km de la casa y 278 metros por encima. En el valle del Ulla se le mira para saber si va a llover. El dibujo es el cielo de ahora mismo visto desde la casa, de este a oeste: en la cumbre, la capilla de San Sebastián; la línea de puntos, el camino del sol de hoy.</p>
     </header>
     <div class="pico__escena">
-      <svg class="pico__dibujo" id="pico-dibujo" viewBox="0 0 800 340" role="img" aria-labelledby="pico-refran">
+      <div class="pico__izq">
+        <div class="pico__vista" id="pico-vista">
+      <svg class="pico__dibujo" id="pico-dibujo" viewBox="0 -120 800 460" role="img" aria-labelledby="pico-refran">
         <defs>
           <linearGradient id="g-cielo" x1="0" y1="0" x2="0" y2="1"><stop id="cielo-0" offset="0" stop-color="#b9cdd6"/><stop id="cielo-1" offset=".75" stop-color="#efe2c8"/><stop id="cielo-2" offset="1" stop-color="#f4d7a6"/></linearGradient>
           <radialGradient id="g-halo"><stop offset="0" stop-color="#ffd58a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd58a" stop-opacity="0"/></radialGradient>
           <filter id="f-nube" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
         </defs>
-        <rect width="800" height="340" fill="url(#g-cielo)"/>
+        <rect id="pico-cielo-fondo" y="-120" width="800" height="460" fill="url(#g-cielo)"/>
         <g id="pico-estrellas" fill="#f3eee4"></g>
         <g id="pico-marcas" font-family="Hanken Grotesk, sans-serif" font-size="12" fill="#4b5953"></g>
         <g id="pico-luna" hidden><circle id="luna-disco" r="11" fill="#2a3444"/><path id="luna-luz" fill="#f1ead6"/></g>
@@ -376,6 +380,10 @@
         <g id="pico-nubes" filter="url(#f-nube)" fill="#f7f8f7"></g>
         <g id="pico-lluvia" stroke="#8fa2ab" stroke-width="1.5" opacity="0"></g>
       </svg>
+        </div>
+        <div class="pico__mando3d" id="pico-mando3d" hidden><button type="button" class="chip" id="pico-girar" aria-pressed="false">Girar el monte</button><button type="button" class="chip" id="pico-volver">Volver a la vista</button><span class="pico__pista" id="pico-pista"></span></div>
+        <p class="pico__fuente3d" id="pico-fuente3d" hidden>Relieve y foto aérea: © Instituto Geográfico Nacional (CC BY 4.0). Altura exagerada ×1,6.</p>
+      </div>
       <div class="pico__lado">
         <p class="eti" id="pico-fuente">El Pico ahora</p>
         <blockquote class="pico__refran" id="pico-refran">En el valle del Ulla se mira al Pico para saber si va a llover.</blockquote>
@@ -568,7 +576,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 <script src="js/sol.js?v=3934872f" defer></script>
-<script src="js/main.js?v=15f90ba6" defer></script>
+<script src="js/main.js?v=97d6267d" defer></script>
 <script src="js/reserva.js?v=3347e3d1" defer></script>
 </body>
 </html>

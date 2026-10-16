@@ -41,7 +41,7 @@ const sinCookies = () => { try { localStorage.setItem('casal-cookies', 'si'); } 
 const MOVIL = { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 };
 const TIEMPO = { current: { time: '2026-10-16T12:00', cloud_cover_low: 72, precipitation: 0 } };
 
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, args: ['--use-gl=angle', '--use-angle=swiftshader'] });   // WebGL para el Pico en 3D
 
 /* GSAP y Lenis desde una copia local: así la cortina no depende del CDN ese día */
 const CDN = {
@@ -330,8 +330,45 @@ console.log('\n4. El Pico');
   await page.keyboard.press('ArrowDown'); await page.keyboard.press('ArrowDown');
   comprobar(await page.evaluate(() => document.getElementById('leyendas-tit').textContent === 'El paso de la Reina Lupa' && document.activeElement.id === 'leyenda-2' && document.getElementById('leyenda-2').getAttribute('aria-selected') === 'true'), 'leyendas: las flechas cambian de leyenda y llevan el foco');
   comprobar(await page.evaluate(() => { const c = document.getElementById('leyendas-cap').textContent, t = document.getElementById('leyendas-txt').textContent; return c === 'L' && /^a cumbre/.test(t); }), 'la capitular y el texto se leen seguidos («L» + «a cumbre…»)');
+  // el Pico en 3D (IGN): carga al acercarse y sustituye al dibujo
+  await page.waitForFunction(() => !!window.__pico3d, null, { timeout: 25000 }).catch(() => {});
+  const t3 = await page.evaluate(() => {
+    const v = document.getElementById('pico-vista'), c = v.querySelector('canvas');
+    return { tiene: !!window.__pico3d, clase: v.className, dibujo: getComputedStyle(document.getElementById('pico-dibujo')).display, lienzo: c ? [c.clientWidth, c.clientHeight] : null,
+      rotulos: Array.from(v.querySelectorAll('.pico__rotulo')).filter((r) => !r.hidden).map((r) => r.textContent), mando: !document.getElementById('pico-mando3d').hidden };
+  });
+  comprobar(t3.tiene && /con-3d/.test(t3.clase) && t3.dibujo === 'none' && t3.lienzo && t3.lienzo[0] > 300 && t3.lienzo[1] > 150 && t3.mando, 'el Pico en 3D carga y sustituye al dibujo', t3);
+  comprobar(t3.rotulos.includes('Casa de Casal') && t3.rotulos.includes('Pico Sacro · 533 m'), 'en 3D se ven los rótulos de la casa y del Pico', t3.rotulos);
+  const dia3 = await page.evaluate(() => { window.__cielo('2026-10-16T10:00:00Z'); return window.__pico3d.estado(); });
+  const noche3 = await page.evaluate(() => { window.__cielo('2025-11-05T23:30:00Z'); return window.__pico3d.estado(); });
+  comprobar(dia3.luzSol > 1 && dia3.estrellas === 0 && noche3.luzSol === 0 && noche3.luzLuna > 0.5 && noche3.estrellas > 0.9 && noche3.luna, '3D: de día luz de sol; de noche de luna llena, luz de luna y estrellas', { dia3, noche3 });
+  const px = async () => page.evaluate(() => { const c = document.querySelector('#pico-vista canvas'); const g = document.createElement('canvas'); g.width = 40; g.height = 20; g.getContext('2d').drawImage(c, 0, 0, 40, 20); return Array.from(g.getContext('2d').getImageData(0, 0, 40, 20).data).join(','); });
+  await page.evaluate(() => window.__cielo());
+  const antes = await px();
+  const bb = await (await page.$('#pico-vista')).boundingBox();
+  await page.mouse.move(bb.x + bb.width * 0.6, bb.y + bb.height * 0.6); await page.mouse.down();
+  for (let i = 0; i < 12; i++) { await page.mouse.move(bb.x + bb.width * (0.6 - i * 0.03), bb.y + bb.height * 0.6); await page.waitForTimeout(16); }
+  await page.mouse.up(); await page.waitForTimeout(1200);
+  comprobar(antes !== await px(), '3D: arrastrar con el ratón gira la vista');
+  await page.click('#pico-volver'); await page.waitForTimeout(500);
+  comprobar(await page.evaluate(() => /arrastra/i.test(document.getElementById('pico-pista').textContent)), '3D: «Volver a la vista» funciona y la pista explica el gesto');
+  await page.click('#pico-girar');
+  comprobar(await page.evaluate(() => document.getElementById('pico-girar').getAttribute('aria-pressed') === 'true' && document.getElementById('pico-girar').textContent === 'Listo' && /rueda/.test(document.getElementById('pico-pista').textContent)), '3D: «Girar el monte» activa el zoom con la rueda y cambia a «Listo»');
+  await page.click('#pico-girar');
   await cap(page, '04-pico');
   comprobar(page._errores.length === 0, 'sin errores', page._errores);
+  await ctx.close();
+}
+{
+  // sin Three.js (CDN caído): se queda el dibujo, sin errores
+  const { ctx, page } = await nueva({}, { script: sinCookies });
+  await ctx.route(/cdn\.jsdelivr\.net\/npm\/three/, (r) => r.abort());
+  await page.goto(BASE);
+  await esperarCortina(page);
+  await bajarA(page, '#pico', 0);
+  await page.waitForTimeout(4000);
+  comprobar(await page.evaluate(() => !window.__pico3d && getComputedStyle(document.getElementById('pico-dibujo')).display !== 'none' && document.getElementById('pico-mando3d').hidden), 'sin Three.js se queda el dibujo del cielo');
+  comprobar(page._errores.filter((e) => !/three|jsdelivr/.test(e)).length === 0, 'sin Three.js: sin errores', page._errores);
   await ctx.close();
 }
 {

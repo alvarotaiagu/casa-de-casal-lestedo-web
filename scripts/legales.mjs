@@ -28,6 +28,7 @@ ${TITULAR}
 <h2>Propiedad intelectual</h2>
 <p>Los textos, el logotipo y las fotografías son del titular o se usan con su permiso. No se pueden reproducir sin autorización.</p>
 <p>Los tiempos en coche se han calculado con datos de <a href="https://www.openstreetmap.org/copyright">© colaboradores de OpenStreetMap</a> (licencia ODbL) y el servicio OSRM. El tiempo del Pico Sacro viene de <a href="https://open-meteo.com/">Open-Meteo</a> (CC BY 4.0).</p>
+<p>El Pico en 3D usa el modelo digital del terreno MDT05 y la ortofoto PNOA, © <a href="https://www.ign.es">Instituto Geográfico Nacional</a> (CC BY 4.0).</p>
 <h2>Responsabilidad</h2>
 <p>Las distancias, los tiempos de viaje y la hora a la que sale el sol son aproximados. Los enlaces a otras webs (Google Maps, WhatsApp, Booking.com) llevan a servicios de terceros con sus propias condiciones.</p>
 <h2>Ley aplicable</h2>
@@ -63,7 +64,7 @@ ${TITULAR}
   <li><b>Google Fonts</b>: las letras de la web se cargan desde los servidores de Google, que reciben tu dirección IP.</li>
   <li><b>Google Maps</b>: el mapa de «Cómo llegar» solo se carga si pulsas «Ver el mapa». A partir de ese momento, Google puede instalar sus cookies.</li>
   <li><b>Open-Meteo</b>: al llegar a la sección del Pico Sacro, la web pide a Open-Meteo el tiempo de ahora en la cumbre. Recibe tu dirección IP y no instala cookies.</li>
-  <li><b>Librerías de animación</b> (GSAP y Lenis): se descargan de cdnjs y jsDelivr, que reciben tu dirección IP. No instalan cookies.</li>
+  <li><b>Librerías</b> (GSAP, Lenis y Three.js para el Pico en 3D): se descargan de cdnjs y jsDelivr, que reciben tu dirección IP. No instalan cookies. El relieve y la foto aérea del IGN van en esta misma web.</li>
 </ul>
 <p>Puedes volver a ver el aviso desde «Preferencias de cookies», en el pie de la portada.</p>`,
   },

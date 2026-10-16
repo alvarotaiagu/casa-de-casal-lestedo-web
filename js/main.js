@@ -194,10 +194,15 @@
     const svg = $('#pico-dibujo');
     if (!svg || !window.SOL) return;
     const S = window.SOL;
+    let tres = null, ultimaNube = null;     // el Pico en 3D, si carga (abajo)
     /* Panorámica desde la finca, de este a oeste pasando por el sur: el Pico Sacro a la izquierda, en su rumbo real (78,6°).
        x: 2,96 px por grado de rumbo (45° a 315°). y: altura sobre el horizonte, 12,5 px/grado hasta 12° y 1,75 px/grado
        por encima, para que el Pico (10,5° de altura aparente) se vea y el sol de mediodía (hasta 70°) quepa. */
     const xRumbo = (az) => (az - 45) * (800 / 270);
+    // más cielo por arriba para llenar el mismo hueco que el 3D (más alto en el móvil)
+    const altoVista = innerWidth < 700 ? 680 : 460, arriba = 340 - altoVista;
+    svg.setAttribute('viewBox', `0 ${arriba} 800 ${altoVista}`);
+    const fondoCielo = $('#pico-cielo-fondo'); fondoCielo.setAttribute('y', arriba); fondoCielo.setAttribute('height', altoVista);
     const yAlt = (alt) => (alt <= 12 ? 292 - alt * 12.5 : 142 - (alt - 12) * 1.75);
     // perfil (rumbo, altura aparente): el Pico con su paso de la Reina Lupa; el resto, lomas del valle del Ulla (estilizadas)
     const PERFIL = [[40, 1.2], [50, 1.8], [57, 2.8], [63, 4.3], [68, 6.2], [72, 8.1], [75, 9.6], [77.2, 10.4], [78, 9.3], [78.9, 9.3], [79.6, 10.6], [81.5, 10.2], [84, 8.8], [88, 6.6], [93, 4.6], [99, 3.1], [107, 2.2], [118, 1.6], [132, 1.9], [148, 2.5], [165, 1.7], [182, 1.3], [198, 2.1], [214, 2.8], [232, 2.0], [250, 2.6], [268, 1.7], [286, 2.3], [304, 1.6], [320, 1.4]];
@@ -245,9 +250,9 @@
     // monte, primer plano, segundo plano, capilla, letras del dibujo, nubes
     const TIERRA = [[-10, '#1d2420', '#10201a', '#0a1712', '#8f99a3', '#c9d2d6', '#5d6774'], [4, '#58625a', '#2c4636', '#1c3327', '#ece6d8', '#4b5953', '#f7f8f7']];
     const estrellas = $('#pico-estrellas');
-    for (let i = 0; i < 70; i++) { const sx = (i * 137.5) % 800, sy = (i * 61.3) % 240; svgEl(estrellas, 'circle', { cx: f(sx), cy: f(sy), r: i % 7 === 0 ? 1.6 : 0.9, opacity: f(0.35 + ((i * 29) % 10) / 15) }); }
+    for (let i = 0; i < 90; i++) { const sx = (i * 137.5) % 800, sy = arriba + (i * 61.3) % (240 - arriba); svgEl(estrellas, 'circle', { cx: f(sx), cy: f(sy), r: i % 7 === 0 ? 1.6 : 0.9, opacity: f(0.35 + ((i * 29) % 10) / 15) }); }
     const solG = $('#pico-sol'), lunaG = $('#pico-luna');
-    const enCuadro = (px, py) => px > -20 && px < 820 && py > 0;
+    const enCuadro = (px, py) => px > -20 && px < 820 && py > arriba;
     const lunaPath = (r, luz, fase) => {
       const crece = fase < 0.5, rx = f(r * Math.abs(2 * luz - 1));
       const s1 = crece ? 1 : 0, s2 = crece ? (luz > 0.5 ? 1 : 0) : (luz > 0.5 ? 0 : 1);
@@ -275,6 +280,7 @@
       const momento = sol.alt > 6 ? 'es de día' : sol.alt > 0 ? (manana ? 'acaba de amanecer' : 'atardece') : sol.alt > -6 ? (manana ? 'está amaneciendo' : 'anochece') : 'es de noche';
       const lunaTxt = `${nombreFase(luna.luz, luna.fase)} (${Math.round(luna.luz * 100)} % iluminada), ${luna.alt > 0 ? 'sobre el horizonte, hacia el ' + rumboTxt(luna.az) : 'bajo el horizonte'}`;
       $('#pico-cielo-txt').textContent = `Ahora, a las ${hhmm.format(ahora)}, en Lestedo ${momento}. ${lunaTxt[0].toUpperCase() + lunaTxt.slice(1)}.`;
+      if (tres) tres.actualizar(ahora);
       return { solAlt: sol.alt, solVe, lunaVe, luz: luna.luz, fase: luna.fase, cielo: c0, estrellas: +estrellas.style.opacity };
     }
     window.__cielo = (fecha) => pintarCielo(fecha ? new Date(fecha) : new Date());
@@ -306,10 +312,12 @@
       else r = 'Hoy el Pico está despejado: desde la cima se ven unos 30 km a la redonda.';
       $('#pico-refran').textContent = r;
       dato.textContent = `Nubes bajas en la cumbre: ${n} %${ll ? ' · está lloviendo' : ''}.`;
+      ultimaNube = [n, ll];
+      if (tres) tres.nubes(n, ll);
     };
     const ahora = async () => {
       try {
-        const c = new AbortController(); const t = setTimeout(() => c.abort(), 5000);
+        const c = new AbortController(); const t = setTimeout(() => c.abort(), 8000);
         const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.8072&longitude=-8.4469&current=cloud_cover_low,precipitation&timezone=Europe%2FMadrid', { signal: c.signal });
         clearTimeout(t);
         const j = await r.json();
@@ -321,6 +329,30 @@
       }
     };
     new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); ahora(); } }, { rootMargin: '300px 0px' }).observe(svg);
+
+    // el Pico en 3D con datos del IGN: se carga al acercarse y solo si el navegador puede; si no, sigue el dibujo
+    const vista = $('#pico-vista');
+    const puede3D = (() => { try { const cv = document.createElement('canvas'); return !!(cv.getContext('webgl2') || cv.getContext('webgl')); } catch (e) { return false; } })() && !(navigator.connection && navigator.connection.saveData);
+    if (puede3D && vista) new IntersectionObserver((es, o) => {
+      if (!es[0].isIntersecting) return;
+      o.disconnect();
+      import('./pico3d.js')
+        .then((m) => m.montar(vista, { S, colores: (alt) => tramo(CIELO, alt), lunaPath, movil: !fino }))
+        .then((t) => {
+          tres = t;
+          vista.classList.add('con-3d');
+          t.actualizar(new Date());
+          if (ultimaNube) t.nubes(...ultimaNube);
+          const mando3d = $('#pico-mando3d'), girar = $('#pico-girar'), pista = $('#pico-pista');
+          mando3d.hidden = false; $('#pico-fuente3d').hidden = false;
+          const pistas = (si) => (si ? (fino ? 'Arrastra para girar; la rueda acerca y aleja.' : 'Un dedo gira, dos dedos acercan.') : (fino ? 'Arrastra para girar el monte.' : 'Pulsa «Girar el monte» para moverlo con el dedo.'));
+          pista.textContent = pistas(false);
+          girar.addEventListener('click', () => { const si = girar.getAttribute('aria-pressed') !== 'true'; girar.setAttribute('aria-pressed', String(si)); girar.textContent = si ? 'Listo' : 'Girar el monte'; t.activar(si); pista.textContent = pistas(si); });
+          $('#pico-volver').addEventListener('click', () => t.volver());
+          window.__pico3d = t;
+        })
+        .catch((e) => { console.warn('El Pico en 3D no está disponible:', e); });
+    }, { rootMargin: '600px 0px' }).observe(vista);
 
     // leyendas: resumidas de sus páginas del Pico Sacro y de «Nuestro camino»
     const L = [

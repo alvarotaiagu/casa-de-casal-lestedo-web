@@ -238,9 +238,11 @@ html.con-movimiento .hero.abierta .gablete__tejado { clip-path: inset(0 0 0 0); 
 .casa { padding: clamp(80px, 10vw, 150px) 0; }
 .casa__rejilla { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 30px); align-items: start; }
 .casa__texto { grid-column: 1 / span 6; display: grid; gap: 24px; }
-.casa__rejilla .foto--alta { grid-column: 8 / span 5; grid-row: span 2; }
-.casa__rejilla .foto--alta img { aspect-ratio: 4 / 5; }
-.casa__rejilla .foto:not(.foto--alta) { grid-column: span 3; }
+/* fila 1: texto y fachada (que acompaña la lectura); fila 2: las cuatro estancias a todo el ancho */
+.casa__texto { grid-row: 1; }
+.casa__rejilla .foto--alta { grid-column: 8 / span 5; grid-row: 1; align-self: stretch; display: flex; flex-direction: column; }
+.casa__rejilla .foto--alta img { flex: 1 1 0; aspect-ratio: auto; height: auto; min-height: 420px; object-position: 50% 40%; }
+.casa__rejilla .foto:not(.foto--alta) { grid-column: span 3; grid-row: 2; margin-top: clamp(24px, 4vw, 56px); }
 .casa__rejilla .foto:not(.foto--alta) img { aspect-ratio: 4 / 5; }
 .cita { border-left: 2px solid var(--oro); padding-left: 20px; display: grid; gap: 8px; }
 .cita p { font: italic 400 clamp(1.5rem, 2.4vw, 2rem)/1.2 var(--letra-tit); }
@@ -256,7 +258,8 @@ html.densidad-sobria .papeles { clip-path: none; padding-top: clamp(26px, 4vw, 4
 .papeles p:last-child { color: var(--cal-3); font-style: italic; }
 @media (max-width: 899px) {
   .casa__texto, .casa__rejilla .foto--alta { grid-column: 1 / -1; grid-row: auto; }
-  .casa__rejilla .foto:not(.foto--alta) { grid-column: span 6; }
+  .casa__rejilla .foto--alta img { flex: none; aspect-ratio: 4 / 5; height: auto; min-height: 0; }
+  .casa__rejilla .foto:not(.foto--alta) { grid-column: span 6; grid-row: auto; margin-top: 0; }
 }
 
 /* ============ 3. bajo el tejado ============ */

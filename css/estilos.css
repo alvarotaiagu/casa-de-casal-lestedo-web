@@ -231,7 +231,12 @@ html.con-movimiento .hero.abierta .gablete__tejado { clip-path: inset(0 0 0 0); 
   .hero { grid-template-columns: 1fr; min-height: 0; padding-top: calc(var(--cab) + env(safe-area-inset-top, 0px) + 20px); }
   .hero__vista { order: -1; }
   .gablete { aspect-ratio: 5 / 4; }
-  .gablete__pie { margin-left: 0; width: 100%; }
+  .gablete__mando { justify-content: space-between; }
+  .gablete__pie { margin-left: 0; width: 100%; text-align: center; order: 3; }
+  .hero__acc { display: grid; grid-template-columns: 1fr; }
+  .hero__acc .btn { width: 100%; }
+  .notas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .notas li { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
 
 /* ============ 2. la casa ============ */

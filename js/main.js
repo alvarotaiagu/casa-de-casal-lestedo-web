@@ -216,16 +216,17 @@
     svgEl(marcas, 'text', { x: f(xc + 14), y: f(yc - 14), 'font-weight': 600 }, 'Pico Sacro · 533 m');
     // el camino del sol hoy, de la salida a la puesta (cada 10 min)
     const arco = [];
-    for (let m = 0; m < 24 * 60; m += 10) {
+    for (let m = 0; m < 24 * 60; m += 1) {   // cada minuto: las horas de «sale» y «se pone» cuadran con el texto
       const t = new Date(Date.UTC(hoy.getFullYear(), hoy.getMonth(), hoy.getDate(), 0, m));
       const p = S.solAhora(t);
-      if (p.alt > -0.5) arco.push([f(xRumbo(p.az)), f(yAlt(p.alt)), p.az]);
+      if (p.alt > -0.833) arco.push([f(xRumbo(p.az)), f(yAlt(p.alt)), t]);
     }
     if (arco.length > 1) {
-      svgEl(marcas, 'polyline', { points: arco.map((p) => p[0] + ',' + p[1]).join(' '), fill: 'none', stroke: '#c07a2a', 'stroke-width': 1.5, 'stroke-dasharray': '3 6', opacity: 0.75 });
+      svgEl(marcas, 'polyline', { points: arco.filter((p, i) => i % 10 === 0 || i === arco.length - 1).map((p) => p[0] + ',' + p[1]).join(' '), fill: 'none', stroke: '#c07a2a', 'stroke-width': 1.5, 'stroke-dasharray': '3 6', opacity: 0.75 });
       const [xs] = arco[0], [xp] = arco[arco.length - 1];
-      svgEl(marcas, 'text', { x: f(xs + 8), y: f(yCresta(xs) - 10), 'font-weight': 600 }, 'sale');
-      svgEl(marcas, 'text', { x: f(xp - 8), y: f(yCresta(xp) - 10), 'font-weight': 600, 'text-anchor': 'end' }, 'se pone');
+      const hora = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
+      svgEl(marcas, 'text', { x: f(xs + 8), y: f(yCresta(xs) - 10), 'font-weight': 600 }, 'sale ' + hora.format(arco[0][2]));
+      svgEl(marcas, 'text', { x: f(xp - 8), y: f(yCresta(xp) - 10), 'font-weight': 600, 'text-anchor': 'end' }, 'se pone ' + hora.format(arco[arco.length - 1][2]));
     }
     const az = S.rumbo(-0.833, S.decl(dHoy));
     // puntos cardinales, sobre la tierra

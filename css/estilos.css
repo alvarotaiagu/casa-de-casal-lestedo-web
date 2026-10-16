@@ -382,6 +382,9 @@ html.densidad-sobria .seccion__panel img { clip-path: none; }
 .pico__rotulo.casa { background: var(--oro-claro); color: var(--noche); }
 .pico__mando3d:not([hidden]) { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .pico__pista { font-size: .85rem; color: #4e5b54; }
+.pico__vista:not(.con-3d) .pico__lienzo, .pico__vista:not(.con-3d) .pico__rotulo { display: none; }
+.chip--modo { background: var(--pino); border-color: var(--pino); color: var(--niebla); }
+.chip--modo:hover { background: transparent; color: var(--pino); }
 .pico__fuente3d { font-size: .78rem; color: #4e5b54; }
 @media (max-width: 699px) { .pico__vista { aspect-ratio: 800 / 680; } }
 .leyendas { margin-top: clamp(60px, 8vw, 110px); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, .7fr) minmax(0, 1.2fr); gap: clamp(20px, 3vw, 44px); align-items: start; }

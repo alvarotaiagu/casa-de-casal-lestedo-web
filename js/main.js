@@ -349,6 +349,18 @@
           pista.textContent = pistas(false);
           girar.addEventListener('click', () => { const si = girar.getAttribute('aria-pressed') !== 'true'; girar.setAttribute('aria-pressed', String(si)); girar.textContent = si ? 'Listo' : 'Girar el monte'; t.activar(si); pista.textContent = pistas(si); });
           $('#pico-volver').addEventListener('click', () => t.volver());
+          // 2D ↔ 3D: el dibujo enseña el arco del sol de hoy y los puntos cardinales; el 3D, el terreno real
+          const modo = $('#pico-modo'), volverB = $('#pico-volver'), fuente3d = $('#pico-fuente3d');
+          modo.addEventListener('click', () => {
+            const dibujo = vista.classList.contains('con-3d');   // si ahora se ve el 3D, se pasa al dibujo
+            vista.classList.toggle('con-3d', !dibujo);
+            modo.setAttribute('aria-pressed', String(dibujo));
+            modo.textContent = dibujo ? 'Ver en 3D' : 'Ver el dibujo';
+            girar.hidden = volverB.hidden = fuente3d.hidden = dibujo;
+            if (dibujo && girar.getAttribute('aria-pressed') === 'true') girar.click();
+            pista.textContent = dibujo ? 'El dibujo: el camino del sol de hoy, de este a oeste.' : pistas(false);
+            if (!dibujo) t.actualizar(new Date());
+          });
           window.__pico3d = t;
         })
         .catch((e) => { console.warn('El Pico en 3D no está disponible:', e); });

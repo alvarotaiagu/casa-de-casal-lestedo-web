@@ -20,8 +20,8 @@ function lienzoTextura(lado, dibujar) {
   const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
 }
 
-export async function montar(caja, { S, colores, lunaPath, movil }) {
-  const base = 'img/terreno/', n = movil ? 192 : 256;
+export async function montar(caja, { S, colores, lunaPath, movil, raiz = document.documentElement.dataset.raiz || './', t = (clave) => clave }) {   // t(): el de comun.js
+  const base = raiz + 'img/terreno/', n = movil ? 192 : 256;   // la raíz de la página (data-raiz), como toda ruta propia
   const [meta, buf, foto] = await Promise.all([
     fetch(base + 'terreno.json').then((r) => r.json()),
     fetch(base + `alturas-${n}.bin`).then((r) => r.arrayBuffer()),
@@ -141,8 +141,8 @@ export async function montar(caja, { S, colores, lunaPath, movil }) {
 
   /* rótulos en HTML sobre el lienzo */
   const rotulos = [
-    { txt: 'Casa de Casal', p: new THREE.Vector3(cx, yCasa + 90, cz), clase: 'casa' },
-    { txt: 'Pico Sacro · 533 m', p: new THREE.Vector3(px, yPico + 60, pz), clase: '' },
+    { txt: t('Casa de Casal'), p: new THREE.Vector3(cx, yCasa + 90, cz), clase: 'casa' },
+    { txt: t('Pico Sacro · 533 m'), p: new THREE.Vector3(px, yPico + 60, pz), clase: '' },
   ].map((r) => { const e = document.createElement('span'); e.className = 'pico__rotulo ' + r.clase; e.textContent = r.txt; caja.appendChild(e); return { ...r, e }; });
   const v = new THREE.Vector3();
   const colocarRotulos = () => {

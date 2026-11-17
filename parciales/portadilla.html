@@ -1,0 +1,12 @@
+<!-- ============ portadilla de una página interior (spec 001 §3.1.10) ============
+     Lee del comentario de datos de la página («pagina»): eti, h1 (con
+     *cursiva*), foto (nombre de img/fotos/fotos.json) y foto_alt. -->
+<section class="portadilla oscura" aria-labelledby="portadilla-tit">
+  <div class="env portadilla__in">
+    <div class="portadilla__txt">
+      <p class="eti">{{pagina.eti}}</p>
+      <h1 class="tit" id="portadilla-tit" data-partir>{{pagina.h1|em}}</h1>
+    </div>
+    <figure class="portadilla__foto gable"><img data-foto="{{pagina.foto}}" alt="{{pagina.foto_alt}}" fetchpriority="high" loading="eager" sizes="(max-width: 899px) 100vw, 50vw"></figure>
+  </div>
+</section>

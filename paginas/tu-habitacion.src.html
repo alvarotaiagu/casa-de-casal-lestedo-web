@@ -1,0 +1,97 @@
+<!--pagina {"titulo":"Tu habitación · Casa de Casal","descripcion":"Tenemos la habitación perfecta para ti. Todas tienen televisor, secador de pelo, productos de acogida personalizados, esponjosas toallas y Wifi.","menu":"habitaciones","eti":"Habitaciones","h1":"Tu *habitación*","foto":"hab-mouros","foto_alt":"Cabecero tallado de una habitación, reflejado en un espejo antiguo"}-->
+<!DOCTYPE html>
+<html lang="es" data-raiz="{{raiz}}" class="cortina-fuera">
+<head>
+<!-- @incluye head -->
+</head>
+<body>
+
+<!-- @incluye cabecera -->
+
+<main id="principal">
+
+<!-- @incluye portadilla -->
+
+<!-- ============ su cita y «Tenemos la habitación perfecta para ti», encima de las fichas (spec 002 §3.4) ============ -->
+<section class="bienvenida clara" id="bienvenida" aria-labelledby="bienvenida-tit">
+  <div class="env bienvenida__in">
+    <blockquote class="cita cita--grande" data-revela><p>«Paso a paso ante mí se abre el camino. Recuerdos de tesoros naturales, deliciosos ágapes y buenas gentes traigo conmigo. Dulces sueños en mullidos lechos… cual reyes he dormido. Nada de esto antes había vivido.»</p></blockquote>
+    <div class="bienvenida__txt">
+      <h2 class="tit" id="bienvenida-tit" data-partir>Tenemos la habitación <em>perfecta para ti</em></h2>
+      <p>Todas tienen televisor, secador de pelo, productos de acogida personalizados, esponjosas toallas y Wifi. Como extras puedes solicitar gratis mini nevera y pack para infusiones.</p>
+      <p>Tú decides: baño relajante o una reconfortante ducha de lluvia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ los cinco tipos (salen de la portada: spec 001 §3.4.4 y §3.5) ============ -->
+<section class="habs habs--pagina oscura" id="tipos-de-habitacion" aria-labelledby="tipos-tit">
+  <div class="env">
+    <h2 class="vh" id="tipos-tit">Los tipos de habitación</h2>
+    <ul class="tipos" id="tipos">
+      <li class="tipo" data-tipo="clasica" data-revela>
+        <figure class="gable"><img data-foto="hab-clasica" alt="Habitación clásica con dos camas y colchas claras" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"></figure>
+        <div class="tipo__txt"><p class="eti">Planta baja · sin escaleras</p><h3>Clásicas</h3><p>Habitaciones clásicas en planta baja. Pensadas para ti, si necesitas evitar subir escaleras. Aquí se encuentra la habitación con baño adaptado. Son la opción más económica, pero con los mismos servicios.</p><p class="tipo__desde"><b>{{casa.precio.clasica}} €</b> desde, por noche</p><a class="enlace" href="{{raiz}}?tipo=clasica#reserva">Ver fechas<span class="vh">: Clásicas</span></a></div>
+      </li>
+      <li class="tipo" data-tipo="confort" data-revela>
+        <figure class="gable"><img data-foto="hab-confort" alt="Habitación con armario tallado a mano y cama de matrimonio" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"></figure>
+        <div class="tipo__txt"><p class="eti">Primera planta · vistas al valle</p><h3>Confort</h3><p>Gracias a su localización en la primera planta podrás admirar el precioso paisaje del Valle del Ulla desde la ventana. Son el lugar ideal para parejas más tradicionales con sus camas de matrimonio de 1,50. Paredes de piedra y muebles tallados a mano con un aire rústico-elegante.</p><p class="tipo__desde"><b>{{casa.precio.confort}} €</b> desde, por noche</p><a class="enlace" href="{{raiz}}?tipo=confort#reserva">Ver fechas<span class="vh">: Confort</span></a></div>
+      </li>
+      <li class="tipo" data-tipo="torre" data-revela>
+        <figure class="gable"><img data-foto="hab-torre" alt="Balcón abierto con una mesita, una botella de vino y dos copas" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"></figure>
+        <div class="tipo__txt"><p class="eti">Primera planta · balcón</p><h3>La Torre</h3><p>Asómate al balcón en la habitación La Torre. Una de las mejores vistas de la casa. Si eres de los que necesitan espacio para dormir, las dos camas de 1,05 se transforman, gracias al sobrecolchón de 2,10 × 1,90, en una de matrimonio donde perderte. Se puede añadir una supletoria.</p><p class="tipo__desde"><b>{{casa.precio.torre}} €</b> desde, por noche</p><a class="enlace" href="{{raiz}}?tipo=torre#reserva">Ver fechas<span class="vh">: La Torre</span></a></div>
+      </li>
+      <li class="tipo" data-tipo="terraza" data-revela>
+        <figure class="gable"><img data-foto="hab-terraza" alt="Terraza de madera con sillas de forja y un columpio de mimbre" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"></figure>
+        <div class="tipo__txt"><p class="eti">Primera planta · terraza de 12 m²</p><h3>Con terraza</h3><p>Nuestra habitación con terraza privada de 12 m² es la elección perfecta para disfrutar de las tardes de verano. Decorada con muebles blancos y algunos detalles en verde, es la más luminosa.</p><p class="tipo__desde"><b>{{casa.precio.terraza}} €</b> desde, por noche</p><a class="enlace" href="{{raiz}}?tipo=terraza#reserva">Ver fechas<span class="vh">: Con terraza</span></a></div>
+      </li>
+      <li class="tipo" data-tipo="familiar" data-revela>
+        <figure class="gable"><img data-foto="hab-familiar" alt="Habitación amplia con techo de madera y pared de piedra" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 45vw, 30vw"></figure>
+        <div class="tipo__txt"><p class="eti">Para 2 adultos y 2 niños</p><h3>Pico Sacro</h3><p>Si viajas con niños pequeños, en la habitación Pico Sacro tienes el espacio que necesitas. Consta de dos camas de matrimonio. Máximo 2 adultos y 2 niños.</p><p class="tipo__desde"><b>{{casa.precio.familiar}} €</b> desde, por noche</p><a class="enlace" href="{{raiz}}?tipo=familiar#reserva">Ver fechas<span class="vh">: Pico Sacro</span></a></div>
+      </li>
+    </ul>
+
+    <div class="tabla-envoltura">
+      <table class="tabla-habs">
+        <caption>Las habitaciones, de un vistazo</caption>
+        <thead><tr><th scope="col">Tipo</th><th scope="col">Planta</th><th scope="col">Camas</th><th scope="col">Lo suyo</th><th scope="col">Desde</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Clásicas</th><td>Baja</td><td>Doble</td><td>Sin escaleras; baño adaptado</td><td>{{casa.precio.clasica}} €</td></tr>
+          <tr><th scope="row">Confort</th><td>Primera</td><td>1,50</td><td>Vistas al valle del Ulla</td><td>{{casa.precio.confort}} €</td></tr>
+          <tr><th scope="row">La Torre</th><td>Primera</td><td>2 × 1,05 (o 2,10)</td><td>Balcón; supletoria</td><td>{{casa.precio.torre}} €</td></tr>
+          <tr><th scope="row">Con terraza</th><td>Primera</td><td>Doble</td><td>Terraza privada de 12 m²</td><td>{{casa.precio.terraza}} €</td></tr>
+          <tr><th scope="row">Pico Sacro</th><td>—</td><td>2 de matrimonio</td><td>Familiar, 2 + 2</td><td>{{casa.precio.familiar}} €</td></tr>
+          <tr><th scope="row">Casa Pequena</th><td>Aparte</td><td>1,60 × 2,00</td><td>Cocina y jardín propios</td><td>Consultar</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="nombres" data-revela>
+      <h2>Cada habitación, una leyenda</h2>
+      <p class="suave">Las habitaciones llevan nombres de los personajes y las leyendas de alrededor.</p>
+      <ul class="nombres__lista">
+        <li><img data-foto="hab-mouros" alt="Cabecero tallado reflejado en un espejo antiguo" sizes="160px"><span>Os Mouros</span></li>
+        <li><img data-foto="hab-coruxa" alt="Ventana con cortina y una silla tallada" sizes="160px"><span>A Coruxa</span></li>
+        <li><img data-foto="hab-regulo" alt="Bandeja de desayuno sobre la colcha" sizes="160px"><span>O Régulo</span></li>
+        <li><img data-foto="hab-encanto" alt="Toallas bordadas con el nombre de la casa" sizes="160px"><span>El Encanto</span></li>
+        <li><img data-foto="hab-peregrino" alt="Mochila, bastón y sombrero de peregrino sobre la cama" sizes="160px"><span>Peregrino</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!--sigue-leyendo-->
+
+<!-- @incluye te-quedas -->
+
+</main>
+
+<!-- @incluye pie -->
+
+<!-- @incluye barra -->
+
+<!-- @incluye cookies -->
+
+<!-- @incluye scripts -->
+</body>
+</html>

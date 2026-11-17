@@ -1,0 +1,19 @@
+{
+  "_nota": "Datos que cambian cada temporada (spec 001 §3.3). Única fuente: las páginas y el JS los leen de aquí. Fechas «MM-DD». Tras cambiarlos: node construir.mjs.",
+  "piscina": { "desde": "06-01", "hasta": "09-20" },
+  "temporadas": {
+    "habitaciones": { "desde": "04-01", "hasta": "10-31", "nota": "Habitaciones con desayuno" },
+    "entera": { "desde": "11-01", "hasta": "03-31", "nota": "La casa grande entera" }
+  },
+  "notas": {
+    "booking": { "nota": 9.6, "recuento": 302, "mirado": "2026-10-16" },
+    "google": { "nota": 4.9, "recuento": 315, "mirado": "2026-10-16" },
+    "tripadvisor": { "nota": 4.7, "recuento": 79, "mirado": "2026-10-16" }
+  },
+  "precios": {
+    "provisional": true,
+    "_nota": "P-21: los «desde» de 2022 de su web y la casa entera de su portada de 2025 (la tercera noche, supuesta). Los decide la 003.",
+    "desde": { "clasica": 58, "confort": 68, "torre": 70, "terraza": 75, "familiar": 85 },
+    "entera": { "una": 675, "dos": 1190, "noche_mas": 595, "plazas": 22 }
+  }
+}

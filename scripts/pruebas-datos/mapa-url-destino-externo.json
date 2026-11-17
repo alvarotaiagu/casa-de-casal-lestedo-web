@@ -1,0 +1,4 @@
+[
+  { "ruta": "/", "accion": "pagina", "destino": "/", "spec": "001", "nota": "Ejemplo malo: un 301 a otro dominio" },
+  { "ruta": "/viejo/", "accion": "301", "destino": "//otro.com", "spec": "001", "nota": "" }
+]

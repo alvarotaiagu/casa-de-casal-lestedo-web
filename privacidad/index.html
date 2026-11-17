@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es" data-raiz="../" class="cortina-fuera">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Privacidad · Casa de Casal</title>
+<meta name="description" content="Qué datos personales tratamos cuando nos escribes o reservas, para qué los usamos, cuánto tiempo los guardamos y cómo ejercer tus derechos.">
+<meta name="theme-color" content="#121a24">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Privacidad · Casa de Casal">
+<meta property="og:description" content="Qué datos personales tratamos cuando nos escribes o reservas, para qué los usamos, cuánto tiempo los guardamos y cómo ejercer tus derechos.">
+<meta property="og:image" content="../img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- script bloqueante: clases antes del primer pintado -->
+<script>
+(function (d) {
+  var h = d.documentElement;
+  h.classList.add('js');
+  // MANDO DE MAQUETA (no viaja al cliente): solo con ?revision
+  try {
+    var q = new URLSearchParams(location.search);
+    if (q.has('revision')) {
+      h.classList.add('revision');
+      if (q.get('densidad') === 'sobria') h.classList.add('densidad-sobria');
+    }
+  } catch (e) {}
+  // la cortina de la portada, una vez por sesión y nunca si se llega con ancla
+  // (spec 001 §3.1.7): sin ella antes del primer pintado. Si sessionStorage
+  // falla, sale como siempre. main.js guarda la marca al terminar la cortina.
+  try {
+    if (location.hash.length > 1 || sessionStorage.getItem('cdc-cortina')) h.classList.add('cortina-fuera');
+  } catch (e) {}
+  // red de seguridad por si main.js no llega: la cortina se va sola
+  window.__redCortina = setTimeout(function () { h.classList.add('cortina-fuera'); }, 6500);
+})(document);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="../css/estilos.css?v=29f46243">
+<link rel="icon" href="../marca/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../marca/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.json">
+<noscript><style>.cortina{display:none!important}</style></noscript>
+<link rel="stylesheet" href="../css/legal.css?v=064be1a9">
+<script type="application/json" id="datos-casa">{"piscina":{"desde":"06-01","hasta":"09-20"},"temporadas":{"habitaciones":{"desde":"04-01","hasta":"10-31","nota":"Habitaciones con desayuno"},"entera":{"desde":"11-01","hasta":"03-31","nota":"La casa grande entera"}},"notas":{"booking":{"nota":9.6,"recuento":302,"mirado":"2026-10-16"},"google":{"nota":4.9,"recuento":315,"mirado":"2026-10-16"},"tripadvisor":{"nota":4.7,"recuento":79,"mirado":"2026-10-16"}},"precios":{"provisional":true,"desde":{"clasica":58,"confort":68,"torre":70,"terraza":75,"familiar":85},"entera":{"una":675,"dos":1190,"noche_mas":595,"plazas":22}}}</script>
+</head>
+<body>
+
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<!-- ============ cabecera: el tejado se dora al leer ============ -->
+<header class="cab" id="cab">
+  <div class="cab__in">
+    <a class="cab__marca" href="../#principal" aria-label="Casa de Casal, a la portada">
+      <img class="cab__logo cab__logo--blanco" src="../marca/logo-blanco-300.png" alt="" width="300" height="162">
+      <img class="cab__logo cab__logo--oro" src="../marca/logo-oro-300.png" alt="" width="300" height="162">
+    </a>
+    <span class="cab__lectura" aria-hidden="true"><img src="../marca/tejado-oro-120.png" alt="" width="120" height="117"><img class="lleno" src="../marca/tejado-oro-120.png" alt="" width="120" height="117"></span>
+    <nav class="cab__nav" aria-label="Secciones">
+      <a href="../#casa">La casa</a>
+      <a href="../tu-habitacion/">Habitaciones</a>
+      <a href="../#finca">La finca</a>
+      <a href="../pico-sacro-v2/">El Pico</a>
+      <a href="../entorno/">Entorno</a>
+      <a href="../#llegar">Cómo llegar</a>
+    </nav>
+    <a class="btn btn--oro cab__cta" href="../#reserva">Reservar</a>
+    <button class="cab__menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="vh">Menú</span><i></i><i></i></button>
+  </div>
+</header>
+<div class="menu-movil" id="menu-movil" aria-hidden="true">
+  <!-- la lista se desplaza; el teléfono queda fijo al pie del panel (spec 002 §3.5) -->
+  <div class="menu-movil__lista" data-lenis-prevent>
+    <nav aria-label="Secciones">
+      <a href="../#casa">La casa</a>
+      <a href="../tu-habitacion/">Habitaciones</a>
+      <a href="../#finca">La finca</a>
+      <a href="../pico-sacro-v2/">El Pico</a>
+      <a href="../entorno/">Entorno</a>
+      <a href="../#llegar">Cómo llegar</a>
+      <a href="../#reserva">Reservar</a>
+    </nav>
+    <div class="menu-movil__grupos">
+      <p class="menu-movil__eti" id="menu-grupo-casa">La casa</p>
+      <ul aria-labelledby="menu-grupo-casa">
+        <li><a href="../casa-pequena-do-casal/">Casa Pequena</a></li>
+        <li><a href="../desayunos-artesanos/">Desayunos</a></li>
+        <li><a href="../manjares-gallegos/">Manjares gallegos</a></li>
+        <li><a href="../contactar/">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="menu-movil__tel"><a href="tel:+34698148323">698 148 323</a> · teléfono y WhatsApp</p>
+</div>
+
+<main id="principal" class="legal">
+  <header class="legal__cab oscura">
+    <div class="env">
+      <h1>Política de privacidad</h1>
+    </div>
+  </header>
+  <div class="legal__texto clara">
+    <div class="env">
+<h2>Responsable</h2>
+<p class="aviso">PENDIENTE: nombre o razón social del titular y NIF/CIF (no aparecen en su web actual).</p>
+<dl>
+  <dt>Nombre comercial</dt><dd>Casa de Casal</dd>
+  <dt>Domicilio</dt><dd>Rúa Pedro Ballesteros, 17 · 15881 Lestedo, Boqueixón (A Coruña)</dd>
+  <dt>Teléfono</dt><dd><a href="tel:+34698148323">698 148 323</a></dd>
+  <dt>Correo</dt><dd><a href="mailto:info@casadecasal.com">info@casadecasal.com</a></dd>
+</dl>
+<h2>Qué datos tratamos y para qué</h2>
+<p>Solo los que nos mandas al hacer una consulta o una reserva (por WhatsApp, teléfono o correo): nombre, móvil, correo, fechas, número de personas y lo que quieras contarnos. Los usamos para contestarte y, si reservas, para gestionar tu estancia.</p>
+<p>El motor de reservas de esta web es, por ahora, una demostración: lo que escribas en él no sale de tu navegador ni se guarda.</p>
+<h2>Base legal y plazos</h2>
+<p>La base es tu consentimiento al escribirnos y, si reservas, la ejecución del contrato de alojamiento. Conservamos los datos el tiempo necesario para atender la consulta y, en las reservas, los plazos que exige la ley (incluido el registro de viajeros).</p>
+<h2>Con quién se comparten</h2>
+<p>Con nadie, salvo obligación legal. Si nos escribes por WhatsApp, ese servicio trata el mensaje según sus propias políticas.</p>
+<h2>Tus derechos</h2>
+<p>Puedes pedir el acceso, la rectificación, la supresión, la oposición, la limitación o la portabilidad de tus datos en <a href="mailto:info@casadecasal.com">info@casadecasal.com</a>. Si crees que no se han respetado, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es">aepd.es</a>).</p>
+<h2>Lo que guarda esta web en tu navegador</h2>
+<p>Dos marcas técnicas, sin ningún dato personal:</p>
+<ul>
+  <li><code>casal-cookies</code>, en el almacenamiento local, para recordar que ya has visto el aviso de cookies.</li>
+  <li><code>cdc-cortina</code>, en el almacenamiento de la sesión, para no repetir la entrada de la portada cada vez que vuelves a ella. Se borra sola al cerrar el navegador.</li>
+</ul>
+<p>Más detalles en <a href="../cookies/">cookies</a>.</p>
+    </div>
+  </div>
+</main>
+
+<!-- ============ pie: el tejado se posa sobre la C ============ -->
+<footer class="pie" id="pie">
+  <div class="env">
+    <div class="pie__marca">
+      <div class="pie__logo" role="img" aria-label="Casa de Casal">
+        <img class="pie__entero" src="../marca/logo-oro-sin-tejado-840.png" alt="" width="840" height="454" loading="lazy">
+        <img class="pie__tejado" src="../marca/tejado-oro-290.png" alt="" width="290" height="282" loading="lazy">
+      </div>
+      <p>Casa de labranza en una finca de cuatro hectáreas, al pie del Pico Sacro.</p>
+    </div>
+    <div class="pie__cols">
+      <div>
+        <h2>Dónde estamos</h2>
+        <address>Rúa Pedro Ballesteros, 17<br>15881 Lestedo, Boqueixón (A Coruña)</address>
+        <p>Registro de turismo TR-CO-000081</p>
+      </div>
+      <div>
+        <h2>Contacto</h2>
+        <ul>
+          <li><a href="tel:+34698148323">698 148 323</a> · teléfono y WhatsApp</li>
+          <li><a href="mailto:info@casadecasal.com">info@casadecasal.com</a></li>
+        </ul>
+      </div>
+      <div class="pie__web">
+        <div class="pie__grupos">
+          <div class="pie__grupo">
+            <h2>La casa</h2>
+            <ul>
+              <li><a href="../tu-habitacion/">Habitaciones</a></li>
+              <li><a href="../casa-pequena-do-casal/">Casa Pequena</a></li>
+              <li><a href="../desayunos-artesanos/">Desayunos</a></li>
+              <li><a href="../manjares-gallegos/">Manjares gallegos</a></li>
+              <li><a href="../contactar/">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="pie__grupo">
+            <h2>Alrededores</h2>
+            <ul>
+              <li><a href="../entorno/">Entorno</a></li>
+              <li><a href="../pico-sacro-v2/">El Pico</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="pie__reservar"><a href="../#reserva">Reservar</a></p>
+      </div>
+    </div>
+    <div class="pie__legal">
+      <span>© <span id="anno">2026</span> Casa de Casal</span>
+      <a href="../aviso-legal/">Aviso legal</a>
+      <a href="../privacidad/" aria-current="page">Privacidad</a>
+      <a href="../cookies/">Cookies</a>
+      <a href="../accesibilidad/">Accesibilidad</a>
+      <button type="button" id="abrir-cookies">Preferencias de cookies</button>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Esta web no usa cookies de análisis ni de publicidad. Guarda en tu navegador que has visto este aviso; el mapa de Google y el tiempo del Pico solo se cargan si los pides o al llegar a su sección. <a href="../cookies/">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--oro" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--hueco" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<script src="../js/comun.js?v=57816bb1" defer></script>
+</body>
+</html>

@@ -20,7 +20,11 @@ const srv = http.createServer((req, res) => {
 });
 await new Promise((r) => srv.listen(8783, r));
 const CACHE = path.join(os.tmpdir(), 'neixon-cdn');
-const b = await chromium.launch();
+// las fotos del carrusel de estancias, tal como salen en la portada (CA-22 bis)
+const ESTANCIAS = [...fs.readFileSync(path.join(RAIZ, 'index.html'), 'utf8').matchAll(/<figure class="estancias__foto[^"]*"[^>]*><picture data-foto="([^"]+)"/g)].map((m) => m[1]);
+if (!ESTANCIAS.length) throw new Error('No encuentro las fotos de estancias en index.html (¿falta node construir.mjs?)');
+const b = await chromium.launch();   // un navegador, cerrado en el finally (../CLAUDE.md)
+try {
 for (let n = 1; n <= 3; n++) {
   const ctx = await b.newContext({ viewport: { width: 412, height: 915 }, deviceScaleFactor: 2.625, isMobile: true, hasTouch: true });
   await ctx.route(/(gsap\.min|ScrollTrigger\.min|lenis\.min)\.js$/, (r) => r.fulfill({ status: 200, contentType: 'text/javascript', body: fs.readFileSync(path.join(CACHE, r.request().url().split('/').pop())) }));
@@ -31,7 +35,7 @@ for (let n = 1; n <= 3; n++) {
   await cdp.send('Network.emulateNetworkConditions', { offline: false, latency: 150, downloadThroughput: (1.6 * 1024 * 1024) / 8, uploadThroughput: (750 * 1024) / 8 });
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
   await page.addInitScript(() => {
-    try { localStorage.setItem('garrido-cookies', 'si'); } catch (e) {}
+    try { localStorage.setItem('casal-cookies', 'si'); } catch (e) {}
     window.__lcp = null; window.__long = [];
     new PerformanceObserver((l) => { const e = l.getEntries().pop(); window.__lcp = { t: e.startTime, url: e.url || e.element?.tagName }; }).observe({ type: 'largest-contentful-paint', buffered: true });
     new PerformanceObserver((l) => l.getEntries().forEach((e) => window.__long.push(Math.round(e.duration)))).observe({ type: 'longtask', buffered: true });
@@ -43,8 +47,15 @@ for (let n = 1; n <= 3; n++) {
   await page.waitForFunction(() => document.documentElement.classList.contains('cortina-fuera'), null, { timeout: 30000 });
   const fuera = Date.now() - t0;
   await page.waitForTimeout(800);
-  const r = await page.evaluate(() => ({ lcp: window.__lcp, long: window.__long }));
-  console.log(`pasada ${n}: LCP ${Math.round(r.lcp.t)} ms (${String(r.lcp.url).split('/').pop()}) · portal fuera ${fuera} ms · ${reqs} peticiones, ${(bytes / 1024).toFixed(0)} KB · tareas largas ${JSON.stringify(r.long)}`);
+  // CA-22 bis: del carrusel de estancias solo se pide la primera foto antes de que cargue la página
+  const r = await page.evaluate((nombres) => {
+    const nav = performance.getEntriesByType('navigation')[0];
+    const estancias = performance.getEntriesByType('resource').filter((e) => e.startTime < (nav.loadEventEnd || performance.now()) && nombres.some((x) => e.name.includes('/img/fotos/' + x + '-'))).map((e) => e.name.split('/').pop());
+    return { lcp: window.__lcp, long: window.__long, estancias };
+  }, ESTANCIAS);
+  console.log(`pasada ${n}: LCP ${Math.round(r.lcp.t)} ms (${String(r.lcp.url).split('/').pop()}) · portal fuera ${fuera} ms · ${reqs} peticiones, ${(bytes / 1024).toFixed(0)} KB · tareas largas ${JSON.stringify(r.long)} · estancias antes de load: ${r.estancias.join(', ') || 'ninguna'}`);
   await ctx.close();
 }
-await b.close(); srv.close();
+} finally {
+  await b.close(); srv.close();
+}

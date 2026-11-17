@@ -1,0 +1,161 @@
+<!--pagina {"titulo":"Pico Sacro · Casa de Casal","descripcion":"El Pico Sacro, antiguo Monte Ilicino, cerca de Casa de Casal: las leyendas de la Reina Lupa, sus cuevas, la capilla de San Sebastián y el mirador.","menu":"pico","eti":"El Pico Sacro","h1":"El monte de *la Reina Lupa*","foto":"portada-pico","foto_alt":"La casa entre árboles con el Pico Sacro detrás"}-->
+<!DOCTYPE html>
+<html lang="es" data-raiz="{{raiz}}" class="cortina-fuera">
+<head>
+<!-- @incluye head -->
+<!--sitio:jsonld-->
+</head>
+<body>
+
+<!-- @incluye cabecera -->
+
+<main id="principal">
+
+<!-- @incluye portadilla -->
+
+<!-- ============ las leyendas del Pico y «Subir» (salen de la portada: spec 001 §3.4.9 y §3.5; desde la 002, en el HTML) ============ -->
+<section class="pico pico--pagina" id="leyendas" aria-labelledby="leyendas-sec-tit">
+  <div class="env">
+    <h2 class="vh" id="leyendas-sec-tit">Las leyendas del Pico Sacro</h2>
+    <div class="leyendas" data-revela>
+      <div class="leyendas__fotos">
+        <figure class="gable"><img data-foto="pico-capilla" alt="La capilla de San Sebastián en la cima rocosa del Pico Sacro" sizes="(max-width: 899px) 50vw, 22vw"><figcaption>La capilla de San Sebastián</figcaption></figure>
+        <figure class="gable"><img data-foto="pico-paso" alt="El paso de la Reina Lupa, un corte vertical en la roca" sizes="(max-width: 899px) 50vw, 22vw"><figcaption>El paso de la Reina Lupa</figcaption></figure>
+      </div>
+      <div class="leyendas__lista" role="tablist" aria-label="Leyendas del Pico Sacro" id="leyendas-lista">
+        <button type="button" role="tab" id="leyenda-0" aria-controls="leyenda-0-hoja" aria-selected="true">La Reina Lupa</button>
+        <button type="button" role="tab" id="leyenda-1" aria-controls="leyenda-1-hoja" aria-selected="false" tabindex="-1">El dragón del monte Ilicino</button>
+        <button type="button" role="tab" id="leyenda-2" aria-controls="leyenda-2-hoja" aria-selected="false" tabindex="-1">El paso de la Reina Lupa</button>
+        <button type="button" role="tab" id="leyenda-3" aria-controls="leyenda-3-hoja" aria-selected="false" tabindex="-1">Las cuevas</button>
+        <button type="button" role="tab" id="leyenda-4" aria-controls="leyenda-4-hoja" aria-selected="false" tabindex="-1">Los mouros</button>
+        <button type="button" role="tab" id="leyenda-5" aria-controls="leyenda-5-hoja" aria-selected="false" tabindex="-1">Los refranes del tiempo</button>
+      </div>
+      <div class="leyendas__hojas" id="leyendas-hojas">
+        <div class="leyendas__hoja" id="leyenda-0-hoja" role="tabpanel" aria-labelledby="leyenda-0" tabindex="0">
+          <span class="leyendas__cap" aria-hidden="true">L</span>
+          <h3>La Reina Lupa</h3>
+          <p><span class="vh">L</span>os discípulos del Apóstol pararon en este monte para pedirle a la Reina Lupa unos bueyes y un carro con que llevar su cuerpo. Ella, aliada de los romanos, los mandó al bosque donde vivía un dragón.</p>
+        </div>
+        <div class="leyendas__hoja" id="leyenda-1-hoja" role="tabpanel" aria-labelledby="leyenda-1" tabindex="0" hidden>
+          <span class="leyendas__cap" aria-hidden="true">E</span>
+          <h3>El dragón del monte Ilicino</h3>
+          <p><span class="vh">E</span>ste cuento podría haber acabado mal, pero el dragón cayó con las plegarias de los discípulos. La reina, al ver el milagro, se convirtió al cristianismo.</p>
+        </div>
+        <div class="leyendas__hoja" id="leyenda-2-hoja" role="tabpanel" aria-labelledby="leyenda-2" tabindex="0" hidden>
+          <span class="leyendas__cap" aria-hidden="true">L</span>
+          <h3>El paso de la Reina Lupa</h3>
+          <p><span class="vh">L</span>a cumbre está partida en dos por un corte vertical. Dicen que lo abrió un gigante con su espada; otros, que era la puerta del palacio de la reina.</p>
+        </div>
+        <div class="leyendas__hoja" id="leyenda-3-hoja" role="tabpanel" aria-labelledby="leyenda-3" tabindex="0" hidden>
+          <span class="leyendas__cap" aria-hidden="true">N</span>
+          <h3>Las cuevas</h3>
+          <p><span class="vh">N</span>adie sabe bien quién las hizo: unos dicen que los romanos, buscando oro, y otros que son naturales. A los niños les encanta la primera, porque se puede entrar un poco.</p>
+        </div>
+        <div class="leyendas__hoja" id="leyenda-4-hoja" role="tabpanel" aria-labelledby="leyenda-4" tabindex="0" hidden>
+          <span class="leyendas__cap" aria-hidden="true">A</span>
+          <h3>Los mouros</h3>
+          <p><span class="vh">A</span> lo largo de los siglos el Pico ha sido el centro de muchas leyendas: desde gigantes que vivían en su interior hasta historias de moros escondidos en sus entrañas.</p>
+        </div>
+        <div class="leyendas__hoja" id="leyenda-5-hoja" role="tabpanel" aria-labelledby="leyenda-5" tabindex="0" hidden>
+          <span class="leyendas__cap" aria-hidden="true">C</span>
+          <h3>Los refranes del tiempo</h3>
+          <p><span class="vh">C</span>uando el Pico pone toquilla, agua tenemos, mucha o poquilla. En el valle del Ulla se mira al monte para saber si va a llover, y hay un refrán para cada nube.</p>
+        </div>
+      </div>
+      <p class="leyendas__subir"><b>Subir:</b> siete minutos en coche hasta el aparcamiento y unas escaleras hasta la cima. Desde arriba se ven unos 30 km a la redonda. Parte del camino es la Vía de la Plata.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ el resto de su página (spec 002 §3.4), sin repetir lo que dicen las leyendas ============ -->
+<section class="texto clara" id="monte-ilicino" aria-labelledby="monte-ilicino-tit">
+  <div class="env">
+    <h2 class="tit" id="monte-ilicino-tit">Monte <em>Ilicino</em></h2>
+    <p>Conocido en tiempos antiguos como Monte Ilicino, está directamente relacionado con la llegada de los discípulos del Apóstol Santiago.</p>
+    <p>Vinieron hasta Galicia porque querían enterrarlo en las tierras donde había predicado.</p>
+    <p>El Pico Sacro está tan arraigado en la zona, que es tema principal de dichos y refranes locales, sobre todo relacionados con la meteorología.</p>
+    <ul>
+      <li>«Cuando el Pico cubre el cabello, chicas del Ulla poned el pañuelo»</li>
+      <li>«San Cristóbal con gorro, agua hasta el morro»</li>
+    </ul>
+  </div>
+</section>
+
+<section class="texto clara" id="capilla" aria-labelledby="capilla-tit">
+  <div class="env">
+    <h2 class="tit" id="capilla-tit">Capilla de <em>San Sebastián</em></h2>
+    <p>En el S. XV tuvo lugar en Galicia la revuelta de los Irmandiños. Al igual que sucedería en Francia tres siglos después, el pueblo cansado de los abusos de los nobles decidió rebelarse.</p>
+    <p>Así que asaltaron y destruyeron sus fortalezas, entre ellas el monasterio que había en el Pico Sacro. Los vecinos aprovecharon las piedras de sus muros para hacer casas.</p>
+    <p>En la actualidad el único edificio que se conserva en su cima es la capilla de San Sebastián.</p>
+    <p>Está construida sobre la roca de la montaña. Solamente se abre dos veces al año para sendas romerías, en el mes de enero y mayo.</p>
+    <p>El presbiterio data del S. XI, la Capilla Mayor es románica.</p>
+  </div>
+</section>
+
+<section class="texto clara" id="mirador" aria-labelledby="mirador-tit">
+  <div class="env">
+    <h2 class="tit" id="mirador-tit">Pico Sacro, mirador <em>de estrellas</em></h2>
+    <p>Lo cierto es que desde su cima hay unas impresionantes vistas que abarcan unos 30 km a la redonda, convirtiendo esta montaña en un lugar privilegiado para mirar las estrellas o simplemente contemplar el paisaje.</p>
+    <p>Gracias a unos paneles informativos podemos saber qué pueblos estamos viendo desde este mirador natural.</p>
+    <p>Una vez al año, en verano, el Ayuntamiento organiza una noche de observación de estrellas, siempre con la ayuda de expertos en la materia.</p>
+  </div>
+</section>
+
+<section class="texto clara" id="como-llegar" aria-labelledby="como-llegar-tit">
+  <div class="env">
+    <h2 class="tit" id="como-llegar-tit">¿Cómo llegar <em>al Pico Sacro</em>?</h2>
+    <p>Para llegar a este lugar mítico hay que conducir hasta Lestedo, al final del pueblo viniendo de Santiago, estaban los primeros indicadores.</p>
+    <p>Un cambio en la señalización horizontal obligó a tener que coger el segundo desvío, hacia el campo de fútbol de Lestedo, para ir hasta la montaña.</p>
+    <p>Parte del trazado discurre por la Vía de la Plata. Por eso son numerosos los peregrinos que deciden desviarse del Camino para subir hasta su cima.</p>
+    <p><a class="enlace" href="{{sitio.maps}}" target="_blank" rel="noopener">Abrir en Google Maps</a><span class="vh"> (se abre en otra pestaña)</span></p>
+    <p>Cuando era niña había que trepar por las rocas para poder subir hasta la parte más alta. Desde hace unos años hay escaleras para poder subir.</p>
+    <p>En el suelo, cerca de la cima, hay varios postes de madera con códigos QR para enlazar con las Webs del Ayuntamiento. Allí encontrarás información más detallada sobre el Pico Sacro.</p>
+  </div>
+</section>
+
+<section class="texto clara" id="cuevas" aria-labelledby="cuevas-tit">
+  <div class="env">
+    <h2 class="tit" id="cuevas-tit">Las cuevas <em>del Pico Sacro</em></h2>
+    <p>No puedo olvidarme de las cuevas del Pico Sacro.</p>
+    <p>Hay dos cuevas. A una de ellas, la que tiene una galería ascendente, se llega cruzando la montaña de un lado al otro a través del Paso de la Reina Lupa, un corte vertical que divide la montaña en dos.</p>
+    <p>A la cueva con la galería descendente se va por un sendero que baja desde la parte inferior de la Capilla de San Sebastián.</p>
+    <p>A los niños les encanta visitar la primera cueva, ya que se puede acceder un poco en su interior y no es peligrosa de visitar. Mejor entrar con una linterna, lo hace más interesante.</p>
+    <p>Hace unos años un equipo de espeleólogos se adentraron en ellas. Al parecer las cuevas se unen en su interior.</p>
+    <p>La cueva descendente tiene tallados unos escalones. Mejor no acercarse porque parece peligroso. He visto quien tira piedras en su interior. Es una tradición que se remonta muchos años atrás. Se supone que era para ahuyentar al dragón que vivía dentro.</p>
+  </div>
+</section>
+
+<section class="texto clara" id="centro-de-interpretacion" aria-labelledby="centro-tit">
+  <div class="env">
+    <h2 class="tit" id="centro-tit">Centro de Interpretación <em>del Pico Sacro</em></h2>
+    <p>A pocos metros de Casa de Casal se encuentra el Centro de Interpretación del Pico Sacro.</p>
+    <p>Este edificio fue casa rectoral. En la actualidad alberga un museo dedicado a esta mítica montaña.</p>
+    <p>Para visitarlo es necesario pedir cita en el <a class="enlace" href="https://www.boqueixon.gal/" target="_blank" rel="noopener">Ayuntamiento de Boqueixón<span class="vh"> (se abre en otra pestaña)</span></a>.</p>
+  </div>
+</section>
+
+<section class="texto clara" id="calle-de-la-reina-lupa" aria-labelledby="calle-tit">
+  <div class="env">
+    <p class="eti">Misterios del pasado</p>
+    <h2 class="tit" id="calle-tit">Calle de la <em>Reina Lupa</em></h2>
+    <p>La cima del Pico Sacro está dividida en dos mitades por el llamado Paso o calle de la Reina Lupa.</p>
+    <p>Se desconoce su origen. Hay quien dice que servía para dar acceso a una de las cuevas. Sería algo sin sentido porque se puede llegar por otro sendero.</p>
+    <p class="suave">Galicia es mágica, mires donde mires.</p>
+  </div>
+</section>
+
+<!--sigue-leyendo-->
+
+<!-- @incluye te-quedas -->
+
+</main>
+
+<!-- @incluye pie -->
+
+<!-- @incluye barra -->
+
+<!-- @incluye cookies -->
+
+<!-- @incluye scripts -->
+</body>
+</html>

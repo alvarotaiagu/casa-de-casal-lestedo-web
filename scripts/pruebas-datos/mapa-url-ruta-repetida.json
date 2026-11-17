@@ -1,0 +1,5 @@
+[
+  { "ruta": "/", "accion": "pagina", "destino": "/", "spec": "001", "nota": "Ejemplo malo: una ruta repetida" },
+  { "ruta": "/entorno/", "accion": "pagina", "destino": "/entorno/", "spec": "002", "nota": "" },
+  { "ruta": "/entorno/", "accion": "301", "destino": "/", "spec": "001", "nota": "" }
+]

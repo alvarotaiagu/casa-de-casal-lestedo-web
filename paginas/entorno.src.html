@@ -1,0 +1,79 @@
+<!--pagina {"titulo":"Entorno: qué visitar cerca de Santiago · Casa de Casal","descripcion":"¿Qué visitar en los alrededores de Santiago de Compostela? El Pico Sacro, el Pazo de Oca, la Fervenza del río Toxa, Carboeiro y la Vía de la Plata.","menu":"entorno","eti":"Entorno","h1":"Toda Galicia, *sin perder el día* en la carretera","foto":"portada-pico","foto_alt":"La casa entre árboles con el Pico Sacro detrás"}-->
+<!DOCTYPE html>
+<html lang="es" data-raiz="{{raiz}}" class="cortina-fuera">
+<head>
+<!-- @incluye head -->
+</head>
+<body>
+
+<!-- @incluye cabecera -->
+
+<main id="principal">
+
+<!-- @incluye portadilla -->
+
+<!-- ============ el mapa en grande, la regla de minutos y la lista (salen de la portada: spec 001 §3.4.11 y §3.5) y las tarjetas de su página (spec 002 §3.4) ============ -->
+<section class="alrededores alrededores--pagina clara" id="alrededores" aria-labelledby="alr-tit">
+  <div class="env">
+    <h2 class="tit alrededores__tit" id="alr-tit" data-partir>¿Qué visitar en los alrededores <em>de Santiago de Compostela</em>?</h2>
+    <!--mapa:grande-->
+    <div class="regla" id="regla" role="img" aria-label="Minutos en coche desde la casa"></div>
+    <!--alrededores:lista-->
+    <p class="regla__fuente">Tiempos en coche aproximados. Santiago y el aeropuerto, según la casa; el resto, calculados con OpenStreetMap.</p>
+    <!-- una tarjeta de texto por sitio, el Pico y la Vía, con su texto de /entorno/ (spec 002 §3.4); «Leer más» solo se ve si la página está construida -->
+    <ul class="tarjetas">
+      <li class="tarjeta">
+        <h3>Ruta molinos de Vedra</h3>
+        <p>Una ruta corta de senderismo junto al río, con molinos restaurados.</p>
+        <p class="tarjeta__mas">{{enlace:ruta-molinos-vedra-v2|Leer más<span class="vh">: Molinos de Vedra</span>}}</p>
+      </li>
+      <li class="tarjeta">
+        <h3>Monasterio de Carboeiro</h3>
+        <p>Este monasterio románico se encuentra en un paraje natural de gran belleza. Fue construido por discípulos del Maestre Mateo, artífice del Pórtico de la Gloria.</p>
+        <p class="tarjeta__mas">{{enlace:monasterio-de-carboeiro-v2|Leer más<span class="vh">: Monasterio de Carboeiro</span>}}</p>
+      </li>
+      <li class="tarjeta">
+        <h3>Pazo de Ortigueira</h3>
+        <p>Se dedica al cultivo de la camelia. Se pueden visitar sus jardines, en los que destaca el paseo de los olivos, pero también sus fuentes y cascadas.</p>
+        <p class="tarjeta__mas">{{enlace:pazo-de-ortigueira-v2|Leer más<span class="vh">: Pazo de Ortigueira</span>}}</p>
+      </li>
+      <li class="tarjeta">
+        <h3>Pazo de Oca</h3>
+        <p>Situado a 12 km, pertenece a los duques de Medinaceli. Se le conoce como el Versalles gallego. En sus jardines se encuentran, entre otras curiosidades, los setos de boj más antiguos de Europa.</p>
+        <p class="tarjeta__mas">{{enlace:pazo-de-oca-v2|Leer más<span class="vh">: Pazo de Oca</span>}}</p>
+      </li>
+      <li class="tarjeta">
+        <h3>Fervenza del río Toxa</h3>
+        <p>Considerada la cascada más alta de Galicia, la Fervenza del río Toxa tiene una caída vertical de más de 30 metros.</p>
+        <p class="tarjeta__mas">{{enlace:fervenza-del-rio-toxa-v2|Leer más<span class="vh">: Fervenza del Toxa</span>}}</p>
+      </li>
+      <li class="tarjeta">
+        <h3>Pico Sacro</h3>
+        <p>Conocido en tiempos antiguos como Monte Ilicino, está directamente relacionado con la llegada de los discípulos del Apóstol Santiago para enterrarlo en las tierras donde había predicado.</p>
+        <p class="tarjeta__mas">{{enlace:pico-sacro-v2|Leer más<span class="vh">: El Pico</span>}}</p>
+      </li>
+      <li class="tarjeta">
+        <h3>Etapas de la Vía de la Plata</h3>
+        <p>Apenas me he encontrado con peregrinos que hayan escogido esta ruta para iniciarse en la experiencia del peregrinaje a Santiago de Compostela.</p>
+        <p class="tarjeta__mas">{{enlace:via-de-la-plata-v2|Leer más<span class="vh">: Vía de la Plata</span>}}</p>
+      </li>
+    </ul>
+    <!-- @incluye peregrinos -->
+  </div>
+</section>
+
+<!--sigue-leyendo-->
+
+<!-- @incluye te-quedas -->
+
+</main>
+
+<!-- @incluye pie -->
+
+<!-- @incluye barra -->
+
+<!-- @incluye cookies -->
+
+<!-- @incluye scripts -->
+</body>
+</html>

@@ -1,0 +1,102 @@
+{
+  "_nota": "Lo que hay detrás de cada ventana del dibujo de la portada (spec 001 §3.4.4 a §3.4.6). Una zona por cada data-k del SVG. Una estancia lleva habitaciones: [] y su botón; una zona de habitaciones, una por línea (nombre, tipo, cama, frase): el precio «desde» sale del tipo en datos/casa.json. Hasta P-03, cada zona lleva el tipo de hoy como única habitación (cama y frase, de la tabla de /tu-habitacion/). Tras cambiarlo: node construir.mjs.",
+  "tipos": {
+    "clasica": "Clásicas",
+    "confort": "Confort",
+    "torre": "La Torre",
+    "terraza": "Con terraza",
+    "familiar": "Pico Sacro"
+  },
+  "zonas": {
+    "pequena": {
+      "titulo": "Casa Pequena do Casal",
+      "planta": "Casita aparte · para dos",
+      "foto": "pequena-cama",
+      "frase": "Fue palomar, lagar, bodega y sala de juegos; hoy, una casita de 50 m² para dos. La cama de 1,60 duerme bajo la lareira, donde antes estaba el fuego. Cocina, suelo radiante y jardín propio con pérgola y barbacoa.",
+      "habitaciones": [],
+      "boton": { "texto": "Ver la Casa Pequena", "ir": "#pequena" }
+    },
+    "galeria": {
+      "titulo": "Salón con galería",
+      "planta": "Primera planta · estancia común",
+      "foto": "portada-galeria",
+      "frase": "Un rincón para el aperitivo mientras miras el valle del Ulla. Si lo pides, el desayuno llega en bandeja.",
+      "habitaciones": [],
+      "boton": null
+    },
+    "confort": {
+      "titulo": "Confort",
+      "planta": "Primera planta · vistas al valle",
+      "foto": "hab-confort",
+      "frase": "Vistas al valle del Ulla desde la ventana, cama de 1,50, paredes de piedra y muebles tallados a mano.",
+      "habitaciones": [
+        { "nombre": "Confort", "tipo": "confort", "cama": "Cama de 1,50", "frase": "Vistas al valle del Ulla" }
+      ],
+      "boton": null
+    },
+    "terraza": {
+      "titulo": "Con terraza",
+      "planta": "Primera planta · terraza de 12 m²",
+      "foto": "hab-terraza",
+      "frase": "La más luminosa: muebles blancos, detalles en verde y una terraza privada para las tardes de verano.",
+      "habitaciones": [
+        { "nombre": "Con terraza", "tipo": "terraza", "cama": "Cama doble", "frase": "Terraza privada de 12 m²" }
+      ],
+      "boton": null
+    },
+    "torre": {
+      "titulo": "La Torre",
+      "planta": "Primera planta · balcón",
+      "foto": "hab-torre",
+      "frase": "Asómate al balcón: una de las mejores vistas de la casa. Las dos camas de 1,05 se juntan en una de 2,10 × 1,90, y cabe una supletoria.",
+      "habitaciones": [
+        { "nombre": "La Torre", "tipo": "torre", "cama": "2 × 1,05 (o 2,10)", "frase": "Balcón; supletoria" }
+      ],
+      "boton": null
+    },
+    "familiar": {
+      "titulo": "Pico Sacro",
+      "planta": "Familiar · 2 adultos y 2 niños",
+      "foto": "hab-familiar",
+      "frase": "Dos camas de matrimonio para quien viaja con niños pequeños. En la casa hay tronas, cunas de madera y un microondas en el comedor.",
+      "habitaciones": [
+        { "nombre": "Pico Sacro", "tipo": "familiar", "cama": "2 de matrimonio", "frase": "Familiar, 2 + 2" }
+      ],
+      "boton": null
+    },
+    "comedor": {
+      "titulo": "El comedor",
+      "planta": "Planta baja · hasta 30 personas",
+      "foto": "comedor",
+      "frase": "Tranquilo y amplio. Aquí se sirve el desayuno casero: pan de pueblo con tomate, bizcochos, queso de Arzúa, zumo recién exprimido y huevos de su corral.",
+      "habitaciones": [],
+      "boton": { "texto": "Ver el desayuno", "ir": "#mesa" }
+    },
+    "chimenea": {
+      "titulo": "Recibidor con chimenea",
+      "planta": "Planta baja · la entrada",
+      "foto": "chimenea",
+      "frase": "La escalera de madera y la chimenea encendida en invierno. Al lado, la peña: una estancia cuyo suelo es la propia roca.",
+      "habitaciones": [],
+      "boton": null
+    },
+    "clasicas": {
+      "titulo": "Clásicas",
+      "planta": "Planta baja · sin escaleras",
+      "foto": "hab-clasica",
+      "frase": "Para quien prefiere no subir escaleras. Aquí está la habitación con baño adaptado. La opción más económica, con los mismos servicios.",
+      "habitaciones": [
+        { "nombre": "Clásicas", "tipo": "clasica", "cama": "Doble", "frase": "Sin escaleras; baño adaptado" }
+      ],
+      "boton": null
+    }
+  },
+  "_leyendas": "Cada habitación, una leyenda: el resumen de la portada. «de» es la leyenda o el personaje del nombre; hasta P-03, null (sin explicación).",
+  "leyendas": [
+    { "nombre": "Os Mouros", "de": null },
+    { "nombre": "A Coruxa", "de": null },
+    { "nombre": "O Régulo", "de": null },
+    { "nombre": "El Encanto", "de": null },
+    { "nombre": "Peregrino", "de": null }
+  ]
+}

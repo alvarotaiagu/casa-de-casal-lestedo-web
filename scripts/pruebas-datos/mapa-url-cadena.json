@@ -1,0 +1,5 @@
+[
+  { "ruta": "/", "accion": "pagina", "destino": "/", "spec": "001", "nota": "Ejemplo malo: una cadena de 301" },
+  { "ruta": "/a/", "accion": "301", "destino": "/b/", "spec": "001", "nota": "" },
+  { "ruta": "/b/", "accion": "301", "destino": "/", "spec": "001", "nota": "" }
+]

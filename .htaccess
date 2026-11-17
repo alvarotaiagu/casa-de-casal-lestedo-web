@@ -1,0 +1,22 @@
+# Generado por construir.mjs desde datos/mapa-url.json: no se edita a mano.
+ErrorDocument 404 /404.html
+RedirectMatch 301 ^/inicio/?$ /
+RedirectMatch 301 ^/inicio-v2/?$ /
+RedirectMatch 301 ^/inicio-v2-2/?$ /
+RedirectMatch 301 ^/proba/?$ /
+RedirectMatch 301 ^/un-detalle-para-sorprender/?$ /servicios/
+RedirectMatch 301 ^/monumentos-naturales-y-leyendas/?$ /entorno/
+RedirectMatch 301 ^/descarga-nuestras-guias/?$ /entorno/
+RedirectMatch 301 ^/hoteles-con-encanto-v2/?$ /entorno/
+RedirectMatch 301 ^/declaracion-de-privacidad-ue/?$ /privacidad/
+RedirectMatch 301 ^/politica-de-cookie-ue/?$ /cookies/
+RedirectMatch 301 ^/condiciones-de-uso-privacidad-y-cookies/?$ /aviso-legal/
+RedirectMatch 301 ^/descargo-de-responsabilidad/?$ /aviso-legal/
+RedirectMatch 301 ^/entorno/ruta-dos-muinos/?$ /ruta-molinos-vedra-v2/
+RedirectMatch 301 ^/entorno/monasterio-carboeiro/?$ /monasterio-de-carboeiro-v2/
+RedirectMatch 301 ^/entorno/pazo-ortigueira/?$ /pazo-de-ortigueira-v2/
+RedirectMatch 301 ^/entorno/pazo-oca/?$ /pazo-de-oca-v2/
+RedirectMatch 301 ^/entorno/ruta-de-senderismo-fervenza-rio-toxa/?$ /fervenza-del-rio-toxa-v2/
+RedirectMatch 301 ^/entorno/pico-sacro/?$ /pico-sacro-v2/
+RedirectMatch 301 ^/etapas-via-plata-camino-sanabres/?$ /via-de-la-plata-v2/
+RedirectMatch 301 ^/faqs/?$ /que-necesitas/

@@ -1,0 +1,36 @@
+{
+  "grupos": [
+    {
+      "id": "casa",
+      "nombre": "La casa",
+      "paginas": [
+        { "slug": "tu-habitacion", "corto": "Habitaciones" },
+        { "slug": "casa-pequena-do-casal", "corto": "Casa Pequena" },
+        { "slug": "desayunos-artesanos", "corto": "Desayunos" },
+        { "slug": "manjares-gallegos", "corto": "Manjares gallegos" },
+        { "slug": "tus-rincones-favoritos", "corto": "Rincones favoritos" },
+        { "slug": "piscina-de-agua-salada", "corto": "Piscina" },
+        { "slug": "viajar-con-ninos", "corto": "Con niños" },
+        { "slug": "servicios", "corto": "Servicios" },
+        { "slug": "que-necesitas", "corto": "¿Qué necesitas?" },
+        { "slug": "experiencias", "corto": "Experiencias" },
+        { "slug": "nuestro-camino", "corto": "Nuestra historia" },
+        { "slug": "contactar", "corto": "Contacto" }
+      ]
+    },
+    {
+      "id": "entorno",
+      "nombre": "Alrededores",
+      "paginas": [
+        { "slug": "entorno", "corto": "Entorno" },
+        { "slug": "pico-sacro-v2", "corto": "El Pico" },
+        { "slug": "via-de-la-plata-v2", "corto": "Vía de la Plata" },
+        { "slug": "ruta-molinos-vedra-v2", "corto": "Molinos de Vedra" },
+        { "slug": "fervenza-del-rio-toxa-v2", "corto": "Fervenza del Toxa" },
+        { "slug": "pazo-de-oca-v2", "corto": "Pazo de Oca" },
+        { "slug": "pazo-de-ortigueira-v2", "corto": "Pazo de Ortigueira" },
+        { "slug": "monasterio-de-carboeiro-v2", "corto": "Monasterio de Carboeiro" }
+      ]
+    }
+  ]
+}

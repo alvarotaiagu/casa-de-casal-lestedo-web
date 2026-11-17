@@ -1,0 +1,264 @@
+{
+  "casa": {
+    "nombre": "Casa de Casal",
+    "lat": 42.80472,
+    "lon": -8.46366,
+    "osm": "node/11111302205",
+    "etiqueta": {
+      "ancho": {
+        "lado": "o",
+        "dx": 0,
+        "dy": 0
+      },
+      "estrecho": {
+        "lado": "o",
+        "dx": 0,
+        "dy": 0
+      }
+    }
+  },
+  "sitios": [
+    {
+      "nombre": "Pico Sacro",
+      "lat": 42.80711,
+      "lon": -8.44666,
+      "minutos": 7,
+      "fuente": "OSRM 2026-10-16",
+      "frase": "a sus pies",
+      "slug": "pico-sacro-v2",
+      "osm": "node/7045311886",
+      "etiqueta": {
+        "ancho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        },
+        "estrecho": {
+          "lado": "no",
+          "dx": 1,
+          "dy": -8
+        }
+      }
+    },
+    {
+      "nombre": "Ponte Ulla",
+      "lat": 42.77821,
+      "lon": -8.40298,
+      "minutos": 7,
+      "fuente": "OSRM 2026-10-16",
+      "frase": "el río Ulla",
+      "slug": null,
+      "osm": "node/619004532",
+      "etiqueta": {
+        "ancho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        },
+        "estrecho": {
+          "lado": "se",
+          "dx": 11,
+          "dy": 11
+        }
+      }
+    },
+    {
+      "nombre": "Pazo de Oca",
+      "lat": 42.74625,
+      "lon": -8.39509,
+      "minutos": 12,
+      "fuente": "OSRM 2026-10-16",
+      "frase": "el Versalles gallego",
+      "slug": "pazo-de-oca-v2",
+      "osm": "way/207458654",
+      "etiqueta": {
+        "ancho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        },
+        "estrecho": {
+          "lado": "se",
+          "dx": -14,
+          "dy": 14
+        }
+      }
+    },
+    {
+      "nombre": "Santiago",
+      "lat": 42.88042,
+      "lon": -8.54586,
+      "minutos": 15,
+      "fuente": "según la casa",
+      "frase": "",
+      "slug": null,
+      "osm": "node/998649870",
+      "etiqueta": {
+        "ancho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        },
+        "estrecho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        }
+      }
+    },
+    {
+      "nombre": "Aeropuerto",
+      "lat": 42.89769,
+      "lon": -8.41749,
+      "minutos": 25,
+      "fuente": "según la casa",
+      "frase": "",
+      "slug": null,
+      "osm": "way/71837861",
+      "etiqueta": {
+        "ancho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        },
+        "estrecho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        }
+      }
+    },
+    {
+      "nombre": "Fervenza do Toxa",
+      "lat": 42.75649,
+      "lon": -8.27207,
+      "minutos": 25,
+      "fuente": "OSRM 2026-10-16",
+      "frase": "30 m de caída",
+      "slug": "fervenza-del-rio-toxa-v2",
+      "osm": "node/1004155228",
+      "etiqueta": {
+        "ancho": {
+          "lado": "ne",
+          "dx": -4,
+          "dy": -4
+        },
+        "estrecho": {
+          "lado": "no",
+          "dx": 14,
+          "dy": -14
+        }
+      }
+    },
+    {
+      "nombre": "Carboeiro",
+      "lat": 42.75552,
+      "lon": -8.24617,
+      "minutos": 27,
+      "fuente": "OSRM 2026-10-16",
+      "frase": "monasterio románico",
+      "slug": "monasterio-de-carboeiro-v2",
+      "osm": "way/186002185",
+      "etiqueta": {
+        "ancho": {
+          "lado": "se",
+          "dx": 4,
+          "dy": 4
+        },
+        "estrecho": {
+          "lado": "s",
+          "dx": -6,
+          "dy": 5
+        }
+      }
+    },
+    {
+      "nombre": "Rianxo",
+      "lat": 42.64887,
+      "lon": -8.81737,
+      "minutos": 46,
+      "fuente": "OSRM 2026-10-16",
+      "frase": "la playa más cercana",
+      "slug": null,
+      "osm": "node/55527213",
+      "etiqueta": {
+        "ancho": {
+          "lado": "e",
+          "dx": 0,
+          "dy": 0
+        },
+        "estrecho": {
+          "lado": "ne",
+          "dx": 7,
+          "dy": -7
+        }
+      }
+    },
+    {
+      "nombre": "A Coruña",
+      "lat": 43.37097,
+      "lon": -8.39594,
+      "minutos": 62,
+      "fuente": "OSRM 2026-10-16",
+      "frase": "",
+      "slug": null,
+      "osm": "node/1235110932",
+      "etiqueta": {
+        "ancho": {
+          "lado": "se",
+          "dx": 4,
+          "dy": 4
+        },
+        "estrecho": {
+          "lado": "e",
+          "dx": 5,
+          "dy": 6
+        }
+      }
+    },
+    {
+      "nombre": "Pazo de Ortigueira",
+      "lat": 42.77114,
+      "lon": -8.42596,
+      "minutos": 8,
+      "fuente": "OSRM 2026-11-16",
+      "frase": "",
+      "slug": "pazo-de-ortigueira-v2",
+      "osm": "way/371499288",
+      "etiqueta": {
+        "ancho": {
+          "lado": "so",
+          "dx": 1,
+          "dy": 8
+        },
+        "estrecho": {
+          "lado": "so",
+          "dx": 14,
+          "dy": 14
+        }
+      }
+    },
+    {
+      "nombre": "Ruta dos Muíños de Vedra",
+      "lat": 42.77822,
+      "lon": -8.44552,
+      "minutos": 10,
+      "fuente": "OSRM 2026-11-16",
+      "frase": "",
+      "slug": "ruta-molinos-vedra-v2",
+      "osm": "way/148119313",
+      "etiqueta": {
+        "ancho": {
+          "lado": "o",
+          "dx": 0,
+          "dy": 0
+        },
+        "estrecho": {
+          "lado": "ne",
+          "dx": 32,
+          "dy": -32
+        }
+      }
+    }
+  ]
+}

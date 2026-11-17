@@ -180,21 +180,29 @@ body.menu .cab__menu i:first-of-type { transform: translateY(4.25px) rotate(45de
 body.menu .cab__menu i:last-of-type { transform: translateY(-4.25px) rotate(-45deg); }
 @media (max-width: 999px) { .cab__nav, .cab__cta { display: none; } .cab__menu { display: inline-flex; } }
 .menu-movil { position: fixed; left: 0; right: 0; top: 0; height: 100dvh; z-index: 99; background: var(--noche); color: var(--cal);
-  padding: calc(var(--cab) + 30px + env(safe-area-inset-top, 0px)) var(--gutter) 40px; display: flex; flex-direction: column; gap: 4px;
+  padding: calc(var(--cab) + 30px + env(safe-area-inset-top, 0px)) var(--gutter) 0; display: flex; flex-direction: column;
   opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility 0s .35s; }
 body.menu .menu-movil { opacity: 1; visibility: visible; transition: opacity .35s var(--ease); }
 body.menu .cab { background: transparent; color: var(--cal); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
 body.menu .cab .cab__logo--oro { opacity: 0; } body.menu .cab .cab__logo--blanco { opacity: 1; }
+/* la lista se desplaza dentro del panel; el teléfono, en su franja fija al pie (spec 002 §3.5) */
+.menu-movil__lista { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: grid; align-content: start; gap: 30px; padding-bottom: 30px; }
 .menu-movil nav { display: grid; }
 .menu-movil a { font: 400 2.5rem/1.2 var(--letra-tit); text-decoration: none; }
-.menu-movil p { margin-top: auto; color: var(--cal-3); }
-.menu-movil p a { font: inherit; text-decoration: underline; color: var(--cal); }
+.menu-movil a[aria-current="page"] { color: var(--oro-claro); }
+.menu-movil__grupos { display: grid; gap: 8px; border-top: 1px solid var(--linea-clara); padding-top: 24px; }
+.menu-movil__eti { font: 600 .74rem/1.3 var(--letra); letter-spacing: .18em; text-transform: uppercase; color: var(--oro-claro); }
+.menu-movil__grupos ul + .menu-movil__eti { margin-top: 18px; }
+.menu-movil__grupos a { font-size: 1.55rem; line-height: 1.3; }
+.menu-movil__tel { flex: none; margin-inline: calc(-1 * var(--gutter)); padding: 16px var(--gutter) calc(20px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--linea-clara); background: var(--noche); color: var(--cal-3); }
+.menu-movil__tel a { font: inherit; text-decoration: underline; color: var(--cal); }
 
 /* ============ 1. portada ============ */
 .hero { position: relative; background: var(--noche); color: var(--cal); min-height: 100svh; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 64px); align-items: center;
   padding: calc(var(--cab) + env(safe-area-inset-top, 0px) + clamp(24px, 4vw, 56px)) max(var(--gutter), calc((100% - var(--ancho)) / 2)) clamp(36px, 5vw, 64px); }
 .hero__txt { display: grid; gap: clamp(18px, 2.4vw, 28px); align-content: center; min-width: 0; }
-.hero__tit { font-size: clamp(3rem, 6.6vw, 6.2rem); }
+.hero__tit { font-size: clamp(2.7rem, 5.6vw, 5.3rem); }
 .hero__sub { font-size: clamp(1.05rem, 1.35vw, 1.2rem); color: var(--cal-3); max-width: 32em; }
 .hero__acc { display: flex; flex-wrap: wrap; gap: 12px; }
 .notas { display: flex; flex-wrap: wrap; gap: 14px 30px; padding-top: 8px; border-top: 1px solid var(--linea-clara); }
@@ -241,14 +249,14 @@ html.con-movimiento .hero.abierta .gablete__tejado { clip-path: inset(0 0 0 0); 
 
 /* ============ 2. la casa ============ */
 .casa { padding: clamp(80px, 10vw, 150px) 0; }
+/* la historia (detrás de la finca y el desayuno): la misma rejilla, sobre la cal más tostada para que no se funda con la finca */
+.historia { padding: clamp(80px, 10vw, 150px) 0; background: var(--cal-2); }
 .casa__rejilla { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 30px); align-items: start; }
 .casa__texto { grid-column: 1 / span 6; display: grid; gap: 24px; }
-/* fila 1: texto y fachada (que acompaña la lectura); fila 2: las cuatro estancias a todo el ancho */
+/* el texto y, al lado, la fachada que acompaña la lectura */
 .casa__texto { grid-row: 1; }
 .casa__rejilla .foto--alta { grid-column: 8 / span 5; grid-row: 1; align-self: stretch; display: flex; flex-direction: column; }
 .casa__rejilla .foto--alta img { flex: 1 1 0; aspect-ratio: auto; height: auto; min-height: 420px; object-position: 50% 40%; }
-.casa__rejilla .foto:not(.foto--alta) { grid-column: span 3; grid-row: 2; margin-top: clamp(24px, 4vw, 56px); }
-.casa__rejilla .foto:not(.foto--alta) img { aspect-ratio: 4 / 5; }
 .cita { border-left: 2px solid var(--oro); padding-left: 20px; display: grid; gap: 8px; }
 .cita p { font: italic 400 clamp(1.5rem, 2.4vw, 2rem)/1.2 var(--letra-tit); }
 .cita footer { font-size: .85rem; color: var(--tinta-2); }
@@ -264,7 +272,43 @@ html.densidad-sobria .papeles { clip-path: none; padding-top: clamp(26px, 4vw, 4
 @media (max-width: 899px) {
   .casa__texto, .casa__rejilla .foto--alta { grid-column: 1 / -1; grid-row: auto; }
   .casa__rejilla .foto--alta img { flex: none; aspect-ratio: 4 / 5; height: auto; min-height: 0; }
-  .casa__rejilla .foto:not(.foto--alta) { grid-column: span 6; grid-row: auto; margin-top: 0; }
+}
+
+/* el carrusel de las estancias (spec 001 §3.4.2), con el componente de comun.js.
+   Con JavaScript, las fotos una sobre otra bajo el gablete y el pie abajo.
+   Sin JavaScript (§9), una fila con scroll lateral: se ven las siete, con su pie.
+   Ancho máximo 1040 px (como el mapa): la fachada, la primera, solo existe a
+   1024 px y en una pantalla ancha se estiraría por encima de su original. */
+.estancias { display: grid; gap: 14px; max-width: 1040px; }
+.estancias__foto img { width: 100%; object-fit: cover; }
+html:not(.js) .estancias__pista { display: flex; gap: clamp(12px, 2vw, 20px); overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding-bottom: 10px; }
+html:not(.js) .estancias__foto { flex: 0 0 min(82%, 560px); scroll-snap-align: start; display: grid; gap: 8px; align-content: start; }
+html:not(.js) .estancias__foto img { aspect-ratio: 3 / 2; height: auto; }
+html:not(.js) .estancias__foto figcaption { font-size: .84rem; color: var(--tinta-2); }
+html:not(.js) .estancias__mando { display: none; }
+html.js .estancias__vista { position: relative; aspect-ratio: 2 / 1; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; outline-offset: 8px; }
+html.js .estancias__vista.arrastra { cursor: grabbing; }
+html.js .estancias__pista { position: absolute; inset: 0; overflow: hidden; clip-path: polygon(0 var(--g), 50% 0, 100% var(--g), 100% 100%, 0 100%); }
+html.js .estancias__foto { position: absolute; inset: 0; opacity: 0; transition: opacity .8s var(--ease); }
+html.js .estancias__foto.on { opacity: 1; }
+/* las otras seis esperan a que cargue la página: al cargar solo se descarga la primera (CA-22 bis) */
+html.js .estancias__foto:not(.on):not(.lista) { display: none; }
+html.js .estancias__vista.arrastra .estancias__foto { transition: none; }
+html.js .estancias__foto img { height: 100%; pointer-events: none; -webkit-user-drag: none; }
+html.js .estancias__foto figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+html.densidad-sobria .estancias__pista { clip-path: none; }
+.estancias__mando { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.estancias__btn { width: 44px; height: 44px; border: 1px solid var(--linea); font-size: 1.3rem; display: grid; place-items: center; }
+.estancias__btn:hover { border-color: var(--tinta); }
+.estancias__puntos { display: flex; }
+.estancias__puntos button { width: 28px; height: 44px; display: grid; place-items: center; }
+.estancias__puntos button::before { content: ""; width: 20px; height: 8px; background: var(--tinta-2); opacity: .45; clip-path: polygon(0 100%, 50% 0, 100% 100%, 84% 100%, 50% 30%, 16% 100%); transition: opacity .3s, background .3s; }
+.estancias__puntos button[aria-current="true"]::before { background: var(--oro-texto); opacity: 1; }
+.estancias__pie { margin-left: auto; font-size: .88rem; color: var(--tinta-2); }
+@media (max-width: 699px) {
+  html.js .estancias__vista { aspect-ratio: 4 / 3; }
+  .estancias__mando { justify-content: space-between; }
+  .estancias__pie { margin-left: 0; width: 100%; text-align: center; order: 3; }
 }
 
 /* ============ 3. bajo el tejado ============ */
@@ -284,13 +328,21 @@ html.con-movimiento .seccion.es-trazada .seccion__tejado { stroke-dasharray: 1; 
 .zona.activa .hueco { stroke: var(--oro-claro); stroke-width: 2.5; }
 .zona:focus-visible { outline: none; }
 .zona:focus-visible .hueco { stroke: var(--cal); stroke-width: 3; }
-.seccion__panel { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.seccion__panel { min-width: 0; }
+.seccion__ficha { display: grid; gap: 10px; align-content: start; min-width: 0; }
 .seccion__panel img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; clip-path: polygon(0 var(--g), 50% 0, 100% var(--g), 100% 100%, 0 100%); background: var(--noche-2); }
 html.densidad-sobria .seccion__panel img { clip-path: none; }
 .seccion__panel h3 { font: 400 2.2rem/1 var(--letra-tit); }
 .seccion__panel p:not(.eti) { color: var(--cal-3); }
 .seccion__precio b { font: 400 1.9rem var(--letra-tit); color: var(--oro-claro); }
-.seccion__panel .btn { justify-self: start; margin-top: 4px; }
+.seccion__panel .btn { justify-self: start; }
+/* lo que hay detrás: una habitación por línea (nombre, cama y frase) y un «Ver fechas» por tipo */
+.seccion__habs { display: grid; border-top: 1px solid var(--linea-clara); }
+.seccion__habs li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; padding: 8px 0; border-bottom: 1px solid var(--linea-clara); font-size: .95rem; color: var(--cal-3); }
+.seccion__habs b { font: 400 1.3rem/1.1 var(--letra-tit); color: var(--cal); }
+.seccion__habs span + span::before { content: "· "; }
+.seccion__acc { display: grid; gap: 10px; justify-items: start; margin-top: 4px; }
+.seccion__acc .seccion__precio + .btn { margin-bottom: 6px; }
 .seccion__nota { grid-column: 1 / -1; font-size: .8rem; color: var(--cal-3); opacity: .8; }
 @media (max-width: 899px) { .seccion { grid-template-columns: 1fr; } }
 
@@ -302,10 +354,17 @@ html.densidad-sobria .seccion__panel img { clip-path: none; }
 .tipo__txt p:not(.eti) { color: var(--cal-3); font-size: .98rem; }
 .tipo__desde b { font: 400 1.6rem var(--letra-tit); color: var(--oro-claro); }
 .tipo__txt .enlace { justify-self: start; }
-.tipo.resalta { outline: 2px solid var(--oro-claro); outline-offset: 6px; }
+.tipo__txt a.enlace { color: var(--oro-claro); font-weight: 600; }
+/* en la portada, en lugar de las fichas: el enlace a /tu-habitacion/ */
+.habs__mas { margin-top: clamp(40px, 6vw, 72px); }
 
 .nombres { margin-top: clamp(60px, 8vw, 100px); display: grid; gap: 10px; }
-.nombres h3 { font: 400 clamp(1.8rem, 3vw, 2.4rem)/1.05 var(--letra-tit); }
+.nombres h2, .nombres h3 { font: 400 clamp(1.8rem, 3vw, 2.4rem)/1.05 var(--letra-tit); }
+/* el resumen de la portada: un nombre por línea (las fotos están en /tu-habitacion/) */
+.nombres__resumen { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13em), 1fr)); gap: 0 clamp(18px, 3vw, 36px); margin-top: 14px; }
+.nombres__resumen li { display: grid; gap: 2px; border-top: 1px solid var(--linea-clara); padding: 12px 0 14px; }
+.nombres__resumen b { font: 400 1.35rem/1.15 var(--letra-tit); color: var(--cal); }
+.nombres__resumen span { font-size: .9rem; color: var(--cal-3); }
 .nombres__lista { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
 .nombres__lista li { display: grid; gap: 8px; }
 .nombres__lista img { aspect-ratio: 1; object-fit: cover; width: 100%; filter: saturate(.9); }
@@ -332,8 +391,9 @@ html.densidad-sobria .seccion__panel img { clip-path: none; }
 /* ============ 4. la finca y la mesa ============ */
 .finca { padding: clamp(80px, 10vw, 150px) 0; }
 .finca__mosaico { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
-.finca__mosaico .foto--ancha { grid-column: span 6; }
-.finca__mosaico .foto--ancha img { aspect-ratio: 21 / 9; }
+/* dos fotos hasta P-02: el estanque a dos tercios y la piscina al lado, con la misma altura */
+.finca__mosaico .foto--ancha { grid-column: span 4; }
+.finca__mosaico .foto--ancha img { aspect-ratio: 8 / 5; }
 .finca__mosaico .foto:not(.foto--ancha) { grid-column: span 2; }
 .finca__mosaico .foto:not(.foto--ancha) img { aspect-ratio: 4 / 5; }
 .finca__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); margin-top: clamp(36px, 5vw, 60px); }
@@ -346,9 +406,10 @@ html.densidad-sobria .seccion__panel img { clip-path: none; }
 .mesa__lista { display: grid; border-top: 1px solid var(--linea); }
 .mesa__lista li { padding: 10px 0; border-bottom: 1px solid var(--linea); }
 @media (max-width: 899px) {
+  .finca__mosaico .foto--ancha { grid-column: span 6; }
   .finca__mosaico .foto:not(.foto--ancha) { grid-column: span 3; }
   .finca__mosaico .foto:not(.foto--ancha):last-child { grid-column: span 6; }
-  .finca__mosaico .foto--ancha img { aspect-ratio: 4 / 3; }
+  .finca__mosaico .foto--ancha img, .finca__mosaico .foto:not(.foto--ancha):last-child img { aspect-ratio: 4 / 3; }
   .finca__lista { grid-template-columns: 1fr; }
   .mesa { grid-template-columns: 1fr; }
 }
@@ -407,6 +468,15 @@ html.con-movimiento .leyendas__hoja.entra p { animation: tinta .7s .15s var(--ea
 .leyendas__subir b { color: var(--pino); }
 @media (max-width: 999px) { .pico__escena { grid-template-columns: 1fr; } .leyendas { grid-template-columns: 1fr 1fr; } .leyendas__fotos { grid-column: 1 / -1; } }
 @media (max-width: 699px) { .leyendas { grid-template-columns: 1fr; } }
+/* portada: «Saber más» lleva a /pico-sacro-v2/, que tiene las leyendas sin la escena encima */
+.pico__mas { margin-top: clamp(32px, 5vw, 56px); }
+.pico--pagina { padding-top: clamp(48px, 6vw, 80px); }
+.pico--pagina .leyendas { margin-top: 0; }
+/* las seis leyendas van en el HTML (spec 002): con JS, pestañas; sin JS, una detrás de otra y sin la lista */
+html:not(.js) .leyendas__lista { display: none; }
+html:not(.js) .leyendas__hojas { grid-column: 1 / -1; display: grid; gap: 28px; }
+html:not(.js) .leyendas__hoja[hidden] { display: grid !important; }
+html:not(.js) .leyendas__hoja { min-height: 0; }
 
 /* ============ 6. dos casas en una + reserva ============ */
 .reserva { padding: clamp(80px, 10vw, 150px) 0; }
@@ -525,29 +595,63 @@ html.con-movimiento .leyendas__hoja.entra p { animation: tinta .7s .15s var(--ea
 
 /* ============ 7. alrededores ============ */
 .alrededores { padding: clamp(80px, 10vw, 150px) 0; }
-.regla { position: relative; height: 150px; margin-top: 10px; }
+.alrededores--pagina { padding-top: clamp(48px, 6vw, 80px); }
+/* la regla de minutos (/entorno/): la pinta comun.js; su alto lo pone el JS según los pisos de etiquetas */
+.regla { position: relative; height: 150px; margin-top: clamp(28px, 4vw, 48px); }
 .regla svg { width: 100%; height: 100%; overflow: visible; }
-.regla__lista { display: none; }
 .regla__fuente { font-size: .8rem; color: var(--tinta-2); margin-top: 14px; }
-@media (max-width: 799px) {
-  .regla { display: none; }
-  .regla__lista { display: grid; border-top: 1px solid var(--linea); }
-  .regla__lista li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--linea); font-variant-numeric: tabular-nums; }
-  .regla__lista span { color: var(--tinta-2); }
-}
+@media (max-width: 799px) { .regla { display: none; } }
+/* la lista accesible de debajo del mapa (en el HTML: se lee igual sin JavaScript) */
+.alr-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 0 clamp(20px, 3vw, 40px); margin-top: clamp(24px, 3vw, 36px); border-top: 1px solid var(--linea); }
+.alr-lista li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--linea); font-variant-numeric: tabular-nums; }
+.alr-lista b, .alr-lista a { font-weight: 600; }
+.alr-lista span { color: var(--tinta-2); text-align: right; }
+.alr__mas { margin-top: clamp(24px, 3vw, 36px); }
 .peregrinos { margin-top: clamp(40px, 6vw, 70px); display: grid; gap: 10px; max-width: 760px; padding: 24px 26px; background: var(--cal-2); border-left: 3px solid var(--oro); }
 .peregrinos h3 { font: 400 1.8rem/1.1 var(--letra-tit); }
 
+/* T16 · mapa de alrededores (spec 001 §3.4.1, scripts/lib/mapa-svg.mjs).
+   Dos <svg>: el ancho desde 700 px y el estrecho por debajo (encuadre más
+   cerrado, letra más grande). La letra va en unidades del viewBox y escala con
+   el dibujo: así valen las posiciones que midió scripts/etiquetas-mapa.mjs.
+   Etiquetas: tinta y oro-texto sobre el halo cal-2 (13:1 y 4,9:1). */
+.alr-mapa { margin-top: 10px; max-width: 1040px; }
+.alr-mapa--grande { max-width: none; }
+.alr-mapa__svg { display: block; width: 100%; height: auto; overflow: hidden; }
+.alr-mapa__svg--estrecho { display: none; }
+@media (max-width: 699px) {
+  .alr-mapa__svg--ancho { display: none; }
+  .alr-mapa__svg--estrecho { display: block; }
+}
+.alr-mapa--solo .alr-mapa__svg { display: block; }
+.alr-mapa__tierra, .alr-mapa__isla { fill: var(--cal-2); }
+.alr-mapa__agua { fill: color-mix(in oklab, var(--niebla) 82%, var(--pino)); }
+.alr-mapa__costa, .alr-mapa__rio { fill: none; stroke: color-mix(in oklab, var(--pino) 40%, var(--niebla)); stroke-linecap: round; stroke-linejoin: round; }
+.alr-mapa__costa { stroke-width: .8; }
+.alr-mapa__rio { stroke-width: 1.8; }
+.alr-mapa__santiago { fill: var(--cal-3); opacity: .65; }
+.alr-mapa__autopista, .alr-mapa__nacional { fill: none; stroke: var(--granito); stroke-linecap: round; stroke-linejoin: round; }
+.alr-mapa__autopista { stroke-width: 1.7; }
+.alr-mapa__nacional { stroke-width: 1.1; opacity: .7; }
+.alr-mapa__guia { fill: none; stroke: var(--tinta-2); stroke-width: .8; }
+.alr-mapa__punto { fill: var(--noche); stroke: var(--cal); stroke-width: 1.5; }
+.alr-mapa__muro { fill: var(--noche); }
+.alr-mapa__tejado { fill: var(--oro); stroke: var(--cal); stroke-width: 1; stroke-linejoin: round; }
+.alr-mapa__flecha { fill: var(--oro-texto); }
+.alr-mapa__etq { font-family: var(--letra); fill: var(--tinta); paint-order: stroke; stroke: var(--cal-2); stroke-width: 3.5px; stroke-linejoin: round; }
+.alr-mapa__nombre, .alr-mapa__casa { font-weight: 600; }
+.alr-mapa__casa { fill: var(--noche); }
+.alr-mapa__min { font-weight: 500; fill: var(--oro-texto); font-variant-numeric: tabular-nums; }
+a.alr-mapa__marca .alr-mapa__nombre { text-decoration: underline; text-decoration-thickness: 1px; }
+a.alr-mapa__marca:hover .alr-mapa__punto, a.alr-mapa__marca:focus-visible .alr-mapa__punto { fill: var(--oro-texto); }
+a.alr-mapa__marca:is(:hover, :focus-visible) .alr-mapa__nombre { fill: var(--oro-texto); }
+.alr-mapa__pie { margin-top: 8px; font-size: .8rem; color: var(--tinta-2); }
+
 /* ============ 8. opiniones ============ */
 .opiniones { padding: clamp(80px, 10vw, 150px) 0; }
-.op__notas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 30px; border-top: 1px solid var(--linea-clara); }
-.op__notas div { display: grid; gap: 2px; padding: 18px 0; }
-.op__notas b { font: 400 3rem/1 var(--letra-tit); color: var(--oro-claro); }
-.op__notas span { color: var(--cal-3); font-size: .9rem; }
-.op__citas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: clamp(36px, 5vw, 60px); }
-.op__citas blockquote { font: italic 400 clamp(1.4rem, 2.1vw, 1.8rem)/1.25 var(--letra-tit); border-top: 1px solid var(--oro); padding-top: 18px; }
-.op__fuente { margin-top: 36px; font-size: .85rem; color: var(--cal-3); }
-@media (max-width: 899px) { .op__notas { grid-template-columns: repeat(2, minmax(0, 1fr)); } .op__citas { grid-template-columns: 1fr; } }
+/* la nota de Google y su recuento al lado; debajo, el enlace a sus reseñas */
+.op__nota { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 22px; }
+.op__recuento { color: var(--cal-3); font-size: 1.05rem; }
 
 /* ============ 9. cómo llegar ============ */
 .llegar { padding: clamp(80px, 10vw, 140px) 0; }
@@ -563,6 +667,69 @@ html.densidad-sobria .mapa { clip-path: none; }
 .mapa__consent p { color: var(--tinta-2); font-size: .9rem; max-width: 26em; }
 @media (max-width: 899px) { .llegar .env { grid-template-columns: 1fr; } }
 
+/* ============ páginas interiores: portadilla y «¿Te quedas?» (spec 001 §3.1.10) ============
+   Los mismos tokens y piezas que la portada: franja oscura bajo la cabecera,
+   título con cursiva en oro y foto con gablete; al final, la franja clara. */
+.portadilla { padding: calc(var(--cab) + env(safe-area-inset-top, 0px) + clamp(28px, 5vw, 64px)) 0 clamp(48px, 7vw, 96px); }
+.portadilla__in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 64px); align-items: end; }
+.portadilla__txt { display: grid; gap: 16px; padding-bottom: clamp(4px, 2vw, 24px); }
+.portadilla__foto img { aspect-ratio: 4 / 3; }
+@media (max-width: 899px) { .portadilla__in { grid-template-columns: 1fr; } }
+.habs--pagina { padding-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--linea-clara); }
+.habs--pagina .tipos { margin-top: 0; }
+.te-quedas { padding: clamp(64px, 8vw, 110px) 0; }
+.te-quedas__in { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 40px; align-items: center; }
+.te-quedas .tit { grid-column: 1 / -1; }
+@media (max-width: 699px) { .te-quedas__in { grid-template-columns: 1fr; } .te-quedas .btn { justify-self: start; } }
+/* /contactar/: los datos de contacto con las piezas de «Cómo llegar», y debajo el mismo «Cómo llegar» */
+.llegar + .llegar { padding-top: 0; }
+
+/* ============ texto de una página interior (spec 002): sus apartados, cada uno con su h2 ============ */
+.texto { padding: clamp(56px, 7vw, 96px) 0; }
+.texto + .texto { padding-top: 0; }
+.texto .env { display: grid; gap: 16px; }
+.texto .env > * { max-width: 40em; }
+.texto .tit { font-size: clamp(2.1rem, 4.4vw, 3.4rem); margin-bottom: 4px; }
+.texto ul { display: grid; gap: 6px; padding-left: 1.2em; list-style: disc; }
+.texto ul li::marker { color: var(--oro-texto); }
+
+/* ============ /tu-habitacion/: su cita y «Tenemos la habitación perfecta para ti», encima de las fichas (spec 002 §3.4, §6) ============
+   La cita es la de la historia de la portada (.cita), en grande: tinta sobre cal, filete de oro. */
+.bienvenida { padding: clamp(56px, 7vw, 110px) 0; }
+.bienvenida__in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.cita--grande { border-left-width: 3px; padding-left: clamp(20px, 2.4vw, 32px); }
+.cita--grande p { font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.2; text-wrap: pretty; }
+.bienvenida__txt { display: grid; gap: 16px; align-content: start; }
+.bienvenida__txt .tit { font-size: clamp(2.1rem, 4.4vw, 3.4rem); margin-bottom: 4px; }
+.bienvenida + .habs--pagina { border-top: 0; }
+@media (max-width: 899px) { .bienvenida__in { grid-template-columns: 1fr; } }
+
+/* ============ /entorno/: el título de su página y las tarjetas de texto (spec 002 §3.4, §6) ============
+   Una por sitio, el Pico y la Vía, sin foto. «Leer más» lo pinta {{enlace:…}}: si la página
+   aún no está construida sale como texto suelto, y entonces no se enseña. */
+.alrededores__tit { font-size: clamp(2.1rem, 4.4vw, 3.4rem); max-width: 16em; margin-bottom: clamp(20px, 3vw, 36px); }
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: clamp(32px, 4vw, 48px) clamp(20px, 3vw, 40px); margin-top: clamp(48px, 6vw, 80px); }
+.tarjeta { display: flex; flex-direction: column; gap: 10px; padding-top: 18px; border-top: 2px solid var(--oro); }
+.tarjeta h3 { font: 400 1.7rem/1.1 var(--letra-tit); }
+.tarjeta__mas { margin-top: auto; padding-top: 2px; }
+.tarjeta__mas a { color: var(--oro-texto); font-weight: 600; text-decoration: underline; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+.tarjeta__mas a:hover { text-decoration-thickness: 2px; }
+.tarjeta__mas:not(:has(a)) { display: none; }
+
+/* ============ «Sigue leyendo»: las siguientes de su grupo (spec 002 §3.5) ============ */
+.sigue-leyendo { background: var(--cal-2); color: var(--tinta); padding: clamp(48px, 6vw, 80px) 0; }
+.sigue-leyendo .eti { margin-bottom: 22px; }
+.sigue-leyendo__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 32px); }
+.sigue-leyendo__enlace { display: grid; gap: 12px; text-decoration: none; }
+.sigue-leyendo__enlace img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+.sigue-leyendo__enlace span { font: 400 1.6rem/1.15 var(--letra-tit); text-decoration: underline; text-decoration-color: var(--linea); text-underline-offset: .18em; }
+.sigue-leyendo__enlace:hover span { text-decoration-color: currentColor; }
+@media (max-width: 699px) {
+  .sigue-leyendo__lista { grid-template-columns: 1fr; gap: 14px; }
+  .sigue-leyendo__enlace { grid-template-columns: 112px minmax(0, 1fr); align-items: center; gap: 16px; }
+  .sigue-leyendo__enlace span { font-size: 1.4rem; }
+}
+
 /* ============ pie: el tejado se posa sobre la C ============ */
 .pie { background: var(--noche); color: var(--cal-3); padding: clamp(70px, 9vw, 120px) 0 calc(36px + env(safe-area-inset-bottom, 0px)); }
 .pie .env { display: grid; gap: 50px; }
@@ -574,13 +741,19 @@ html.densidad-sobria .mapa { clip-path: none; }
 html.con-movimiento .pie:not(.es-posado) .pie__tejado { transform: translateY(-46%); opacity: 0; }
 html.con-movimiento .pie__tejado { transition: transform 1.3s var(--ease), opacity .6s; }
 .pie__marca p { max-width: 30em; }
-.pie__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; border-top: 1px solid var(--linea-clara); padding-top: 34px; font-size: .95rem; }
+.pie__cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); gap: 30px; border-top: 1px solid var(--linea-clara); padding-top: 34px; font-size: .95rem; }
 .pie__cols h2 { font: 600 .74rem/1.3 var(--letra); letter-spacing: .18em; text-transform: uppercase; color: var(--oro-claro); margin-bottom: 12px; }
 .pie__cols a { color: var(--cal); }
 .pie__cols li { margin-bottom: 6px; }
+.pie__cols a[aria-current="page"] { color: var(--oro-claro); }
+/* «La casa» y «Alrededores», de datos/paginas.json, y «Reservar» debajo (spec 002 §3.5) */
+.pie__web { display: grid; gap: 14px; align-content: start; }
+.pie__grupos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.pie__reservar { border-top: 1px solid var(--linea-clara); padding-top: 14px; }
 .pie__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .82rem; border-top: 1px solid var(--linea-clara); padding-top: 22px; }
 .pie__legal a, .pie__legal button { color: var(--cal-3); text-decoration: underline; text-underline-offset: .2em; font-size: inherit; }
-@media (max-width: 699px) { .pie__cols { grid-template-columns: 1fr; } }
+@media (max-width: 899px) { .pie__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pie__web { grid-column: 1 / -1; } }
+@media (max-width: 699px) { .pie__cols { grid-template-columns: 1fr; } .pie__grupos { gap: 20px; } }
 
 /* ============ barra fija en el móvil ============ */
 .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: none; gap: 10px;

@@ -1,0 +1,38 @@
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<!-- ============ cabecera: el tejado se dora al leer ============ -->
+<header class="cab" id="cab">
+  <div class="cab__in">
+    <a class="cab__marca" href="{{raiz}}#principal" aria-label="Casa de Casal, a la portada">
+      <img class="cab__logo cab__logo--blanco" src="{{raiz}}marca/logo-blanco-300.png" alt="" width="300" height="162">
+      <img class="cab__logo cab__logo--oro" src="{{raiz}}marca/logo-oro-300.png" alt="" width="300" height="162">
+    </a>
+    <span class="cab__lectura" aria-hidden="true"><img src="{{raiz}}marca/tejado-oro-120.png" alt="" width="120" height="117"><img class="lleno" src="{{raiz}}marca/tejado-oro-120.png" alt="" width="120" height="117"></span>
+    <nav class="cab__nav" aria-label="Secciones">
+      <a href="{{raiz}}#casa"{{actual:casa}}>La casa</a>
+      <a href="{{raiz}}tu-habitacion/"{{actual:habitaciones}}>Habitaciones</a>
+      <a href="{{raiz}}#finca"{{actual:finca}}>La finca</a>
+      <a href="{{raiz}}pico-sacro-v2/"{{actual:pico}}>El Pico</a>
+      <a href="{{raiz}}entorno/"{{actual:entorno}}>Entorno</a>
+      <a href="{{raiz}}#llegar"{{actual:llegar}}>Cómo llegar</a>
+    </nav>
+    <a class="btn btn--oro cab__cta" href="{{raiz}}#reserva">Reservar</a>
+    <button class="cab__menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="vh">Menú</span><i></i><i></i></button>
+  </div>
+</header>
+<div class="menu-movil" id="menu-movil" aria-hidden="true">
+  <!-- la lista se desplaza; el teléfono queda fijo al pie del panel (spec 002 §3.5) -->
+  <div class="menu-movil__lista" data-lenis-prevent>
+    <nav aria-label="Secciones">
+      <a href="{{raiz}}#casa"{{actual:casa}}>La casa</a>
+      <a href="{{raiz}}tu-habitacion/"{{actual:habitaciones}}>Habitaciones</a>
+      <a href="{{raiz}}#finca"{{actual:finca}}>La finca</a>
+      <a href="{{raiz}}pico-sacro-v2/"{{actual:pico}}>El Pico</a>
+      <a href="{{raiz}}entorno/"{{actual:entorno}}>Entorno</a>
+      <a href="{{raiz}}#llegar"{{actual:llegar}}>Cómo llegar</a>
+      <a href="{{raiz}}#reserva">Reservar</a>
+    </nav>
+    <!--grupos:menu-->
+  </div>
+  <p class="menu-movil__tel"><a href="tel:+34698148323">698 148 323</a> · teléfono y WhatsApp</p>
+</div>

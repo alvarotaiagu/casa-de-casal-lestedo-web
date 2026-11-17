@@ -1,30 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- La 404 se sirve en cualquier ruta (/no-existe/, /tu-habitacion/no-existe):
+     aquí no vale ninguna ruta relativa. Por eso el CSS y el logo van en línea y
+     los enlaces empiezan por «/»: es la única excepción a las rutas relativas.
+     Sin JavaScript apuntan a la raíz del dominio; con él, el script del final
+     les pone el prefijo del escaparate si la web vive bajo él. -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Página no encontrada · Casa de Casal</title>
+<meta name="theme-color" content="#121a24">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAEiklEQVR4nMVW3W8UVRQ/5947n93ZftiaUkxrsUUrlk9DNSJQYgReNDHGoBCivqiJz76aqH+AiU/6oD6ZWNQHCIQQJCZm0zQQvgOLxFCxbZp+0O4sszM7cz/MnS0ku92u0YKep5k7M7/fueee3/kNtnX1wcMM8lDR4X8mIPcevrTR/eRAx9ZeGwEIIiPwznD2qw86X3/OAwBKAHFFENYAXUpo9+jBXc0Da832ZuvyeHT+VoQI7+5pHlrv+iW+f5u3WBKnL5cq7yOAkLU4WPeQK+iDPdbbw81Zh1KCuXzw9ZkCo3hohze80YtiAQBcKoJ45krp5MXAL+mV5VGHgBKdyM6n3UM7s7FQFiM/jfljv4Vbe52hfmug250pxLlrpetTyWvbm7o7TEJw3k8ujpfLiepuZ58fX2xUIpKi797gHN7dcjfkrk2/ObM4MZ989laHxYhl0rM3g+9z/vSiznfOFx+92upYxDbJnsFMW9Y8OrZQC1h1g1ipzKFdLX4pabLpSM7P5cN9m5sckyZCHTtX+OLEwvSioAQYgZkC//JUQSrwHIYIR8cWv/u1WENQtQMFKuuSw7uzYSw8h/18JTh1KSCIrkkQ8ejZ4onzAaLOQ0hVSejmdPzpkbknu6xZn+cn4+VnUE2gYN9mt90zgkhMzMc/jBYRNatrkygWuXyIqFtFKo0O6QUizBTETEE3EuoUoVGJWpvo9ifsYsgdkx47F8RcgQLLwKyDSSINikovVIVSWgSU6N0sR68l2NJrZTMGIzgxX750q0yI/qarlbV5RpRIzVcvlNJ9cX9bjQgGHjOEVJZB85NxIhVN9TnUb5sG4UKtBNE4qgg6mw0hJCJM3lnSkWeTLY9bUSwkIK+oVK2CIOOgFBogjDWYUtDdwVoyjHMlBYj6Uv0nBIyiTA/NNpamVxBJQpBSjIUUaYnUagiUBJUir2nR7UsJjM/ykZxvm5QxrcF/EVU6iBLpWiROZH+XllalzU9dCm7PJYPdVmUFVrODGV8YjIRl0dNh9nUaaY8jQcxPxkdGiw+gi25MJZTq3idESzoVp5JKz2Rs4Cn3ou4rVQRnf4+CkDOKd0O+qdd5fr0tpB5qUuloDK2Hivo7gukFfmG8nHGYUhiWxcGd2YG1JpdLw6AmQdS4qI0M0xGiwDXrGHDVEiIcPxf4JW5STFK3+nB/6/AzulZCLiWY4uoLpYWipF5Xa1rZey+3fPxGm+eQRo5GCEqphvrt9/e2FYNEKaAMHYvdnIpGb4TXJ5M7RcHTQQ0AtontGbqu0xzsNtd3GWvb3W9Pzx2/ENQUqtYyK268d5N74MWWIOI8UUDAtSijpFhKFgIZRJILsEzwHNrsaI8zDd3ZP44WTl4sLT+JOp5c2ccLTzlv7vBci2madEgwCgYjJC2QVEpIRQmajNyeLY/kitcm47pCWemvQnOsaWWvPJvZ0GO6JuVCiXsDlRCseMN0gefy4S9XSzFXlU+WQ9UnuM8BAD2Psm3r7L5O85EmYhggJfol+ecdfuV2+eof5ShZ8s6VZLgiwYMK8lDR/wuCvwAobyutuBV2twAAAABJRU5ErkJggg==" sizes="32x32" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="css/estilos.css?v=b33462ca">
-<link rel="stylesheet" href="css/legal.css?v=a6813ace">
-<link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
-</head>
-<body class="no-hay">
 <style>
-  .no-hay { background: var(--noche); color: var(--cal); min-height: 100svh; display: grid; place-items: center; text-align: center; padding: 24px; }
+  /* los tokens de css/estilos.css que usa esta página */
+  :root { --noche: #121a24; --cal: #f3eee4; --cal-3: #c9c2b4; --oro-claro: #cfa865; --linea-clara: rgba(243, 238, 228, .16);
+    --letra-tit: "Instrument Serif", "Iowan Old Style", Georgia, serif; --letra: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+    --ease: cubic-bezier(.22, 1, .36, 1); }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 32px max(20px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+    background: var(--noche); color: var(--cal); font: 400 1.0625rem/1.65 var(--letra); text-align: center; -webkit-font-smoothing: antialiased; }
+  h1, p, ul { margin: 0; }
+  :focus-visible { outline: 2px solid var(--oro-claro); outline-offset: 4px; border-radius: 2px; }
   .no { display: grid; gap: 22px; justify-items: center; max-width: 30em; }
-  .no img { width: min(60vw, 300px); height: auto; }
+  .no__tejado { display: block; width: min(46vw, 180px); height: auto; }
   .no h1 { font-family: var(--letra-tit); font-weight: 400; font-size: clamp(2.4rem, 7vw, 3.6rem); line-height: 1; }
   .no p { color: var(--cal-3); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 26px; border: 1.5px solid var(--oro-claro); border-radius: 2px;
+    background: var(--oro-claro); color: var(--noche); font: 600 .95rem/1 var(--letra); letter-spacing: .02em; text-decoration: none; white-space: nowrap;
+    transition: background .3s var(--ease), border-color .3s var(--ease); }
+  .btn:hover { background: var(--cal); border-color: var(--cal); }
+  .no__menu { margin-top: 10px; padding-top: 22px; border-top: 1px solid var(--linea-clara); }
+  .no__menu ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 22px; }
+  .no__menu a { display: inline-block; padding: 6px 0; color: var(--cal); font-size: .95rem; text-underline-offset: .25em; }
+  .no__menu a:hover { color: var(--oro-claro); }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
 </style>
+<script type="application/json" id="datos-casa">{"piscina":{"desde":"06-01","hasta":"09-20"},"temporadas":{"habitaciones":{"desde":"04-01","hasta":"10-31","nota":"Habitaciones con desayuno"},"entera":{"desde":"11-01","hasta":"03-31","nota":"La casa grande entera"}},"notas":{"booking":{"nota":9.6,"recuento":302,"mirado":"2026-10-16"},"google":{"nota":4.9,"recuento":315,"mirado":"2026-10-16"},"tripadvisor":{"nota":4.7,"recuento":79,"mirado":"2026-10-16"}},"precios":{"provisional":true,"desde":{"clasica":58,"confort":68,"torre":70,"terraza":75,"familiar":85},"entera":{"una":675,"dos":1190,"noche_mas":595,"plazas":22}}}</script>
+</head>
+<body>
   <main class="no">
-    <img src="marca/tejado-oro-290.png" alt="" width="290" height="282">
+    <img class="no__tejado" src="data:image/png;base64,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" alt="" width="290" height="282">
     <h1>Bajo este tejado no hay nada.</h1>
     <p>La página que buscas no existe o ha cambiado de sitio.</p>
-    <a class="btn btn--oro" href="./">Volver a la portada</a>
+    <a class="btn" href="/">Volver a la portada</a>
+    <nav class="no__menu" aria-label="Secciones">
+      <ul>
+        <li><a href="/#casa">La casa</a></li>
+        <li><a href="/tu-habitacion/">Habitaciones</a></li>
+        <li><a href="/#finca">La finca</a></li>
+        <li><a href="/pico-sacro-v2/">El Pico</a></li>
+        <li><a href="/entorno/">Entorno</a></li>
+        <li><a href="/#llegar">Cómo llegar</a></li>
+        <li><a href="/#reserva">Reservar</a></li>
+      </ul>
+    </nav>
   </main>
+<script>
+/* En el escaparate (alvarotaiagu.github.io/casa-de-casal-lestedo-web/…) los
+   enlaces de «/» llevarían fuera de la web: se les pone el prefijo. En la
+   raíz del dominio se quedan como están. */
+(function () {
+  var PREFIJO = '/casa-de-casal-lestedo-web/';
+  if (location.pathname.indexOf(PREFIJO) !== 0) return;
+  var enlaces = document.querySelectorAll('a[href^="/"]');
+  for (var i = 0; i < enlaces.length; i++) {
+    enlaces[i].setAttribute('href', PREFIJO + enlaces[i].getAttribute('href').slice(1));
+  }
+})();
+</script>
 </body>
 </html>

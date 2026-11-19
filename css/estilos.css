@@ -690,6 +690,18 @@ html.densidad-sobria .mapa { clip-path: none; }
 .texto .env { display: grid; gap: 16px; }
 .texto .env > * { max-width: 40em; }
 .texto .tit { font-size: clamp(2.1rem, 4.4vw, 3.4rem); margin-bottom: 4px; }
+/* Apartados largos (5 o más bloques: título + 4 de texto) en dos columnas de lectura, para no dejar
+   media página vacía a la derecha. El título, las fotos, las tarjetas y los avisos cruzan las dos.
+   Los cortos (una entrada, un párrafo) siguen en una sola columna de 40em. */
+@media (min-width: 900px) {
+  .texto .env:has(> :nth-child(5)) { display: block; columns: 2; column-gap: clamp(40px, 5vw, 80px); }
+  .texto .env:has(> :nth-child(5)) > * { max-width: none; margin: 0 0 16px; break-inside: avoid-column; }
+  .texto .env:has(> :nth-child(5)) > p { break-inside: auto; orphans: 3; widows: 3; }
+  .texto .env:has(> :nth-child(5)) > :is(.tit, .eti, .entrada, .finca__mosaico, .tarjetas, .pendiente, .cita, blockquote) { column-span: all; }
+  .texto .env:has(> :nth-child(5)) > .tit { margin-bottom: 20px; }
+  .texto .env:has(> :nth-child(5)) > .finca__mosaico { margin: 12px 0 28px; }
+  .texto .env:has(> :nth-child(5)) > .entrada { max-width: 36em; }
+}
 .texto ul { display: grid; gap: 6px; padding-left: 1.2em; list-style: disc; }
 .texto ul li::marker { color: var(--oro-texto); }
 
